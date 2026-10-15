@@ -1,0 +1,74 @@
+:root {
+  color-scheme: dark;
+  --ink: #edf2fc;
+  --muted: #a3b0c7;
+  --line: #2b3750;
+  --accent: #86aaff;
+  --surface: #1a2438;
+  --surface-raised: #202d44;
+}
+
+body { background: #101827; color: var(--ink); }
+.sidebar { background: #151f30; border-right: 1px solid #273249; }
+.brand small, .nav-label, .sidebar-note { color: #9caec7; }
+.brand-mark { background: #293b5c; color: #a8c2ff; }
+.sidebar nav a { color: #b1bed3; }
+.sidebar nav a:hover { background: #202d44; }
+.sidebar nav .active { background: #263b60; color: #d2e0ff; box-shadow: inset 3px 0 #8caeff; }
+.sidebar-note { border-color: var(--line); }
+.sidebar-note i { color: #8caeff; }
+.sidebar-close:hover { background: #293951; }
+.topbar { background: #141f32; border-color: var(--line); }
+.workspace-label { color: #9baecb; }
+.breadcrumb > span[aria-hidden] { color: #71829e; }
+.menu-button, .button { border-color: #3c4c67; background: #202d44; color: #e3ebfa; }
+.menu-button:hover, .button:hover { background: #2c3d59; border-color: #657d9f; }
+.button-primary { background: #98b5ff; border-color: #98b5ff; color: #112240; box-shadow: 0 3px 12px #0002; }
+.button-primary:hover { background: #b0c7ff; border-color: #b0c7ff; }
+.section-nav { border-color: var(--line); }
+.panel { background: var(--surface); border-color: var(--line); box-shadow: 0 4px 20px #050b1518; }
+.report-summary { background: linear-gradient(115deg, #223251, #1a2438 70%); border-top-color: #8eaeff; }
+.event-icon { background: #2d4264; color: #c0d2ff; }
+.icon-button { color: #b6c7e4; }
+.icon-button:hover { background: #34476a; color: #fff; }
+.section-icon { background: #26354e; color: #a9c2f7; }
+.severity { background: #2b374c; border-color: #4c5c76; color: #d3ddec; }
+.severity-minor { background: #173c35; border-color: #316354; color: #94e3b9; }
+.severity-moderate { background: #423824; border-color: #6b5732; color: #f5cf82; }
+.severity-severe, .severity-critical, .severity-fatal { background: #462b37; border-color: #704050; color: #ffafbd; }
+.panel-header { border-color: var(--line); }
+.count { border-color: #3d4e69; background: #28374e; color: #c3d2eb; }
+.description { color: #c9d4e7; }
+.empty i { border-color: #3a4a64; background: #24324a; color: #9eb4d5; }
+.empty p { color: #c1cfe4; }
+.plate { background: #26364f; border-color: #4b607f; color: #e4edff; }
+.vehicle-notes { background: #233148; color: #bdcde5; }
+.map-hint { background: #172235; border-color: var(--line); }
+.map-link:hover { background: #263854; }
+.record-info > div + div { border-color: var(--line); }
+.photo-grid img { background: #233148; }
+.photo-error { background: #1e2c43; border-color: #4a5e7d; color: #b5c5df; }
+.action-status { background: #2d456c; border: 1px solid #5977a7; }
+.loader { border-color: #354767; border-top-color: #a0bdff; }
+footer { color: #9aaac3; }
+.skip-link { background: #273b5d; color: white; }
+:focus-visible { outline-color: #bed0ff; }
+.compact-layout main { padding-top: 22px; }
+.compact-layout .panel-header { min-height: 60px; padding-top: 12px; padding-bottom: 12px; }
+.compact-layout .panel-body, .compact-layout .vehicle-card { padding-top: 16px; padding-bottom: 16px; }
+.compact-layout .details-grid, .compact-layout .dashboard-grid, .compact-layout .report-form { gap: 16px; }
+.reduce-motion { scroll-behavior: auto; }
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+
+@media print {
+  :root { color-scheme: light; --ink: #152438; --muted: #485b6e; --line: #ccd6df; --accent: #27466e; }
+  body, .panel, .report-summary { background: white; color: #152438; }
+  .description, .empty p, .vehicle-notes, .plate, .record-info dd { color: #30485f; }
+  .section-icon, .event-icon, .count, .plate, .vehicle-notes { background: #edf1f5; color: #30485f; border-color: #ccd6df; }
+  .severity { background: #edf1f5; color: #30485f; border-color: #b3c2d1; }
+  .severity-minor { background: #e6f3eb; color: #256142; border-color: #a2c8b2; }
+  .severity-moderate { background: #fff3d8; color: #79551a; border-color: #d7bc85; }
+  .severity-severe, .severity-critical, .severity-fatal { background: #ffebeb; color: #9c3030; border-color: #d9aaaa; }
+  .photo-error, .empty i { background: #f3f5f7; color: #485b6e; border-color: #ccd6df; }
+  footer { color: #485b6e; }
+}

@@ -1,202 +1,109 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  if (typeof getData !== "function") {
-    console.error("❌ getData() not found.");
-    return;
+'use strict';
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.workspaceUser) return;
+  const escape = window.workspaceEscape;
+  const query = document.getElementById('mapQuery');
+  const severity = document.getElementById('mapSeverity');
+  const results = document.getElementById('mapResults');
+  const count = document.getElementById('mapCount');
+  const status = document.getElementById('mapStatus');
+  const refresh = document.getElementById('refreshMap');
+  const showZones = document.getElementById('showMapZones');
+  let records = [], visible = [], map, markers, markerList = [];
+  const severityKey = value => {
+    const key = String(value || '').toLowerCase();
+    if (['severe','critical','fatal'].includes(key)) return 'severe';
+    return ['minor','moderate'].includes(key) ? key : 'unknown';
+  };
+  const colors = {minor:'#76c9ab',moderate:'#e9be74',severe:'#ee8c9c',unknown:'#94a1bb'};
+  const coordinates = record => {
+    const lat = Number.parseFloat(record.latitude), lng = Number.parseFloat(record.longitude);
+    return Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180 ? [lat,lng] : null;
+  };
+  const fit = () => {
+    if (!map) return;
+    const points = visible.map(coordinates);
+    if (points.length) map.fitBounds(points, {padding:[35,35],maxZoom:14});
+    else map.setView([16.70509,121.67633],11);
+  };
+  if (typeof L !== 'undefined') {
+    try {
+      map = L.map('accidentMap').setView([16.70509,121.67633],11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map).on('tileerror', () => {status.textContent='Map tiles could not be loaded. You can still browse the reports.';});
+      markers = L.layerGroup().addTo(map);
+      map.scrollWheelZoom.disable();
+    } catch { map = null; }
   }
-
-  const mapContainer = document.getElementById("accidentMap");
-  if (!mapContainer) {
-    console.error("❌ Missing #accidentMap");
-    return;
-  }
-
-  const map = L.map("accidentMap").setView([16.705090, 121.676330], 12);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors",
-  }).addTo(map);
-
-  const wrapper = document.querySelector("section#wrapper .p-4");
-  const listContainer = document.createElement("div");
-  listContainer.className = "accident-list container mt-4 text-light";
-  listContainer.innerHTML = `
-    <h4 class="mb-3">Today's Accidents & Incidents</h4>
-    <div id="accidentRows"></div>
-  `;
-  wrapper.appendChild(listContainer);
-  const list = document.getElementById("accidentRows");
-
-  try {
-    let apiData = await getData("accident_api.php");
-
-    const [accRes, incRes] = await Promise.all([
-      fetch("accident.json").then(r => r.json()),
-      fetch("incident.json").then(r => r.json())
-    ]);
-
-    const normalize = res => {
-      if (!res) return [];
-      if (Array.isArray(res)) return res;
-      if (res.success && Array.isArray(res.data)) return res.data;
-      if (res.success && Array.isArray(res.accidents)) return res.accidents;
-      if (res.success && Array.isArray(res.records)) return res.records;
-      for (const k in res) if (Array.isArray(res[k])) return res[k];
-      return [];
-    };
-
-    let apiAccidents = normalize(apiData);
-    let localAccidents = normalize(accRes);
-
-    let localIncidents = normalize(incRes).map(inc => ({
-      accident_id: inc.incident_id,
-      case_number: inc.case_number || "N/A",
-      accident_date: inc.incident_date || inc.accident_date || "N/A",
-      address: inc.address || "Unknown Location",
-      severity: inc.severity || "Minor",
-      description: inc.description || "",
-      vehicles: inc.vehicles || [],
-      images: inc.images || [],
-      latitude: inc.latitude || null,
-      longitude: inc.longitude || null,
-      type_name: inc.type_name || "Incident"
-    }));
-
-    const accidents = [...apiAccidents, ...localAccidents, ...localIncidents];
-
-    if (!accidents.length) {
-      list.innerHTML = `<p class="text-muted">No accident or incident reports found.</p>`;
-      return;
+  if (!map) document.getElementById('accidentMap').innerHTML = '<div class="state"><h2>Map unavailable</h2><p>The map could not be loaded. Recorded locations are still listed alongside it.</p></div>';
+  const render = (useDefault = false) => {
+    const term = query.value.trim().toLowerCase();
+    visible = records.filter(record => coordinates(record) && (severity.value === 'all' || severityKey(record.severity) === severity.value) && [record.address,record.case_number,record.description].some(value => String(value || '').toLowerCase().includes(term)));
+    count.textContent = visible.length + ' location' + (visible.length === 1 ? '' : 's') + ' shown';
+    results.innerHTML = visible.length ? visible.map((record,index) => '<article class="map-result"><div class="map-result-heading"><small>' + escape(record.recordType) + ' &middot; ' + escape(record.case_number || 'No case number') + '</small><span class="severity severity-' + severityKey(record.severity) + '">' + escape(record.severity || 'Unknown') + '</span></div><h3>' + escape(record.address || 'Address not recorded') + '</h3><p>' + escape(record.accident_date || 'Date not recorded') + '</p><div class="result-actions">' + (map ? '<button type="button" class="button" data-map-index="' + index + '">Locate on map</button>' : '') + '<a class="button" href="' + window.ROADGUARD.reportURL(record.accident_id, record.recordType.toLowerCase()) + '">View report</a></div></article>').join('') : '<div class="empty"><p>No matching locations</p><small>Try another search or severity filter.</small></div>';
+    if (!map) return;
+    markers.clearLayers();
+    if (showZones.checked) {
+      const clusters = [];
+      const distance = (first, second) => {
+        const rad = value => value * Math.PI / 180;
+        const a = Math.sin(rad(second[0] - first[0]) / 2) ** 2 + Math.cos(rad(first[0])) * Math.cos(rad(second[0])) * Math.sin(rad(second[1] - first[1]) / 2) ** 2;
+        return 6371000 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(Math.max(0, 1 - a)));
+      };
+      visible.forEach(record => {
+        const point = coordinates(record);
+        const cluster = clusters.find(item => distance(point, item.point) <= 300);
+        if (cluster) cluster.records.push(record);
+        else clusters.push({point, records: [record]});
+      });
+      clusters.forEach(cluster => {
+        const severities = cluster.records.map(record => severityKey(record.severity));
+        const key = severities.includes('severe') ? 'severe' : severities.includes('moderate') ? 'moderate' : severities.includes('minor') ? 'minor' : 'unknown';
+        L.circle(cluster.point, {radius:300,color:colors[key],weight:1,fillOpacity:.12,interactive:false}).addTo(markers);
+      });
     }
-
-    const markersMap = {};
-    const clusterRadius = 300; // meters
-    const clusters = [];
-
-    const distance = (lat1, lng1, lat2, lng2) => {
-      const R = 6371000; // meters
-      const dLat = (lat2 - lat1) * Math.PI / 180;
-      const dLng = (lng2 - lng1) * Math.PI / 180;
-      const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      return R * c;
-    };
-
-    accidents.forEach(a => {
-      const lat = parseFloat(a.latitude);
-      const lng = parseFloat(a.longitude);
-      if (isNaN(lat) || isNaN(lng)) return;
-
-      const sev = (a.severity || "").toLowerCase();
-      let fillColor = "#2ecc71";
-      if (sev === "severe") fillColor = "#e74c3c";
-      else if (sev === "moderate") fillColor = "#f1c40f";
-
-      const marker = L.circleMarker([lat, lng], {
-        radius: 10,
-        fillColor,
-        color: "#fff",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.9,
-      }).addTo(map);
-
-      let popupContent = `
-        <strong>${a.address || "Unknown Location"}</strong><br>
-        <b>Type:</b> ${a.type_name || "N/A"}<br>
-        <b>Severity:</b> ${a.severity || "N/A"}<br>
-        <b>Description:</b> ${a.description || "No details available"}<br>
-      `;
-
-      if (Array.isArray(a.vehicles) && a.vehicles.length) {
-        popupContent += `<b>Vehicles:</b> ${a.vehicles.map(v => `${v.brand} ${v.model}`).join(", ")}<br>`;
-      }
-      if (Array.isArray(a.images) && a.images.length) {
-        popupContent += `<img src="${a.images[0].file_path}" style="max-width:150px;margin-top:5px;">`;
-      }
-
-      marker.bindPopup(popupContent);
-      marker.on("click", () => {
-        map.setView([lat, lng], 13);
-        marker.openPopup();
-      });
-
-      markersMap[a.accident_id] = marker;
-
-      let addedToCluster = false;
-      for (const cluster of clusters) {
-        const d = distance(lat, lng, cluster.lat, cluster.lng);
-        if (d <= clusterRadius) {
-          cluster.accidents.push(a);
-          cluster.lat = (cluster.lat * (cluster.accidents.length - 1) + lat) / cluster.accidents.length;
-          cluster.lng = (cluster.lng * (cluster.accidents.length - 1) + lng) / cluster.accidents.length;
-          addedToCluster = true;
-          break;
-        }
-      }
-      if (!addedToCluster) clusters.push({ lat, lng, accidents: [a] });
+    markerList = visible.map(record => {
+      const point = L.circleMarker(coordinates(record), {radius:8,fillColor:colors[severityKey(record.severity)],color:'#ffffff',weight:2,fillOpacity:.9}).addTo(markers);
+      point.bindPopup('<strong>' + escape(record.address || 'Event location') + '</strong><br>' + escape(record.severity || 'Unknown') + ' &middot; ' + escape(record.recordType) + '<br><a href="' + window.ROADGUARD.reportURL(record.accident_id, record.recordType.toLowerCase()) + '">View full report</a>');
+      return point;
     });
-
-    clusters.forEach(cluster => {
-      const sevCounts = { severe: 0, moderate: 0, minor: 0 };
-      cluster.accidents.forEach(a => {
-        const sev = (a.severity || "minor").toLowerCase();
-        if (sevCounts[sev] !== undefined) sevCounts[sev]++;
-      });
-
-      const totalAccidents = cluster.accidents.length;
-      const severeRatio = sevCounts["severe"] / totalAccidents;
-      const moderateRatio = sevCounts["moderate"] / totalAccidents;
-
-      let zoneColor = "#2ecc71";
-      if (severeRatio > 0.3) zoneColor = "#e74c3c";
-      else if (moderateRatio > 0.2 || severeRatio > 0) zoneColor = "#f1c40f";
-
-      L.circle([cluster.lat, cluster.lng], {
-        radius: clusterRadius,
-        color: zoneColor,
-        weight: 2,
-        fillColor: zoneColor,
-        fillOpacity: 0.15,
-        interactive: false
-      }).addTo(map);
-    });
-
-    const todayStr = new Date().toISOString().split("T")[0];
-    let todayCount = 0;
-    list.innerHTML = "";
-
-    accidents.forEach(a => {
-      const lat = parseFloat(a.latitude);
-      const lng = parseFloat(a.longitude);
-      if (isNaN(lat) || isNaN(lng)) return;
-      if (!a.accident_date?.startsWith(todayStr)) return;
-      todayCount++;
-
-      const item = document.createElement("div");
-      item.className = "accident-item mb-3 p-3 bg-dark rounded";
-
-      item.innerHTML = `
-        <h5>${a.type_name || "Unknown Type"}</h5>
-        <h6>${a.address || "Unknown Location"}</h6>
-        <p><strong>Reported:</strong> ${a.accident_date || "Unknown"}</p>
-        <p><strong>Severity:</strong> ${a.severity || "N/A"}</p>
-        <p><strong>Description:</strong> ${a.description || "No description provided."}</p>
-        <button class="btn btn-sm btn-outline-light mt-2">View on Map</button>
-      `;
-
-      item.querySelector("button").addEventListener("click", () => {
-        map.setView([lat, lng], 13);
-        markersMap[a.accident_id]?.openPopup();
-      });
-
-      list.appendChild(item);
-    });
-
-    if (todayCount === 0) {
-      list.innerHTML = `<p class="text-muted">No accidents or incidents reported today.</p>`;
-    }
-
-  } catch (err) {
-    console.error("❌ Error fetching data:", err);
-    list.innerHTML = `<p class="text-danger">⚠️ Failed to load data.</p>`;
-  }
+    if (useDefault && window.readWorkspacePreferences().mapView === 'isabela') map.setView([16.70509,121.67633],11);
+    else fit();
+  };
+  const load = async () => {
+    refresh.disabled = true;
+    results.setAttribute('aria-busy','true');
+    status.textContent = 'Refreshing recorded locations...';
+    try {
+      const responses = await Promise.all(['accident.json','incident.json'].map(async file => {
+        const response = await fetch(file,{cache:'no-store'});
+        if (!response.ok) throw new Error('Unable to load records');
+        const data = await response.json();
+        if (!Array.isArray(data)) throw new Error('Invalid records');
+        return data;
+      }));
+      records = [...responses[0].map(item=>({...item,recordType:'Accident'})),...responses[1].map(item=>({...item,accident_id:item.incident_id,accident_date:item.incident_date,recordType:'Incident'}))];
+      render(true);
+      const omitted = records.filter(record=>!coordinates(record)).length;
+      status.textContent = 'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + ' ? Based on recorded reports. Use Refresh to check for changes.' + (omitted ? ' ' + omitted + ' reports have no valid coordinates.' : '');
+    } catch {
+      status.textContent = 'Reports could not be refreshed. Check your connection and try again.';
+      if (!records.length) {results.innerHTML = '<div class="empty"><p>Unable to load reports</p><small>Use Refresh to try again.</small></div>';count.textContent='Reports unavailable';}
+    } finally {refresh.disabled=false;results.setAttribute('aria-busy','false');}
+  };
+  results.addEventListener('click', event => {
+    const button=event.target.closest('[data-map-index]');
+    if (!button || !map) return;
+    const index=Number(button.dataset.mapIndex);
+    if (!visible[index]) return;
+    map.setView(coordinates(visible[index]),15);
+    markerList[index].openPopup();
+    document.getElementById('accidentMap').scrollIntoView({block:'nearest'});
+  });
+  query.addEventListener('input',()=>render());
+  severity.addEventListener('change',()=>render());
+  showZones.addEventListener('change',()=>render());
+  document.getElementById('resetMap').addEventListener('click',fit);
+  refresh.addEventListener('click',load);
+  load();
 });

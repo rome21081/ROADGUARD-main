@@ -177,6 +177,7 @@ function generateFullSpreadsheet() {
 
 function downloadSpreadsheet() {
 
+  if (typeof XLSX === 'undefined') {document.getElementById('spreadsheetStatus').textContent = 'Spreadsheet export could not be loaded. Try reloading the page.';return;}
   let data = getFilteredData();
 
   let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -240,5 +241,8 @@ function downloadSpreadsheet() {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (!window.workspaceUser) return;
+  document.getElementById('applySheetFilters').addEventListener('click', generateFullSpreadsheet);
+  document.getElementById('downloadSheet').addEventListener('click', downloadSpreadsheet);
   generateFullSpreadsheet();
 });

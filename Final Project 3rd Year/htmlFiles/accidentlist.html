@@ -1,88 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>R.O.A.D — Accident Tracker List</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
-  <link rel="stylesheet" href="../cssFiles/style.css" />
-  <link rel="stylesheet" href="../cssFiles/accidentlist.css" />
-</head>
-<body>
-  <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
-    <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
-    <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
-      <img class="rounded-pill img-fluid" width="65" src="" alt="avatar" />
-      <div class="ms-2">
-        <h5 class="fs-6 mb-0"><a class="text-decoration-none" href="#"></a></h5>
-        <p class="mt-1 mb-0"></p>
-      </div>
-    </div>
-
-    <div class="search position-relative text-center px-4 py-3 mt-2">
-      <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here"/>
-      <i class="fa fa-search position-absolute d-block fs-6"></i>
-    </div>
-
-    <ul class="categories list-unstyled">
-      <li class="has-dropdown"><i class="uil-estate fa-fw"></i><a href="../htmlFiles/main.html"> Dashboard</a>
-        <ul class="sidebar-dropdown list-unstyled">
-          <li><a href="#">Overview</a></li>
-        </ul>
-      </li>
-      <li><i class="uil-map-marker"></i><a href="../htmlFiles/map.html"> Map</a></li>
-      <li><i class="uil-clipboard-alt"></i><a href="../htmlFiles/report.html"> Report Accident</a></li>
-      <li><i class="uil-list-ul"></i><a href="../htmlFiles/accidentlist.html"> Accident and Incident</a></li>
-      <li><i class="uil-users-alt"></i><a href="#"> Users</a></li>
-      <li><i class="uil-cog"></i><a href="#"> Settings</a></li>
-    </ul>
-  </aside>
-
-  <section id="wrapper">
-    <nav class="navbar navbar-expand-md">
-      <div class="container-fluid mx-2">
-        <div class="navbar-header d-flex align-items-center">
-          <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar">
-            <i class="uil-bars text-white show-side-btn" data-show="show-side-navigation1"></i>
-          </button>
-          <a class="navbar-brand" href="#">ROAD<span class="main-color">  Real-Time Observation & Detection of Accident and Incedent Reports</span></a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="toggle-navbar">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Settings</a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">My account</a></li>
-                <li><a class="dropdown-item" href="#">My inbox</a></li>
-                <li><a class="dropdown-item" href="#">Help</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="uil-comments-alt"></i><span id="nav-msg-count">0</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><i class="uil-bell"></i><span id="nav-notif-count">0</span></a></li>
-          </ul>
-        </div>
-      </div>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#141f32"><title>Accidents & incidents | ROADGUARD</title><link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"><link rel="stylesheet" href="../cssFiles/accident_view.css"><link rel="stylesheet" href="../cssFiles/roadguard-dark.css"><link rel="stylesheet" href="../cssFiles/workspace-pages.css"><link rel="stylesheet" href="../cssFiles/remaining-pages.css"><link rel="stylesheet" href="../cssFiles/accidentlist.css?v=20261015-3"></head><body><a class="skip-link" href="#main">Skip to content</a>
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <button class="sidebar-close" id="closeMenu" aria-label="Close navigation"><i class="uil uil-times" aria-hidden="true"></i></button>
+    <a class="brand" href="main.html"><span class="brand-mark"><i class="uil uil-shield-check" aria-hidden="true"></i></span><span>ROADGUARD<small>Observation &amp; response</small></span></a>
+    <p class="nav-label">WORKSPACE</p>
+    <nav>
+      <a href="main.html"><i class="uil uil-estate" aria-hidden="true"></i>Dashboard</a>
+      <a href="map.html"><i class="uil uil-map" aria-hidden="true"></i>Live map</a>
+      <a href="report.html"><i class="uil uil-file-plus-alt" aria-hidden="true"></i>Report accident</a>
+      <a href="accidentlist.html" class="active" aria-current="page"><i class="uil uil-clipboard-notes" aria-hidden="true"></i>Accidents & incidents</a>
+      <a href="management.html"><i class="uil uil-chart" aria-hidden="true"></i>Management analytics</a>
+      <a href="spreedsheet.html"><i class="uil uil-table" aria-hidden="true"></i>Spreadsheet</a>
+      <a href="users.html"><i class="uil uil-users-alt" aria-hidden="true"></i>Users</a>
+      <a href="settings.html"><i class="uil uil-setting" aria-hidden="true"></i>Settings</a>
     </nav>
-
-    <div class="accident-container">
-      <h1 class="accident-header" style="color: bisque;">List of Accidents & Incidents</h1>
-
-      <div class="accident-search-box">
-        <input type="text" id="searchInput" placeholder="Search by address or case number..." />
-      </div>
-
-      <div class="accident-list" id="accidentList"></div>
-
-      <div class="pagination mt-3" id="pagination" style="color: bisque;"></div>
-    </div>
+    <div class="sidebar-profile"><span id="profileInitial" class="profile-initial">U</span><div><strong id="profileName">Workspace user</strong><small id="profileRole">Road safety team</small></div></div><button class="sign-out" id="signOut" type="button"><i class="uil uil-signout" aria-hidden="true"></i>Sign out</button><div class="sidebar-note"><i class="uil uil-shield-check" aria-hidden="true"></i><span>Road safety starts<br>with better information.</span></div>
+  </aside>
+  <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation" hidden></button>
+<div class="workspace"><header class="topbar"><button class="menu-button" id="menuToggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation"><i class="uil uil-bars" aria-hidden="true"></i></button><nav class="breadcrumb" aria-label="Breadcrumb"><a href="main.html">Workspace</a><span aria-hidden="true">/</span><span aria-current="page">Accidents & incidents</span></nav><span class="workspace-label">ROAD SAFETY WORKSPACE</span></header><main id="main" class="reports-page">
+  <div class="page-heading reports-heading">
+    <div><div class="eyebrow">REPORT MANAGEMENT</div><h1>Accidents &amp; incidents</h1><p>One organized view of every recorded event.</p></div>
+    <div class="page-actions"><a class="button" href="map.html"><i class="uil uil-map" aria-hidden="true"></i>View on map</a><a class="button button-primary" href="report.html"><i class="uil uil-plus" aria-hidden="true"></i>New report</a></div>
+  </div>
+  <section class="report-metrics" aria-label="Report totals">
+    <article class="panel report-metric"><span class="metric-symbol metric-total"><i class="uil uil-clipboard-notes" aria-hidden="true"></i></span><div><span>All reports</span><strong id="totalReports">&mdash;</strong><small>Across all recorded dates</small></div></article>
+    <article class="panel report-metric"><span class="metric-symbol metric-accident"><i class="uil uil-car-sideview" aria-hidden="true"></i></span><div><span>Accidents</span><strong id="accidentCount">&mdash;</strong><small>Recorded accident reports</small></div></article>
+    <article class="panel report-metric"><span class="metric-symbol metric-incident"><i class="uil uil-file-exclamation-alt" aria-hidden="true"></i></span><div><span>Incidents</span><strong id="incidentCount">&mdash;</strong><small>Other reported events</small></div></article>
+    <article class="panel report-metric"><span class="metric-symbol metric-severe"><i class="uil uil-exclamation-triangle" aria-hidden="true"></i></span><div><span>Severe reports</span><strong id="severeCount">&mdash;</strong><small>Severe, critical, and fatal</small></div></article>
   </section>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
-  <script src="../jsFiles/accidentlist.js"></script>
-</body>
-</html>
+  <section class="panel reports-directory" aria-labelledby="directoryHeading">
+    <header class="directory-heading"><div><h2 id="directoryHeading">Report directory</h2><p>Find an event and review its complete details.</p></div><span class="directory-total" id="directoryTotal">Loading...</span></header>
+    <div class="reports-toolbar">
+      <label class="report-search"><i class="uil uil-search" aria-hidden="true"></i><span class="sr-only">Search case number, location, or description</span><input id="searchInput" type="search" placeholder="Search reports..."></label>
+      <label class="report-filter" for="reportType"><span>Report type</span><select id="reportType"><option value="all">All reports</option><option value="accident">Accidents</option><option value="incident">Incidents</option></select></label>
+      <label class="report-filter" for="severityFilter"><span>Severity</span><select id="severityFilter"><option value="all">All severities</option><option value="minor">Minor</option><option value="moderate">Moderate</option><option value="severe">Severe / critical / fatal</option><option value="unknown">Unknown</option></select></label>
+      <label class="report-filter" for="sortReports"><span>Sort by</span><select id="sortReports"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="case">Case number</option></select></label>
+    </div>
+    <div class="reports-results-line"><p id="listStatus" role="status">Loading recorded events...</p><button id="clearFilters" class="clear-filters" type="button" hidden>Clear filters<i class="uil uil-times" aria-hidden="true"></i></button></div>
+    <div class="reports-table-wrap"><table class="reports-table"><caption class="sr-only">Accident and incident reports</caption><thead><tr><th scope="col">Case reference</th><th scope="col">Report type</th><th scope="col">Location</th><th scope="col">Date &amp; time</th><th scope="col">Severity</th><th scope="col"><span class="sr-only">View report</span></th></tr></thead><tbody id="accidentList" aria-busy="true"><tr><td colspan="6"><div class="list-loading"><span class="loader" aria-hidden="true"></span><span>Loading reports...</span></div></td></tr></tbody></table></div>
+    <nav class="reports-pagination" id="pagination" aria-label="Report pages" hidden></nav>
+  </section>
+  <footer>ROADGUARD <span aria-hidden="true">&middot;</span> Real-time observation &amp; accident detection</footer>
+</main></div><script src="../jsFiles/routes.js"></script><script src="../jsFiles/workspace-preferences.js"></script><script src="../jsFiles/workspace.js"></script><script src="../jsFiles/accidentlist.js?v=20261015-3"></script></body></html>

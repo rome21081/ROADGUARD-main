@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#141f32"><title>Settings | ROADGUARD</title>
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"><link rel="stylesheet" href="../cssFiles/accident_view.css"><link rel="stylesheet" href="../cssFiles/roadguard-dark.css"><link rel="stylesheet" href="../cssFiles/workspace-pages.css"></head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <button class="sidebar-close" id="closeMenu" aria-label="Close navigation"><i class="uil uil-times" aria-hidden="true"></i></button>
+    <a class="brand" href="main.html"><span class="brand-mark"><i class="uil uil-shield-check" aria-hidden="true"></i></span><span>ROADGUARD<small>Observation &amp; response</small></span></a>
+    <p class="nav-label">WORKSPACE</p>
+    <nav>
+      <a href="main.html"><i class="uil uil-estate" aria-hidden="true"></i>Dashboard</a>
+      <a href="map.html"><i class="uil uil-map" aria-hidden="true"></i>Live map</a>
+      <a href="report.html"><i class="uil uil-file-plus-alt" aria-hidden="true"></i>Report accident</a>
+      <a href="accidentlist.html"><i class="uil uil-clipboard-notes" aria-hidden="true"></i>Accidents & incidents</a>
+      <a href="management.html"><i class="uil uil-chart" aria-hidden="true"></i>Management analytics</a>
+      <a href="spreedsheet.html"><i class="uil uil-table" aria-hidden="true"></i>Spreadsheet</a>
+      <a href="users.html"><i class="uil uil-users-alt" aria-hidden="true"></i>Users</a>
+      <a href="settings.html" class="active" aria-current="page"><i class="uil uil-setting" aria-hidden="true"></i>Settings</a>
+    </nav>
+    <div class="sidebar-profile"><span id="profileInitial" class="profile-initial">U</span><div><strong id="profileName">Workspace user</strong><small id="profileRole">Road safety team</small></div></div><button class="sign-out" id="signOut" type="button"><i class="uil uil-signout" aria-hidden="true"></i>Sign out</button><div class="sidebar-note"><i class="uil uil-shield-check" aria-hidden="true"></i><span>Road safety starts<br>with better information.</span></div>
+  </aside>
+  <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation" hidden></button>
+<div class="workspace"><header class="topbar"><button class="menu-button" id="menuToggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation"><i class="uil uil-bars" aria-hidden="true"></i></button><nav class="breadcrumb" aria-label="Breadcrumb"><a href="main.html">Workspace</a><span aria-hidden="true">/</span><span aria-current="page">Settings</span></nav><span class="workspace-label">ROAD SAFETY WORKSPACE</span></header>
+<main id="main"><div class="page-heading"><div><div class="eyebrow">WORKSPACE</div><h1>Settings</h1><p>Manage your workspace preferences and view your signed-in account.</p></div><div class="page-actions"></div></div>
+<div class="settings-layout"><section class="panel"><div class="panel-header"><span class="section-icon"><i class="uil uil-user-circle" aria-hidden="true"></i></span><h2>Your account</h2></div><dl class="account-details" id="accountDetails"></dl><div class="panel-body"><p class="field-help">Account details reflect your current sign-in session.</p></div></section><form id="preferencesForm" class="panel"><div class="panel-header"><span class="section-icon"><i class="uil uil-sliders-v-alt" aria-hidden="true"></i></span><div><h2>Workspace preferences</h2><p>Saved in this browser on this device.</p></div></div><div class="panel-body"><label class="preference-row" for="compactLayout"><span><strong>Compact layout</strong><small>Use closer spacing for cards and page sections.</small></span><input id="compactLayout" type="checkbox" role="switch"></label><label class="preference-row" for="reduceMotion"><span><strong>Reduce motion</strong><small>Minimize animation and smooth scrolling.</small></span><input id="reduceMotion" type="checkbox" role="switch"></label><div class="form-field preference-select"><label for="defaultMapView">Default map view</label><p class="field-help">Choose where the live map opens when you visit.</p><select id="defaultMapView"><option value="reports">Fit all recorded locations</option><option value="isabela">Start in Isabela</option></select></div><p id="settingsStatus" class="field-help" role="status"></p><div class="inline-actions"><button class="button button-primary" type="submit">Save preferences</button><button class="button" id="resetPreferences" type="button">Restore defaults</button></div></div></form></div><footer>ROADGUARD <span aria-hidden="true">&middot;</span> Real-time observation &amp; accident detection</footer></main></div>
+<script src="../jsFiles/routes.js"></script><script src="../jsFiles/workspace-preferences.js"></script><script src="../jsFiles/workspace.js"></script><script src="../jsFiles/settings.js"></script></body></html>

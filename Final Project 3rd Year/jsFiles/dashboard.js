@@ -12,11 +12,9 @@ const DANGER_RADIUS_METERS = 200;
 let computedDangerZones = []; // [{ name, lat, lng, severeCount, totalCount, probability }]
 
 document.addEventListener("DOMContentLoaded", async () => {
+  if (!window.workspaceUser) return;
   await refreshAll();
   setInterval(refreshAll, 15000);
-  setTimeout(askLocationPermission, 1000);
-
-  setTimeout(triggerDefaultDangerAlert, 1500);
 });
 
 async function refreshAll() {
@@ -36,14 +34,25 @@ async function refreshAll() {
 
     const accidents = normalizeAccidentResponse(accidentsResult);
     buildSummaryFromAccidents(accidents);
-    buildChartsFromAccidents(accidents);
-    renderRecentReports(accidents.slice(0, 12));
+    renderRecentReports(accidents);
 
     computedDangerZones = buildDangerZonesFromAccidents(accidents);
     renderDangerZoneList(computedDangerZones);
+    if (typeof Chart !== 'undefined') {
+      buildChartsFromAccidents(accidents);
+    } else {
+      renderAIPrediction();
+      document.querySelectorAll('.chart-plot').forEach(container => {
+        container.innerHTML = '<div class="empty"><p>Chart unavailable</p><small>Reload the page to try loading the chart library again.</small></div>';
+      });
+    }
+    const status = document.getElementById('refreshStatus');
+    if (status) status.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Refreshes every 15 seconds`;
 
   } catch (err) {
     console.error("Error refreshing data:", err);
+    const status = document.getElementById('refreshStatus');
+    if (status) status.textContent = 'Unable to refresh records. Try Refresh again.';
   }
 }
 
@@ -145,7 +154,7 @@ function buildChartsFromAccidents(accidents) {
         label:'Accidents',
         data: monthlyCounts,
         backgroundColor:'transparent',
-        borderColor:'#fb7a8e',
+        borderColor:'#91b1ff',
         borderWidth:2,
         pointRadius:3,
         lineTension:0.2
@@ -174,7 +183,7 @@ function buildChartsFromAccidents(accidents) {
           severityCounts.minor,
           severityCounts.unknown
         ],
-        backgroundColor:['#d9534f','#f0ad4e','#5cb85c','#6b7280']
+        backgroundColor:['#ee8c9c','#e9be74','#76c9ab','#7a89a7'], borderColor: '#1a2438', borderWidth: 4
       }]
     },
     options:{ responsive:true, maintainAspectRatio:false }
@@ -189,10 +198,11 @@ function buildChartsFromAccidents(accidents) {
       datasets: [{
         label:'Accidents',
         data: vehicleValues,
-        backgroundColor: ['#ffae00ff','#f74600ff','#6196FE','#A9B5FF','#031B89']
+        backgroundColor: ['#86aaff','#b39aee','#7cc9b2','#e6bd78','#df93b6']
       }]
     },
     options: {
+      maintainAspectRatio: false,
       legend:{ display:false },
       scales:{ yAxes:[{ ticks:{ beginAtZero:true } }] },
       responsive:true
@@ -203,7 +213,7 @@ function buildChartsFromAccidents(accidents) {
   if (lightChart) lightChart.destroy();
   lightChart = new Chart(ctxLight, {
     type:'bar',
-    data:{ labels:['AM','PM'], datasets:[{ label:'Incidents', data:[am,pm], backgroundColor:['#6196FE','#fb7a8e'] }]},
+    data:{ labels:['Day','Night'], datasets:[{ label:'Accidents', data:[am,pm], backgroundColor:['#86aaff','#b69bfa'] }]},
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -212,51 +222,25 @@ function buildChartsFromAccidents(accidents) {
   });
 }
 
-function renderRecentReports(accidents) {
-  const container = document.getElementById('recentReports');
-  container.innerHTML = '';
-  if (!accidents || accidents.length === 0) {
-    container.innerHTML = '<div class="text-muted small">No recent reports available.</div>';
-    return;
-  }
-
-  const html = accidents.map(a => {
-    const location = a.address || a.location || a.type_name || 'Unknown location';
-    const time = a.accident_date || a.created_at || '';
-    const severity = (a.severity || 'unknown').toLowerCase();
-    const severityBadge =
-      severity.includes('sev') || severity.includes('crit') ? 'badge-severe' :
-      severity.includes('mod') ? 'badge-moderate' : 'badge-minor';
-
-    const desc = a.description
-      ? (a.description.length > 140 ? a.description.slice(0,140) + '...' : a.description)
-      : '';
-
-    return `
-      <div class="list-item">
-        <div style="min-width:48px">
-          <img src="${a.image || 'https://via.placeholder.com/48'}"
-               width="48" height="48" class="rounded-pill" alt="report">
-        </div>
-        <div style="flex:1">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <strong style="color:#e6edf6">${location}</strong>
-              <div class="small text-muted">${time}</div>
-            </div>
-            <div>
-              <span class="${severityBadge} badge">${(a.severity || 'Unknown').toUpperCase()}</span>
-            </div>
-          </div>
-          <div class="small text-muted mt-1">${desc}</div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  container.innerHTML = html;
+function dashboardEscape(value) {
+  return String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
 }
 
+function renderRecentReports(accidents) {
+  const container = document.getElementById('recentReports');
+  if (!accidents || accidents.length === 0) {
+    container.innerHTML = '<div class="empty"><p>No accident reports yet.</p><small>New reports will appear here when available.</small></div>';
+    return;
+  }
+  const sorted = [...accidents].sort((a, b) => (new Date(String(b.accident_date || '').replace(' ', 'T')).getTime() || 0) - (new Date(String(a.accident_date || '').replace(' ', 'T')).getTime() || 0));
+  container.innerHTML = sorted.slice(0, 6).map(record => {
+    const severity = String(record.severity || 'Unknown');
+    const severityClass = ['minor', 'moderate', 'severe', 'critical', 'fatal'].includes(severity.toLowerCase()) ? severity.toLowerCase() : 'unknown';
+    const date = new Date(String(record.accident_date || '').replace(' ', 'T'));
+    const time = Number.isNaN(date.getTime()) ? 'Date not recorded' : date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+    return '<a class="report-row" href="' + window.ROADGUARD.reportURL(record.accident_id, 'accident') + '"><span class="report-row-icon"><i class="uil uil-file-alt" aria-hidden="true"></i></span><div><strong>' + dashboardEscape(record.address || 'Location not recorded') + '</strong><span class="report-row-date">' + dashboardEscape(record.case_number || 'No case number') + ' &middot; ' + time + '</span><p class="report-row-description">' + dashboardEscape(record.description || 'No description recorded.') + '</p></div><span class="severity severity-' + severityClass + '">' + dashboardEscape(severity) + '</span><i class="uil uil-angle-right" aria-hidden="true"></i></a>';
+  }).join('');
+}
 
 function buildDangerZonesFromAccidents(accidents) {
   if (!Array.isArray(accidents) || accidents.length === 0) {
@@ -319,39 +303,26 @@ function buildDangerZonesFromAccidents(accidents) {
 function renderDangerZoneList(zones) {
   const box = document.getElementById('danger-alerts');
   if (!box) return;
-
   if (!zones || zones.length === 0) {
-    box.innerHTML = `<div class="alert alert-success">No active danger zones detected.</div>`;
+    box.innerHTML = '<div class="empty"><p>No priority locations recorded.</p></div>';
     return;
   }
-
-  const html = zones.map((zone, i) => {
-    const cls = zone.severeCount >= 5 ? 'bg-danger' : zone.severeCount >= 3 ? 'bg-warning' : 'bg-info';
-    const reason = zone.totalCount > 1 ? `${zone.totalCount} incidents reported` : `1 incident reported`;
-    return `
-      <div class="alert mb-2 p-2" role="alert"
-        style="border-left:4px solid #FB7A8E;background:rgba(251,122,142,0.04);color:#ffd4d8">
-        <strong>${zone.name}</strong>
-        <div class="small text-muted">${reason} — ${zone.severeCount} severe case(s) — ${zone.probability}% severe</div>
-      </div>
-    `;
-  }).join('');
-
-  box.innerHTML = html;
+  const renderZone = zone => '<div class="zone-item"><span class="zone-icon"><i class="uil uil-map-marker-exclamation" aria-hidden="true"></i></span><div><strong>' + dashboardEscape(zone.name) + '</strong><p>' + zone.totalCount + ' reported &middot; ' + zone.severeCount + ' severe</p></div><span class="zone-percentage" aria-label="' + zone.probability + ' percent of reports are severe">' + zone.probability + '%</span></div>';
+  box.innerHTML = '<div class="zone-list">' + zones.slice(0, 2).map(renderZone).join('') + (zones.length > 2 ? '<details><summary>Show ' + (zones.length - 2) + ' more locations</summary>' + zones.slice(2).map(renderZone).join('') + '</details>' : '') + '</div>';
 }
 
-
 function askLocationPermission() {
+  const button = document.getElementById('enableLocation');
   if (!navigator.geolocation) {
-    console.log("Geolocation not supported by browser.");
+    if (button) button.textContent = 'Location unavailable';
     return;
   }
-
-  const allow = confirm("Allow the system to access your location for safety alerts?");
-  if (!allow) return;
-
-  if (userWatchId !== null) return;
-
+  if (userWatchId !== null) {
+    stopWatchingUser();
+    if (button) button.textContent = 'Enable alerts';
+    return;
+  }
+  if (button) { button.textContent = 'Requesting location...'; button.disabled = true; }
   userWatchId = navigator.geolocation.watchPosition(onLocationSuccess, onLocationError, {
     enableHighAccuracy: true,
     maximumAge: 5000,
@@ -360,6 +331,8 @@ function askLocationPermission() {
 }
 
 function onLocationSuccess(position) {
+  const button = document.getElementById('enableLocation');
+  if (button) { button.textContent = 'Disable alerts'; button.disabled = false; }
   const userLat = position.coords.latitude;
   const userLng = position.coords.longitude;
 
@@ -384,6 +357,11 @@ function stopWatchingUser() {
 
 function onLocationError(err) {
   console.warn("Location error:", err && err.message ? err.message : err);
+  stopWatchingUser();
+  const button = document.getElementById('enableLocation');
+  if (button) { button.textContent = 'Retry location access'; button.disabled = false; }
+  const status = document.getElementById('locationStatus');
+  if (status) status.textContent = 'Location could not be accessed. Check your browser permissions to enable alerts.';
 }
 
 function haversineDistanceMeters(lat1, lon1, lat2, lon2) {
@@ -439,39 +417,13 @@ function triggerDefaultDangerAlert() {
 }
 
 function renderAIPrediction() {
-  const aiBox = document.getElementById("ai-monthly-prediction");
-  if (!aiBox) return;
-
-  // Last three months accident counts
-  const lastThree = [7, 2, 25]; // Sep, Oct, Nov
-
-  // Fake predicted accidents
-  const predictedDecember = Math.round(lastThree.reduce((a,b) => a+b,0) / lastThree.length); // average ~11
-  const predictedJanuary = predictedDecember + 5; // sample next month prediction
-
-  // Fake peak accident hour
-  const peakHour = "18:00";
-
-  // Fake probability of severe cases
-  const severeProbability = 60; // sample %
-
-  aiBox.innerHTML = `
-    <div class="alert alert-secondary mt-2"
-         style="background:#1e293b;color:#e2e8f0;border:1px solid #334155;">
-      <strong>AI Prediction — December Accident Trend</strong>
-      <div class="small mt-2">
-        Based on observed monthly accident patterns (${lastThree.join(', ')}),
-        the predicted accident count for <strong>December</strong> is
-        approximately <strong>${predictedDecember}</strong>.<br>
-        The forecasted accident count for <strong>January</strong> is
-        approximately <strong>${predictedJanuary}</strong>.<br><br>
-        <strong>Peak Accident Hour:</strong> ${peakHour}<br>
-        <strong>Probability of Severe Cases:</strong> ${severeProbability}%
-      </div>
-    </div>
-  `;
+  const box = document.getElementById('ai-monthly-prediction');
+  if (!box) return;
+  const sampleCounts = [7, 2, 25];
+  const december = Math.round(sampleCounts.reduce((a, b) => a + b, 0) / sampleCounts.length);
+  const january = december + 5;
+  box.innerHTML = '<div class="prediction-body"><p class="forecast-lead">Sample monthly accident estimates</p><div class="forecast-values"><div><span>December</span><strong>' + december + '</strong></div><div><span>January</span><strong>' + january + '</strong></div></div><p class="forecast-note">Demonstration values based on sample counts of 7, 2, and 25. These figures are not a live forecast.</p></div>';
 }
-
 
 function isValidDate(d) {
   return d instanceof Date && !isNaN(d);

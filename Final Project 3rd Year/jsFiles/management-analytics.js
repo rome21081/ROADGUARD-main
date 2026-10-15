@@ -1,4 +1,10 @@
-Chart.defaults.global.defaultFontColor = "#ffffff";
+if (typeof Chart !== 'undefined') {
+Chart.defaults.global.defaultFontColor = '#b5c6df';
+Chart.defaults.global.defaultFontFamily = "'DM Sans', system-ui, sans-serif";
+Chart.defaults.global.legend.position = 'bottom';
+Chart.defaults.global.maintainAspectRatio = false;
+Chart.defaults.scale.gridLines.color = '#2d3b54';
+}
 let charts = [];
 
 var allData = [];
@@ -44,7 +50,7 @@ const today=new Date();
 return data.filter(d=>{
 let dt=new Date(d.date);
 if(f==="day") return dt.toDateString()===today.toDateString();
-if(f==="month") return dt.getMonth()===today.getMonth();
+if(f==="month") return dt.getMonth()===today.getMonth() && dt.getFullYear()===today.getFullYear();
 if(f==="year") return dt.getFullYear()===today.getFullYear();
 return true;
 });
@@ -60,7 +66,7 @@ return obj;
 
 function percentFormatter(value,context){
 let total=context.dataset.data.reduce((a,b)=>a+b,0);
-let percent=((value/total)*100).toFixed(1);
+let percent=(total ? (value/total)*100 : 0).toFixed(1);
 return percent+"%";
 }
 
@@ -69,6 +75,12 @@ charts.forEach(c=>c.destroy());
 charts=[];
 
 let filtered=filterByDate(allData);
+if (typeof Chart === "undefined") {
+ document.getElementById("analyticsStatus").textContent = "Charts could not be loaded. The summary tables remain available.";
+ const counts = countBy(filtered,"category");
+ for (const [id,key] of [["totalCases",null],["medicalCases","Medical"],["traumaCases","Trauma"],["conductionCases","Conduction"]]) document.getElementById(id).innerText = key ? counts[key] || 0 : filtered.length;
+ renderSummary(filtered); renderMVCSummary(filtered.filter(item=>item.category==="Motor Vehicle Crash")); return;
+}
 let categoryCount=countBy(filtered,"category");
 
 document.getElementById("totalCases").innerText=filtered.length;
@@ -93,9 +105,9 @@ yAxes:[{ticks:{beginAtZero:true,fontColor:"#fff"}}]
 }
 };
 
-charts.push(new Chart(categoryChart,{
+charts.push(new Chart(document.getElementById("categoryChart"),{
 type:'pie',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(categoryCount),
 datasets:[{
@@ -115,7 +127,7 @@ formatter:percentFormatter
 ["Trauma","Medical","Conduction"].forEach(type=>{
 charts.push(new Chart(document.getElementById(type.toLowerCase()+"Chart"),{
 type:'bar',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(countBy(filtered.filter(d=>d.category===type),"sub_type")),
 datasets:[{
@@ -128,9 +140,9 @@ options:commonBar
 
 let mvc=filtered.filter(d=>d.category==="Motor Vehicle Crash");
 
-charts.push(new Chart(mvcChart,{
+charts.push(new Chart(document.getElementById("mvcChart"),{
 type:'bar',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(countBy(mvc,"sub_type")),
 datasets:[{
@@ -140,9 +152,9 @@ backgroundColor:"#a855f7"
 options:commonBar
 }));
 
-charts.push(new Chart(vehicleChart,{
+charts.push(new Chart(document.getElementById("vehicleChart"),{
 type:'bar',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(countBy(mvc,"vehicle")),
 datasets:[{
@@ -152,9 +164,9 @@ backgroundColor:"#f97316"
 options:commonBar
 }));
 
-charts.push(new Chart(personChart,{
+charts.push(new Chart(document.getElementById("personChart"),{
 type:'bar',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(countBy(mvc,"person")),
 datasets:[{
@@ -164,9 +176,9 @@ backgroundColor:"#14b8a6"
 options:commonBar
 }));
 
-charts.push(new Chart(engineChart,{
+charts.push(new Chart(document.getElementById("engineChart"),{
 type:'bar',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:Object.keys(countBy(mvc,"engine")),
 datasets:[{
@@ -176,9 +188,9 @@ backgroundColor:["#2563eb","#fbbf24"]
 options:commonBar
 }));
 
-charts.push(new Chart(licenseChart,{
+charts.push(new Chart(document.getElementById("licenseChart"),{
 type:'pie',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:["License (+)","License (-)"],
 datasets:[{
@@ -188,9 +200,9 @@ backgroundColor:["#22c55e","#ef4444"]
 options:{plugins:{datalabels:{color:"#fff",formatter:percentFormatter}}}
 }));
 
-charts.push(new Chart(helmetChart,{
+charts.push(new Chart(document.getElementById("helmetChart"),{
 type:'pie',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:["Helmet (+)","Helmet (-)"],
 datasets:[{
@@ -200,9 +212,9 @@ backgroundColor:["#22c55e","#ef4444"]
 options:{plugins:{datalabels:{color:"#fff",formatter:percentFormatter}}}
 }));
 
-charts.push(new Chart(alcoholChart,{
+charts.push(new Chart(document.getElementById("alcoholChart"),{
 type:'pie',
-plugins:[ChartDataLabels],
+plugins: typeof ChartDataLabels !== 'undefined' ? [ChartDataLabels] : [],
 data:{
 labels:["Alcohol (+)","Alcohol (-)"],
 datasets:[{
@@ -224,7 +236,7 @@ let month=new Date(d.date).getMonth();
 monthCounts[month]++;
 });
 
-charts.push(new Chart(monthlyTrendChart,{
+charts.push(new Chart(document.getElementById("monthlyTrendChart"),{
 type:'line',
 data:{
 labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
@@ -249,7 +261,7 @@ let count=categoryCount[cat];
 let percent=((count/total)*100).toFixed(2);
 tbody.innerHTML+=`<tr><td>${cat}</td><td>${count}</td><td>${percent}%</td></tr>`;
 });
-tbody.innerHTML+=`<tr style="font-weight:bold;"><td>Total</td><td>${total}</td><td>100%</td></tr>`;
+tbody.innerHTML+=`<tr style="font-weight:bold;"><td>Total</td><td>${total}</td><td>${total ? "100%" : "0%"}</td></tr>`;
 }
 
 function renderMVCSummary(mvc){
@@ -262,7 +274,7 @@ let count=mvcCount[cat];
 let percent=((count/total)*100).toFixed(2);
 tbody.innerHTML+=`<tr><td>${cat}</td><td>${count}</td><td>${percent}%</td></tr>`;
 });
-tbody.innerHTML+=`<tr style="font-weight:bold;"><td>Total</td><td>${total}</td><td>100%</td></tr>`;
+tbody.innerHTML+=`<tr style="font-weight:bold;"><td>Total</td><td>${total}</td><td>${total ? "100%" : "0%"}</td></tr>`;
 }
 
 document.getElementById("filterType").addEventListener("change",render);
