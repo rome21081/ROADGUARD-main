@@ -1,12 +1,10 @@
 let currentPage = 1;
 const perPage = 5;
 
-// Load list on page load
 document.addEventListener("DOMContentLoaded", () => {
   loadAccidents();
 });
 
-// Fetch accidents
 async function loadAccidents(page = 1) {
   currentPage = page;
 
@@ -26,7 +24,6 @@ async function loadAccidents(page = 1) {
   renderPagination(total);
 }
 
-// Render list
 function renderAccidentList(accidents) {
   const container = document.getElementById("accidentList");
   container.innerHTML = "";
@@ -62,7 +59,6 @@ function renderAccidentList(accidents) {
   });
 }
 
-// Pagination
 function renderPagination(total) {
   const totalPages = Math.ceil(total / perPage);
   const pag = document.getElementById("pagination");

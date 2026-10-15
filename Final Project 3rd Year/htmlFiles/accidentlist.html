@@ -5,17 +5,12 @@
   <title>R.O.A.D — Accident Tracker List</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
-  <!-- Unicons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
-  <!-- Main dashboard CSS -->
   <link rel="stylesheet" href="../cssFiles/style.css" />
-  <!-- Accident list CSS -->
   <link rel="stylesheet" href="../cssFiles/accidentlist.css" />
 </head>
 <body>
-  <!-- Sidebar -->
   <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
     <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
     <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
@@ -45,9 +40,7 @@
     </ul>
   </aside>
 
-  <!-- Wrapper -->
   <section id="wrapper">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-md">
       <div class="container-fluid mx-2">
         <div class="navbar-header d-flex align-items-center">
@@ -76,19 +69,15 @@
       </div>
     </nav>
 
-    <!-- Main content -->
     <div class="accident-container">
       <h1 class="accident-header" style="color: bisque;">List of Accidents & Incidents</h1>
 
-      <!-- Search -->
       <div class="accident-search-box">
         <input type="text" id="searchInput" placeholder="Search by address or case number..." />
       </div>
 
-      <!-- Accident list -->
       <div class="accident-list" id="accidentList"></div>
 
-      <!-- Pagination -->
       <div class="pagination mt-3" id="pagination" style="color: bisque;"></div>
     </div>
   </section>

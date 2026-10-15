@@ -40,9 +40,6 @@ for(let i = 0; i < 500; i++) {
 }
 
 
-/* =========================================
-   FILTER FUNCTION
-========================================= */
 
 function getFilteredData() {
 
@@ -67,9 +64,6 @@ function getFilteredData() {
 }
 
 
-/* =========================================
-   GENERATE TABLE
-========================================= */
 
 function generateFullSpreadsheet() {
 
@@ -81,7 +75,6 @@ function generateFullSpreadsheet() {
 
   let data = getFilteredData();
 
-  // 👉 IF FILTER IS ACTIVE → SHOW RECORDS ONLY
   if (month !== "" || category !== "") {
 
     let html = `
@@ -122,7 +115,6 @@ function generateFullSpreadsheet() {
   }
 
 
-  // 👉 IF NO FILTER → SHOW FULL MASTER SPREADSHEET
 
   let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 

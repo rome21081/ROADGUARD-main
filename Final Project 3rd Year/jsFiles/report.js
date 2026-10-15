@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- DOM Elements ---
   const currentLocationBtn = document.getElementById('currentLocationBtn');
   const plotLocationBtn = document.getElementById('plotLocationBtn');
   const locationInput = document.getElementById('location');
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const vehicleOtherText = document.getElementById('vehicleOtherText');
   const vehicleOtherCheckbox = document.getElementById('vehicleOther');
 
-   // --- New Vehicle Fields ---
   const plateNumberInput = document.getElementById('plateNumber');
   const vehicleTypeInput = document.getElementById('vehicleType');
   const vehicleBrandInput = document.getElementById('vehicleBrand');
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let map, marker;
 
-  // --- Reverse Geocode ---
 async function reverseGeocodePH(lat, lng) {
   try {
     const res = await fetch(
@@ -38,21 +35,18 @@ async function reverseGeocodePH(lat, lng) {
 
     const addr = data.address || {};
 
-    // Street level (road, neighborhood)
     const street =
       addr.road ||
       addr.neighbourhood ||
       addr.hamlet ||
       "";
 
-    // Barangay (village, barrio)
     const barangay =
       addr.village ||
       addr.barangay ||     // Sometimes available on PH maps
-      addr.suburb ||       // fallback
+      addr.suburb ||
       "";
 
-    // Municipality / City
     const municipality =
       addr.city ||
       addr.town ||
@@ -60,20 +54,17 @@ async function reverseGeocodePH(lat, lng) {
       addr.county ||
       "";
 
-    // Province
     const province =
       addr.state ||
       addr.region ||
       "";
 
-    // Build formatted string
     let full = `${street}, ${barangay}, ${municipality}, ${province}`;
 
-    // Remove extra commas if blank fields exist
     full = full
-      .replace(/,\s*,/g, ",")   // remove empty segments
-      .replace(/,\s*$/, "")     // remove trailing comma
-      .replace(/^\s*,\s*/, "")  // remove leading comma
+      .replace(/,\s*,/g, ",")
+      .replace(/,\s*$/, "")
+      .replace(/^\s*,\s*/, "")
       .trim();
 
     return full || "Unknown Location";
@@ -85,7 +76,6 @@ async function reverseGeocodePH(lat, lng) {
 }
 
 
-  // --- Current Location ---
   currentLocationBtn.addEventListener('click', async () => {
     if (!navigator.geolocation) return alert("Geolocation not supported by your browser.");
     navigator.geolocation.getCurrentPosition(async pos => {
@@ -97,7 +87,6 @@ async function reverseGeocodePH(lat, lng) {
     }, err => alert("Unable to get location: " + err.message));
   });
 
-  // --- Open Map Modal ---
   plotLocationBtn.addEventListener('click', () => {
     mapModal.style.display = 'block';
 
@@ -124,7 +113,6 @@ async function reverseGeocodePH(lat, lng) {
     });
   });
 
-  // --- Map Search (Isabela only) ---
   mapSearchBtn.addEventListener('click', async () => {
     const query = mapSearchInput.value.trim();
     if (!query) return alert("Enter a location to search.");
@@ -160,12 +148,10 @@ async function reverseGeocodePH(lat, lng) {
     mapModal.style.display = 'none';
   });
 
-  // --- Vehicle Other Text ---
   vehicleOtherCheckbox.addEventListener('change', () => {
     vehicleOtherText.style.display = vehicleOtherCheckbox.checked ? 'block' : 'none';
   });
 
-  // --- Form Submission ---
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -173,7 +159,6 @@ async function reverseGeocodePH(lat, lng) {
     if (!loggedInUser) return alert("User not logged in.");
     const userId = loggedInUser.user_id;
 
-    // Ensure location is selected
     if (!latInput.value || !lngInput.value) {
       return alert("Please select a location on the map or use your current location.");
     }
@@ -194,17 +179,14 @@ async function reverseGeocodePH(lat, lng) {
 
 
     let accidentTypeSelection = document.getElementById('accidentType').value;
-    // Vehicle selection
     let vehicleSelected = Array.from(vehicleCheckboxes).find(cb => cb.checked);
     let category = vehicleSelected ? categoryMap[vehicleSelected.value] || "Other" : "Other";
     let type_id = accidentTypeIdMap[accidentTypeSelection] ?? 1;
 
-    // Date & time
     const date = document.getElementById('accidentDate').value;
     const time = document.getElementById('accidentTime').value;
     const accidentDateTime = `${date} ${time}:00`;
 
-    // Severity mapping
     const severityMap = {
       "No injuries": "Minor",
       "Minor injuries": "Minor",
@@ -215,7 +197,6 @@ async function reverseGeocodePH(lat, lng) {
     const severity = severityMap[selectedSeverity] || "Minor";
 
 
-     // --- Vehicle Details ---
     const vehicleData = {
       plate_number: plateNumberInput.value || null,
       type: vehicleTypeInput.value || null,
@@ -239,7 +220,6 @@ async function reverseGeocodePH(lat, lng) {
       vehicle: vehicleData
     };
 
-    // Optional image
     const imageFile = document.getElementById('imageUpload').files[0];
     if (imageFile) {
       const reader = new FileReader();
@@ -253,7 +233,6 @@ async function reverseGeocodePH(lat, lng) {
     }
   });
 
-  // --- Submit Report Function ---
   async function submitReport(payload) {
     try {
       const loggedInUser = JSON.parse(localStorage.getItem('user'));

@@ -1,10 +1,3 @@
-/*
-  dashboard.js
-  - Full dashboard logic + dynamic danger-zone detection + user-location alert
-  - Always shows default danger alert for Echague-Poblacion Road
-  - Uses your global getData(endpoint) defined in api.js where appropriate
-  - Danger radius: 200 meters (user choice B)
-*/
 
 'use strict';
 
@@ -13,10 +6,9 @@ let severityChart = null;
 let vehicleChart = null;
 let lightChart = null;
 
-let userWatchId = null;           // geolocation watch id
-const DANGER_RADIUS_METERS = 200; // user choice B
+let userWatchId = null;
+const DANGER_RADIUS_METERS = 200;
 
-// Keep a cached list of computed danger zones (populated on each refresh)
 let computedDangerZones = []; // [{ name, lat, lng, severeCount, totalCount, probability }]
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -24,7 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   setInterval(refreshAll, 15000);
   setTimeout(askLocationPermission, 1000);
 
-  // ✅ Trigger default alert unconditionally
   setTimeout(triggerDefaultDangerAlert, 1500);
 });
 
@@ -59,15 +50,14 @@ async function refreshAll() {
 // Force fake danger zone for testing
 computedDangerZones.unshift({
   name: "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (Near ISU Echague)",
-  lat: 16.7065,   // approximate latitude
-  lng: 121.6760,  // approximate longitude
+  lat: 16.7065,
+  lng: 121.6760,
   severeCount: 5,
   totalCount: 5,
   probability: 100,
 });
 
 
-/* ---------- Helpers ---------- */
 
 function normalizeAccidentResponse(res) {
   if (!res) return [];
@@ -267,7 +257,6 @@ function renderRecentReports(accidents) {
   container.innerHTML = html;
 }
 
-/* ---------- DANGER ZONE BUILDING & RENDERING ---------- */
 
 function buildDangerZonesFromAccidents(accidents) {
   if (!Array.isArray(accidents) || accidents.length === 0) {
@@ -351,7 +340,6 @@ function renderDangerZoneList(zones) {
   box.innerHTML = html;
 }
 
-/* ---------- 🔥 LOCATION & ALERT LOGIC ---------- */
 
 function askLocationPermission() {
   if (!navigator.geolocation) {
@@ -437,7 +425,6 @@ function closeDangerModal() {
   if (modal) modal.style.display = 'none';
 }
 
-/* ---------- 🔥 DEFAULT ALERT ---------- */
 
 function triggerDefaultDangerAlert() {
   const defaultZone = {
@@ -451,8 +438,6 @@ function triggerDefaultDangerAlert() {
   triggerDangerAlert(defaultZone, null);
 }
 
-/* ---------- 🔥 AI Prediction Function (Fake) ---------- */
-/* ---------- 🔥 AI Prediction Function (Fake) ---------- */
 function renderAIPrediction() {
   const aiBox = document.getElementById("ai-monthly-prediction");
   if (!aiBox) return;
@@ -487,7 +472,6 @@ function renderAIPrediction() {
   `;
 }
 
-/* ---------- UTILS ---------- */
 
 function isValidDate(d) {
   return d instanceof Date && !isNaN(d);

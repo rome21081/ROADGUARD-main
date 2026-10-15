@@ -6,10 +6,8 @@ let accidents = [];
 let currentPage = 1;
 const itemsPerPage = 5;
 
-// Fetch accidents and incidents and merge them
 async function fetchAccidents() {
   try {
-    // Fetch both JSON files
     const [accRes, incRes] = await Promise.all([
       fetch('../htmlFiles/accident.json'),
       fetch('../htmlFiles/incident.json')
@@ -18,7 +16,6 @@ async function fetchAccidents() {
     const accidentData = await accRes.json();
     const incidentData = await incRes.json();
 
-    // Normalize incidents to match accident structure
     const normalizedIncidents = incidentData.map(inc => ({
       accident_id: inc.incident_id,
       case_number: inc.case_number,
@@ -29,7 +26,6 @@ async function fetchAccidents() {
       images: inc.images || []
     }));
 
-    // Normalize accidents (already mostly compatible)
     const normalizedAccidents = accidentData.map(acc => ({
       accident_id: acc.accident_id,
       case_number: acc.case_number,
@@ -40,7 +36,6 @@ async function fetchAccidents() {
       images: acc.images || []
     }));
 
-    // Merge both arrays
     accidents = [...normalizedAccidents, ...normalizedIncidents];
 
     renderPage();
@@ -50,7 +45,6 @@ async function fetchAccidents() {
   }
 }
 
-// Render current page
 function renderPage() {
   const filtered = accidents.filter(acc => 
     acc.address.toLowerCase().includes(searchInput.value.toLowerCase()) ||
@@ -91,7 +85,6 @@ function renderPage() {
   renderPagination(filtered.length);
 }
 
-// Pagination buttons
 function renderPagination(totalItems) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   paginationEl.innerHTML = "";
@@ -115,11 +108,9 @@ function renderPagination(totalItems) {
   paginationEl.appendChild(nextBtn);
 }
 
-// Search
 searchInput.addEventListener("input", () => {
   currentPage = 1;
   renderPage();
 });
 
-// Fetch both files on page load
 fetchAccidents();

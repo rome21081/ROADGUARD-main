@@ -10,13 +10,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // Init map
   const map = L.map("accidentMap").setView([16.705090, 121.676330], 12);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
 
-  // Accident list UI
   const wrapper = document.querySelector("section#wrapper .p-4");
   const listContainer = document.createElement("div");
   listContainer.className = "accident-list container mt-4 text-light";
@@ -28,18 +26,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const list = document.getElementById("accidentRows");
 
   try {
-    // ----------------------------------------------------
-    // Load API + Local JSON
-    // ----------------------------------------------------
     let apiData = await getData("accident_api.php");
 
-    // Fetch both local JSON files
     const [accRes, incRes] = await Promise.all([
       fetch("accident.json").then(r => r.json()),
       fetch("incident.json").then(r => r.json())
     ]);
 
-    // Normalize function
     const normalize = res => {
       if (!res) return [];
       if (Array.isArray(res)) return res;
@@ -50,13 +43,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       return [];
     };
 
-    // Normalize accidents
     let apiAccidents = normalize(apiData);
     let localAccidents = normalize(accRes);
 
-    // Normalize incidents to match accident structure
     let localIncidents = normalize(incRes).map(inc => ({
-      accident_id: inc.incident_id,          // map incident_id to accident_id
+      accident_id: inc.incident_id,
       case_number: inc.case_number || "N/A",
       accident_date: inc.incident_date || inc.accident_date || "N/A",
       address: inc.address || "Unknown Location",
@@ -69,7 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       type_name: inc.type_name || "Incident"
     }));
 
-    // Merge all data
     const accidents = [...apiAccidents, ...localAccidents, ...localIncidents];
 
     if (!accidents.length) {
@@ -77,9 +67,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    // ----------------------------------------------------
-    // CREATE MAP MARKERS & CLUSTERS
-    // ----------------------------------------------------
     const markersMap = {};
     const clusterRadius = 300; // meters
     const clusters = [];
@@ -134,7 +121,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       markersMap[a.accident_id] = marker;
 
-      // Cluster logic
       let addedToCluster = false;
       for (const cluster of clusters) {
         const d = distance(lat, lng, cluster.lat, cluster.lng);
@@ -149,9 +135,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!addedToCluster) clusters.push({ lat, lng, accidents: [a] });
     });
 
-    // ----------------------------------------------------
-    // CREATE DANGER ZONES
-    // ----------------------------------------------------
     clusters.forEach(cluster => {
       const sevCounts = { severe: 0, moderate: 0, minor: 0 };
       cluster.accidents.forEach(a => {
@@ -177,9 +160,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }).addTo(map);
     });
 
-    // ----------------------------------------------------
-    // TODAY'S ACCIDENT + INCIDENT LIST
-    // ----------------------------------------------------
     const todayStr = new Date().toISOString().split("T")[0];
     let todayCount = 0;
     list.innerHTML = "";

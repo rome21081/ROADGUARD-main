@@ -40,9 +40,6 @@ body {
 
 
 
-/** --------------------------------
- -- Sidebar
--------------------------------- */
 .sidebar {
 	background-color: var(--sidebar-bg-color);
 	width: var(--sidebar-width);
@@ -87,7 +84,6 @@ body {
 	text-decoration: none;
 }
 
-/* Start numbers */
 .sidebar ul > li > a > .num {
 	line-height: 0;
 	border-radius: 3px;
@@ -115,7 +111,6 @@ body {
 	transform: rotate(-90deg);
 }
 
-/* Start dropdown menu */
 .sidebar ul .sidebar-dropdown {
 	padding-top: 10px;
 	padding-left: 30px;
@@ -130,7 +125,6 @@ body {
 	padding: .5rem 0;
 	display: block;
 }
-/* End dropdown menu */
 
 .show-sidebar {
 	transform: translateX(-270px);
@@ -151,9 +145,6 @@ body {
 
 
 
-/** --------------------------------
- -- welcome
--------------------------------- */
 .welcome {
 	color: var(--dk-gray-300);
 }
@@ -169,9 +160,6 @@ body {
 
 
 
-/** --------------------------------
- -- Statistics
--------------------------------- */
 .statistics {
 	color: var(--dk-gray-200);
 }
@@ -193,9 +181,6 @@ body {
 
 
 
-/** --------------------------------
- -- Charts
--------------------------------- */
 .charts .chart-container {
 	background-color: var(--dk-dark-bg);
 }
@@ -207,9 +192,6 @@ body {
 
 
 
-/** --------------------------------
- -- users
--------------------------------- */
 .admins .box .admin {
 	background-color: var(--dk-dark-bg);
 }
@@ -225,9 +207,6 @@ body {
 
 
 
-/** --------------------------------
- -- statis
--------------------------------- */
 .statis {
 	color: var(--dk-gray-100);
 }
@@ -270,10 +249,6 @@ body {
 	color: #ffc107
 }
 
-/** --------------------------------
- -- Please don't do that in real-world projects!
- -- overwrite Bootstrap variables instead.
--------------------------------- */
 
 .navbar {
 	background-color: var(--navbar-bg-color) !important;
@@ -341,7 +316,6 @@ body {
 
 
 
-/* Start media query */
 
 @media (max-width: 767px) {
 	#wrapper {
@@ -380,7 +354,7 @@ body {
 }
 
 .admins .box {
-  background-color: #1E2235; /* Dark panel background */
+  background-color: #1E2235;
   border: 1px solid rgba(255,255,255,0.05);
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
@@ -388,18 +362,16 @@ body {
 }
 
 .admins h5 {
-  color: #A9B5FF; /* Light violet title accent */
+  color: #A9B5FF;
   font-weight: 600;
 }
 
-/* Scrollable report list container */
 .list-scroll {
   max-height: 350px;
   overflow-y: auto;
   padding-right: 5px;
 }
 
-/* Custom scrollbar styling */
 .list-scroll::-webkit-scrollbar {
   width: 6px;
 }
@@ -411,7 +383,6 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Each report card */
 .report-card {
   background: #2A2E45;
   border-radius: 10px;
@@ -429,7 +400,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Left-side accident info */
 .report-info {
   display: flex;
   flex-direction: column;
@@ -446,7 +416,6 @@ body {
   font-size: 0.8rem;
 }
 
-/* Severity badge */
 .severity-badge {
   padding: 6px 12px;
   border-radius: 20px;
@@ -468,7 +437,6 @@ body {
   color: #F44336;
 }
 
-/* Sidebar hidden by default on mobile */
 #show-side-navigation1 {
   transition: all 0.3s ease;
 }

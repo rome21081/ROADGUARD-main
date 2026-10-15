@@ -5,14 +5,11 @@
 <title>EMS / Rescue Operations Analytics Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap -->
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
 
-<!-- Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
 
-<!-- Chart DataLabels Plugin -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
 
@@ -25,7 +22,6 @@ background:linear-gradient(135deg,#0f172a,#1e293b);
 color:white;
 }
 
-/* SIDEBAR */
 .sidebar{
 position:fixed;
 left:0;
@@ -61,13 +57,11 @@ color:#38bdf8;
 font-weight:600;
 }
 
-/* MAIN CONTENT */
 .main-content{
 margin-left:260px;
 padding:25px;
 }
 
-/* YOUR EXISTING STYLES */
 .dashboard-title{
 font-size:26px;
 font-weight:600;
@@ -112,7 +106,6 @@ font-weight:500;
 
 <body>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
 <div class="sidebar-title">R.O.A.D</div>
 
@@ -123,7 +116,6 @@ font-weight:500;
 </div>
 
 
-<!-- MAIN CONTENT -->
 <div class="main-content">
 
 <div class="container-fluid">
@@ -132,7 +124,6 @@ font-weight:500;
 EMS / Rescue Operations Dashboard
 </div>
 
-<!-- FILTER -->
 <select id="filterType" class="form-control mb-3" style="width:260px;">
 <option value="all">All Data</option>
 <option value="day">Today</option>
@@ -140,7 +131,6 @@ EMS / Rescue Operations Dashboard
 <option value="year">This Year</option>
 </select>
 
-<!-- KPI CARDS -->
 <div class="row">
 <div class="col-md-3">
 <div class="card-box text-center">
@@ -171,7 +161,6 @@ Conduction
 </div>
 </div>
 
-<!-- CHART SECTION -->
 <div class="row">
 
 <div class="col-md-6">
@@ -253,13 +242,11 @@ Conduction
 
 </div>
 
-<!-- MONTHLY TREND -->
 <div class="chart-container mt-4">
 <h5>Monthly Incident Trend</h5>
 <canvas id="monthlyTrendChart"></canvas>
 </div>
 
-<!-- SUMMARY TABLE -->
 <div class="card-box mt-4">
 <h5>Incident Summary Table</h5>
 <table class="table table-hover mt-3 text-white">
@@ -274,7 +261,6 @@ Conduction
 </table>
 </div>
 
-<!-- MVC DETAILED SUMMARY -->
 <div class="card-box mt-4">
 <h5>Motor Vehicle Crash Detailed Summary</h5>
 <table class="table table-hover mt-3 text-white">
@@ -292,7 +278,6 @@ Conduction
 </div>
 </div>
 
-<!-- JS FILE -->
 <script src="../jsFiles/management-analytics.js"></script>
 
 </body>

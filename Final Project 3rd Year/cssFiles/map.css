@@ -4,22 +4,19 @@
   border: 2px solid #ddd;
 }
 
-/* Optional: sidebar adjustments for map page */
 .sidebar .categories li a {
   font-weight: 500;
 }
 
-/* Accident List Container */
 .accident-list {
   margin-top: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Accident Item (Notification Style) */
 .accident-item {
   display: flex;
   flex-direction: column;
-  background-color: #1e1e2f; /* Dark card */
+  background-color: #1e1e2f;
   color: #ffffff;
   padding: 14px 16px;
   border-radius: 10px;
@@ -34,14 +31,12 @@
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
-/* Accident Title */
 .accident-item h5 {
   font-size: 1rem;
   margin-bottom: 6px;
-  color: #ffdd57; /* Highlight location */
+  color: #ffdd57;
 }
 
-/* Accident Info (severity, casualties) */
 .accident-item p {
   font-size: 0.85rem;
   margin: 2px 0;
@@ -52,7 +47,6 @@
   color: #ffffff;
 }
 
-/* View on Map Button */
 .accident-item .view-btn {
   align-self: flex-start;
   margin-top: 6px;
@@ -67,7 +61,6 @@
   color: #fff;
 }
 
-/* Scrollable container if many items */
 .accident-list .accident-list-wrapper {
   max-height: 400px;
   overflow-y: auto;
