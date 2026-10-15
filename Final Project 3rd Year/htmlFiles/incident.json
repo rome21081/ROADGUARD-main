@@ -1,0 +1,167 @@
+[
+  {
+    "incident_id": 301,
+    "case_number": "INC-20260210-01",
+    "type_id": 1,
+    "incident_date": "2026-02-10 06:30:00",
+    "latitude": "16.705500",
+    "longitude": "121.675000",
+    "address": "Barangay Poblacion, Echague, Isabela",
+    "description": "Small fire at residential house, controlled immediately.",
+    "severity": "Minor",
+    "reported_by": 1,
+    "created_at": "2026-02-10 06:45:00",
+    "unit_type_name": "Fire Brigade",
+    "units": [
+      {
+        "unit_id": 201,
+        "incident_id": 301,
+        "unit_name": "Echague Fire Team 1",
+        "unit_type_id": 1,
+        "equipment": "Fire Truck, Hose, Extinguishers",
+        "notes": "Fire contained in 15 minutes",
+        "type_name": "Fire Brigade"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 301,
+        "incident_id": 301,
+        "file_path": "uploads/incidents/301_fire.jpg",
+        "uploaded_at": "2026-02-10 06:45:00"
+      }
+    ]
+  },
+  {
+    "incident_id": 302,
+    "case_number": "INC-20260210-02",
+    "type_id": 2,
+    "incident_date": "2026-02-10 07:15:00",
+    "latitude": "16.710000",
+    "longitude": "121.680000",
+    "address": "Barangay San Fabian, Echague, Isabela",
+    "description": "Minor flood due to heavy rain; 3 houses affected.",
+    "severity": "Moderate",
+    "reported_by": 2,
+    "created_at": "2026-02-10 07:30:00",
+    "unit_type_name": "Rescue Team",
+    "units": [
+      {
+        "unit_id": 202,
+        "incident_id": 302,
+        "unit_name": "Echague Rescue Squad",
+        "unit_type_id": 2,
+        "equipment": "Rescue Boats, Life Jackets",
+        "notes": "Evacuated 10 residents safely",
+        "type_name": "Rescue Team"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 302,
+        "incident_id": 302,
+        "file_path": "uploads/incidents/302_flood.jpg",
+        "uploaded_at": "2026-02-10 07:30:00"
+      }
+    ]
+  },
+  {
+    "incident_id": 303,
+    "case_number": "INC-20260211-01",
+    "type_id": 3,
+    "incident_date": "2026-02-11 14:00:00",
+    "latitude": "16.715000",
+    "longitude": "121.678000",
+    "address": "Barangay Libertad, Echague, Isabela",
+    "description": "Tree fell blocking main road; power lines affected.",
+    "severity": "Moderate",
+    "reported_by": 3,
+    "created_at": "2026-02-11 14:20:00",
+    "unit_type_name": "Engineering Team",
+    "units": [
+      {
+        "unit_id": 203,
+        "incident_id": 303,
+        "unit_name": "Echague Engineering Unit",
+        "unit_type_id": 3,
+        "equipment": "Chainsaws, Safety Gear",
+        "notes": "Cleared road within 2 hours",
+        "type_name": "Engineering Team"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 303,
+        "incident_id": 303,
+        "file_path": "uploads/incidents/303_treefall.jpg",
+        "uploaded_at": "2026-02-11 14:20:00"
+      }
+    ]
+  },
+  {
+    "incident_id": 304,
+    "case_number": "INC-20260211-02",
+    "type_id": 4,
+    "incident_date": "2026-02-11 18:45:00",
+    "latitude": "16.720000",
+    "longitude": "121.680500",
+    "address": "Barangay San Roque, Echague, Isabela",
+    "description": "Lightning strike damaged a small shed; no casualties.",
+    "severity": "Minor",
+    "reported_by": 1,
+    "created_at": "2026-02-11 19:00:00",
+    "unit_type_name": "Fire Brigade",
+    "units": [
+      {
+        "unit_id": 204,
+        "incident_id": 304,
+        "unit_name": "Echague Fire Team 2",
+        "unit_type_id": 1,
+        "equipment": "Extinguishers, Safety Gear",
+        "notes": "Checked area for fire hazards",
+        "type_name": "Fire Brigade"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 304,
+        "incident_id": 304,
+        "file_path": "uploads/incidents/304_lightning.jpg",
+        "uploaded_at": "2026-02-11 19:00:00"
+      }
+    ]
+  },
+  {
+    "incident_id": 305,
+    "case_number": "INC-20260212-01",
+    "type_id": 5,
+    "incident_date": "2026-02-12 06:10:00",
+    "latitude": "16.705800",
+    "longitude": "121.682500",
+    "address": "Barangay Dama, Echague, Isabela",
+    "description": "Medical emergency: resident fainted; assisted by MDRRMO EMTs.",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2026-02-12 06:25:00",
+    "unit_type_name": "Medical Team",
+    "units": [
+      {
+        "unit_id": 205,
+        "incident_id": 305,
+        "unit_name": "Echague EMT Unit",
+        "unit_type_id": 4,
+        "equipment": "Ambulance, First Aid Kits",
+        "notes": "Patient stabilized and taken to hospital",
+        "type_name": "Medical Team"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 305,
+        "incident_id": 305,
+        "file_path": "uploads/incidents/305_medical.jpg",
+        "uploaded_at": "2026-02-12 06:25:00"
+      }
+    ]
+  }
+]

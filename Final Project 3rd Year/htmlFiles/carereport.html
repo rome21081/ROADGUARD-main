@@ -1,0 +1,735 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Patient Care Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../cssFiles/carereport.css">
+
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        padding: 20px;
+        }
+
+        .container {
+        max-width: 900px;
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        margin: auto;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        
+        table.collapsible-table .section-title {
+          cursor: pointer;
+          background: #f2f2f2;
+          font-weight: bold;
+          user-select: none;
+        }
+
+        
+        table.collapsible-table .collapsed-row {
+          display: none;
+        }
+
+       
+        table.collapsible-table .section-title:first-child::after {
+          content: "➖ "; 
+          float: left; 
+          margin-left: 5px;         
+          font-size: 12px;
+          margin-left: 0px;
+        }
+
+        table.collapsible-table .section-title:first-child.collapsed::after {
+          content: "➕ ";          
+        }
+
+    </style>
+    </head>
+    <body>
+
+    <div class="container">
+
+    <h1>Patient Care Report</h1>
+
+    <!-- STEP INDICATOR -->
+    <div class="step-indicator">
+        <span class="active">1. Responce Team</span>
+        <span>2. Patient</span>
+        <span>3. Assessment</span>
+        <span>4. Response</span>
+        <span>5. Overview</span>
+    </div>
+
+    <form id="patientForm">
+
+        <!-- STEP 1 -->
+        <!-- ACTIVE CLASS WILL BE TOGGLED VIA JS -->
+        <section class="form-step active">
+        <h2>Step 1: Responding Unit</h2>
+
+        <div class="form-block">
+            <table>
+
+                <!--  Respondent Info  -->
+
+                <tr class="section-title">
+                    <td colspan="8">Respondent Unit Information</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Response No :</td>
+                    <td colspan="2"><input type="text" name="response_no"></td>
+                    <td colspan="2">Responding Team:</td>
+                    <td colspan="2">
+                        <select name="responding-team" id="responding-team">
+                        <option value="Bravo-Run 1">Bravo-Run 1</option>
+                        <option value="Bravo-Run 2">Bravo-Run 2</option>
+                        <option value="Bravo-Run 3">Bravo-Run 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vehicle:</td>
+                    <td><select name="car" id="car">
+                        <option value="OffRoad">OffRoad</option>
+                        <option value="Rescue">Rescue</option>
+                        <option value="Ambulance">Ambulance</option>
+                        </select>
+                    </td>
+                    <td>Driver:</td>
+                    <td><input type="text" name="driver"></td>
+                    <td>Main Aider:</td>
+                    <td><input type="text" name="main_aid"></td>
+                    <td>Assistant Aider:</td>
+                    <td><input type="text" name="assistant_aid"></td>   
+                </tr>
+            </table>
+            <table>
+                <!--  NATURE OF CALL  -->
+
+                <tr class="section-title"><td colspan="6">Nature of Call</td></tr>
+                <tr>
+                    <td colspan="2">Type</td>
+                    <td colspan="2">
+                        <input type="checkbox" id="emergency" name="call_type" value="Emergency">
+                        <label for="emergency">Emergency</label>
+                    </td>
+                    <td colspan="2">
+                        <input type="checkbox" id="conduction" name="call_type" value="Conduction">
+                        <label for="conduction">Conduction</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Date of Incident</td>
+                    <td colspan="1"><input type="date" name="incident_date"></td>
+                    <td colspan="1">Time of Incident</td>
+                    <td colspan="2"><input type="time" name="incident_time"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Place of Incident</td>
+                    <td colspan="4"><input type="text" name="incident_place"></td>
+                </tr>
+             </table>
+              <table>
+                <tr>
+                    <td>Departure Time</td>
+                    <td>Arrival at the Scene</td>
+                    <td>Departure from the Scene</td>    
+                </tr>
+                <tr>
+                    <td><input type="time" name="departure_time"></td>
+                    <td><input type="time" name="arrival_scene"></td>
+                    <td><input type="time" name="departure_scene"></td>  
+                </tr>
+            </table>
+                
+        </div>
+
+        <div class="nav-buttons">
+            <div></div>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        </section>
+
+        <!-- STEP 2 -->
+        <section class="form-step">
+        <h2>Step 2: Patient Info</h2>
+
+        <div class="form-block">
+            <table>
+            <tr class="section-title"><td colspan="4">Patient Information</td></tr>
+            <tr>
+                <td>Patient Name:</td>
+                <td colspan="3"><input type="text" name="patient_name"></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input type="number" name="age"></td>
+                <td>Birthday:</td>
+                <td><input type="date" name="birthday"></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td><input type="text" name="gender"></td>
+                <td>Civil Status:</td>
+                <td><input type="text" name="civil_status"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td colspan="3"><input type="text" name="address"></td>
+            </tr>
+            <tr>
+                <td>Contact Person:</td>
+                <td><input type="text" name="contact_person"></td>
+                <td>Contact Number:</td>
+                <td><input type="text" name="contact_number"></td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="secondary" onclick="prevStep()">Back</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        </section>
+
+        <!-- STEP 3 -->
+        <section class="form-step">
+        <h2>Patient Assessment</h2>
+
+        <div class="assessment-layout">
+
+            <div class="assessment-fields">
+            <table>
+                <tr class="section-title"><td colspan="5">Patient Assessment</td></tr>
+                <tr>
+                    <td><b>Triage</b></td>
+                    <td style="background-color: red;color: white;"><input type="checkbox" name="triage" value="Red"> Red</td>
+                    <td style="background-color: yellow;color: black;"><input type="checkbox" name="triage" value="Yellow"> Yellow</td>
+                    <td style="background-color: green;color:white;"><input type="checkbox" name="triage" value="Green"> Green</td>
+                    <td style="background-color: black;color: white;"><input type="checkbox" name="triage" value="Black"> Black</td>
+                </tr>
+            </table>
+                <table>
+                <tr class="section-title"><td colspan="5">Medical Section</td></tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="emergency_type" value="Medical"> <b>Medical</b><br>
+                        <input type="radio" name="medical_type" value="pediatric"> Pediatric
+                        <input type="radio" name="medical_type" value="psychiatric"> Psychiatric
+                        <input type="radio" name="medical_type" value="surgical"> Surgical
+                        <input type="radio" name="medical_type" value="obstetrical"> Obstetrical
+                        <input type="radio" name="medical_type" value="drowning"> Drowning
+                        <input type="text" name="medical_other" placeholder="Other (specify)"><br>
+                    </td>
+                </tr>
+                <table>
+                <tr class="section-title"><td colspan="4">Obstetric Data</td></tr>
+                <tr>
+                    <td>LMP</td>
+                    <td><input type="text" name="lmp"></td>
+                    <td><input type="text" name="lmp_g" placeholder="G"></td>
+                    <td><input type="text" name="lmp_p" placeholder="P"></td>
+                </tr>
+                <tr>
+                    <td>EDC</td>
+                    <td><input type="text" name="edc"></td>
+                    <td><input type="checkbox" name="edc_known" value="true"> +</td>
+                    <td><input type="checkbox" name="edc_unknown" value="true"> -</td> 
+                </tr>
+                <tr>
+                    <td>AOG</td>
+                    <td><input type="text" name="aog"></td>
+                    <td>Baby:</td>
+                    <td><input type="text" name="baby_specify"></td>
+                </tr>
+                    <td>IE(CM)</td>
+                    <td><input type="text" name="ie_cm"></td>
+                    <td>Placentaa:</td>
+                    <td><input type="text" name="placenta_specify"></td>
+                </table>
+                <table>
+                <tr class="section-title"><td colspan="5">Trauma Section</td></tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="emergency_type" value="Trauma"> <b>TRAUMA</b><br>
+                        <input type="radio" name="trauma_type" value="fall"> FALL
+                        <input type="radio" name="trauma_type" value="electrocution"> ELECTROCUTION
+                        <input type="radio" name="trauma_type" value="domestic_violence"> DOMESTIC VIOLENCE
+                        <input type="radio" name="trauma_type" value="water_rescue_incident"> WATER RESCUE INCIDENT
+                        <input type="radio" name="trauma_type" value="fire_incident"> FIRE INCIDENT<br>
+                        <br>
+                        <input type="checkbox" name="trauma_type" value="assault"> <b>Assault</b>
+                        Pls specify( Hacking, Stabbing, Shooting, Mauling, Stoning, Bombing, Others) <input type="text" name="assault_specify">
+                        <br>
+                        <input type="checkbox" name="trauma_type" value="animal_bite"> <b>Animal Bite</b>
+                        Pls specify( Dog, Cat, Snake, Others) <input type="text" name="animal_bite_specify">
+                        <input type="checkbox" name="trauma_type" value="others"> <b>Others</b><input type="text" name="trauma_other_specify">
+                        <input type="checkbox" name="emergency_type" value="motor_vehicle_crash"> <b>Motor Vehicle Crash</b>
+                    </td>   
+                </tr>
+                </table>
+                <table class="collapsible-table">
+                <tr>
+                  <th colspan="4" class="section-title">Trauma Nature</th></tr>
+                <tr>
+                    <td><input type="checkbox" name="trauma_nature" value="self-inflicted"> Self-Inflicted</td>
+                    <td><input type="checkbox" name="trauma_nature" value="accidental"> Accidental</td>
+                </tr>
+                <tr>
+                    <td><b>If Ingestion:</b><br>
+                        Pls. Specify: Chemical/Object/Others :</td>
+                    <td><input type="number" name="ingestion_specify" placeholder="quantity"></td>
+                <tr>
+                    <td><b>If Fall</b></td>
+                    <td><input type="text" name="fall_specify"></td>
+                </tr>
+                </table>
+                <table class="collapsible-table">
+                <tr>
+                  <th colspan="4" class="section-title">Motor Vehicle Crash Section</th></tr>
+                <tr>
+                    <td colspan="2"><input type="radio" name="motor_vehicle_crash_type" value="self-accident"> Self-Accident</td>
+                    <td colspan="2"><input type="radio" name="motor_vehicle_crash_type" value="collision"> Collision</td>
+                </tr>
+                <tr>
+                    <td>Driver/Passenger/Pedestrian</td>
+                    <td><input type="text" name="mvc_role"></td>
+                    <td>Plate #</td>
+                    <td><input type="text" name="mvc_plate_number"></td>
+                </tr>
+                <tr>
+                    <td>Alcohol Breath</td>
+                    <td><input type="radio" name="alcohol_breath" value="positive"> Positive
+                        <input type="radio" name="alcohol_breath" value="negative"> Negative</td>
+                    <td>Helmet</td>
+                    <td><input type="radio" name="helmet" value="positive"> Positive
+                        <input type="radio" name="helmet" value="negative"> Negative
+                        <input type="radio" name="helmet" value="n/a"> N/A</td>
+                </tr>
+                <tr>
+                    <td colspan="1">Drivers Licence</td>
+                    <td colspan="3"><input type="radio" name="drivers_licence" value="positive"> Positive
+                        <input type="radio" name="drivers_licence" value="negative"> Negative
+                        <input type="radio" name="drivers_licence" value="n/a"> N/A</td>
+                </tr>
+                </table>
+                <table class="collapsible-table">
+                    <tr>
+                      <th colspan="4" class="section-title">Chief Complaint/Initial Assessment</th></tr>
+                    <tr>
+                        <td colspan="4"><textarea name="chief_complaint" placeholder="Chief Complaint/Initial Assessment"></textarea></td>
+                    </tr>
+                        <th rowspan="2">Vital Signs</th>
+                        <th colspan="3">Time</th>
+                    <tr>
+                        <td><input type="time" name="vital_signs_time"></td>
+                        <td><input type="time" name="vital_signs_time2"></td>
+                        <td><input type="time" name="vital_signs_time3"></td>
+                    </tr>
+                    <tr>
+                        <td>BLOOD PRESSURE(MMHG)</td>
+                        <td><input type="text" name="blood_pressure"></td>
+                        <td><input type="text" name="blood_pressure2"></td>
+                        <td><input type="text" name="blood_pressure3"></td>
+                    </tr>
+                    <tr>
+                        <td>PULSE RATE(BPM)</td>
+                        <td><input type="text" name="pulse_rate"></td>
+                        <td><input type="text" name="pulse_rate2"></td>
+                        <td><input type="text" name="pulse_rate3"></td>
+                    </tr>
+                    <tr>
+                        <td>RESPIRTORY RATE(CPM)</td>
+                        <td><input type="text" name="respiratory_rate"></td>
+                        <td><input type="text" name="respiratory_rate2"></td>
+                        <td><input type="text" name="respiratory_rate3"></td>
+                    </tr>
+                    <tr>
+                        <td>TEMPERATURE(°C)</td>
+                        <td><input type="text" name="temperature"></td>
+                        <td><input type="text" name="temperature2"></td>
+                        <td><input type="text" name="temperature3"></td>
+                    </tr>
+                    <tr>
+                        <td>OXYGEN SATURATION(%)</td>
+                        <td><input type="text" name="oxygen_saturation"></td>
+                        <td><input type="text" name="oxygen_saturation2"></td>
+                        <td><input type="text" name="oxygen_saturation3"></td>
+                    </tr>
+                <table class="collapsible-table">
+                <tr>
+                    <td colspan="4" class="section-title">Glasgow Coma Scale (GCS)</td>
+                </tr>
+                <tr>
+                    <td>Eye Response (1–4):</td>
+                    <td>
+                    <input type="number" min="1" max="4" name="gcs_eye" id="gcs_eye">
+                    </td>
+                    <td>Verbal Response (1–5):</td>
+                    <td>
+                    <input type="number" min="1" max="5" name="gcs_verbal" id="gcs_verbal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Motor Response (1–6):</td>
+                    <td>
+                    <input type="number" min="1" max="6" name="gcs_motor" id="gcs_motor">
+                    </td>
+                    <td>Total GCS:</td>
+                    <td>
+                    <input type="number" name="gcs_total" id="gcs_total" readonly>
+                    </td>
+                </tr>
+                </table>
+                <!-- AIRWAY & BREATHING -->
+                <table class="collapsible-table">
+                <tr>
+                    <th colspan="2" class="section-title">AIRWAY</th>
+                    <th colspan="2" class="section-title">BREATHING</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="checkbox" name="airway" value="Open Airway"> Open Airway<br>
+                        <input type="checkbox" name="airway" value="Closed Airway"> Closed Airway<br>
+                        <input type="checkbox" name="airway" value="Jaw Thrust"> Jaw Thrust<br>
+                        <input type="checkbox" name="airway" value="Suction"> Suction<br>
+                        <input type="checkbox" name="airway" value="Finger Sweep"> Finger Sweep<br>
+                        <input type="checkbox" name="airway" value="Abdominal Thrust"> Abdominal Thrust
+                    </td>
+                    <td colspan="2">
+                        <input type="checkbox" name="breathing_status" value="Positive"> Positive<br>
+                        <input type="checkbox" name="breathing_status" value="Negative"> Negative<br>
+                        <input type="checkbox" name="breathing_status" value="O2 Not Required"> O2 Not Required<br>
+                        O2 Given at: <input type="text" name="o2_lpm" size="5"> LPM<br>
+                        <input type="checkbox" name="breathing_method" value="Nasal Cannula"> Nasal Cannula
+                        <input type="checkbox" name="breathing_method" value="SFM"> SFM
+                        <input type="checkbox" name="breathing_method" value="NRM"> NRM
+                    </td>
+                </tr>
+                </table>
+
+                <!-- CIRCULATION -->
+                <table class="collapsible-table">
+                <tr>
+                    <th colspan="4" class="section-title">CIRCULATION</th>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Pulse:</b><br>
+                        <input type="checkbox" name="pulse" value="Positive"> Positive
+                        <input type="checkbox" name="pulse" value="Negative"> Negative<br>
+                        <input type="checkbox" name="pulse_strength" value="Strong"> Strong
+                        <input type="checkbox" name="pulse_strength" value="Weak"> Weak
+                    </td>
+                    <td>
+                        <b>Capillary Refill:</b><br>
+                        <input type="checkbox" name="capillary_refill" value="< 2 sec"> &lt; 2 sec<br>
+                        <input type="checkbox" name="capillary_refill" value="> 2 sec"> &gt; 2 sec
+                    </td>
+                    <td>
+                        <b>Pupils:</b><br>
+                        <input type="checkbox" name="pupils" value="Equal"> Equal<br>
+                        <input type="checkbox" name="pupils" value="Dilated"> Dilated<br>
+                        <input type="checkbox" name="pupils" value="Constricted"> Constricted<br>
+                        <input type="checkbox" name="pupils" value="No Reaction"> No Reaction
+                    </td>
+                    <td>
+                        <b>Skin:</b><br>
+                        <input type="checkbox" name="skin" value="Warm"> Warm
+                        <input type="checkbox" name="skin" value="Cold"> Cold<br>
+                        <input type="checkbox" name="skin" value="Dry"> Dry
+                        <input type="checkbox" name="skin" value="Moist"> Moist<br>
+                        <input type="checkbox" name="skin" value="Pale"> Pale
+                        <input type="checkbox" name="skin" value="Flushed"> Flushed
+                    </td>
+                </tr>
+                </table>
+
+                <!-- PAIN ASSESSMENT -->
+                <table class="collapsible-table">
+                <tr>
+                    <th colspan="2" class="section-title">PAIN ASSESSMENT</th>
+                </tr>
+                <tr>
+                    <td>
+                        Pain Scale (0-10): <input type="number" name="pain_scale" min="0" max="10">
+                    </td>
+                    <td>
+                        <b>Onset:</b>
+                        <input type="checkbox" name="pain_onset" value="Sudden"> Sudden
+                        <input type="checkbox" name="pain_onset" value="Gradual"> Gradual<br>
+                        <b>Quality:</b>
+                        <input type="checkbox" name="pain_quality" value="Crushing"> Crushing
+                        <input type="checkbox" name="pain_quality" value="Stabbing"> Stabbing
+                        <input type="checkbox" name="pain_quality" value="Aching"> Aching<br>
+                        <input type="checkbox" name="pain_quality" value="Burning"> Burning
+                        <input type="checkbox" name="pain_quality" value="Cramping"> Cramping
+                        Others: <input type="text" name="pain_other">
+                    </td>
+                </tr>
+                </table>
+
+                <!-- ALLERGIES & MEDICATIONS -->
+                <table class="collapsible-table">
+                <tr>
+                    <th class="section-title">ALLERGIES</th>
+                    <th class="section-title">MEDICATIONS</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="allergies_status" value="With Allergies"> With Allergies
+                        <input type="checkbox" name="allergies_status" value="No Allergies"> No Allergies<br>
+                        Food: <input type="text" name="allergies_food"><br>
+                        Drug: <input type="text" name="allergies_drug"><br>
+                        Others: <input type="text" name="allergies_other">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="medications_status" value="With Medications"> With Medications
+                        <input type="checkbox" name="medications_status" value="None"> None<br>
+                        Drug: <input type="text" name="medications_drug"><br>
+                        Dose: <input type="text" name="medications_dose"><br>
+                        Date & Time Taken: <input type="text" name="medications_datetime">
+                    </td>
+                </tr>
+                </table>
+
+                <!-- MEDICAL HISTORY -->
+                <table class="collapsible-table">
+                <tr>
+                    <th colspan="2" class="section-title">MEDICAL HISTORY</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="medical_history" value="None"> None
+                        <input type="checkbox" name="medical_history" value="Heart Disease"> Heart Disease
+                        <input type="checkbox" name="medical_history" value="Hypertension"> Hypertension<br>
+                        <input type="checkbox" name="medical_history" value="Seizure"> Seizure
+                        <input type="checkbox" name="medical_history" value="COPD"> COPD<br>
+                        <input type="checkbox" name="medical_history" value="Diabetes Mellitus"> Diabetes Mellitus
+                        <input type="checkbox" name="medical_history" value="Asthma"> Asthma
+                        <input type="checkbox" name="medical_history" value="Stroke"> Stroke<br>
+                        Others: <input type="text" name="medical_history_other">
+                    </td>
+                </tr>
+                </table>
+
+                <!-- LIFESTYLE -->
+                <table class="collapsible-table">
+                <tr>
+                    <th class="section-title">SMOKING</th>
+                    <th class="section-title">ALCOHOL</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="smoke" value="Yes"> Yes
+                        <input type="radio" name="smoke" value="No"> No<br>
+                        No. per day: <input type="text" name="smoke_count"><br>
+                        Stopped since: <input type="text" name="smoke_stopped">
+                    </td>
+                    <td>
+                        <input type="radio" name="alcohol" value="Yes"> Yes
+                        <input type="radio" name="alcohol" value="No"> No<br>
+                        How Often: <input type="text" name="alcohol_frequency">
+                    </td>
+                </tr>
+                </table>
+
+                <!-- INTERVENTIONS -->
+                <table class="collapsible-table">
+                <tr>
+                    <th colspan="3" class="section-title">INTERVENTIONS</th>
+                </tr>
+                <tr>
+                    <td>Vital Signs monitored and Recorded</td>
+                    <td><input type="radio" name="vital" value="Yes"> Yes</td>
+                    <td><input type="radio" name="vital" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Wound Care given</td>
+                    <td><input type="radio" name="wound" value="Yes"> Yes</td>
+                    <td><input type="radio" name="wound" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of C-Collar</td>
+                    <td><input type="radio" name="c-collar" value="Yes"> Yes</td>
+                    <td><input type="radio" name="c-collar" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Oxygen Inhalation via: at : LPM</td>
+                    <td><input type="radio" name="oxygen" value="Yes"> Yes</td>
+                    <td><input type="radio" name="oxygen" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>CPR with AED</td>
+                    <td><input type="radio" name="cpr" value="Yes"> Yes</td>
+                    <td><input type="radio" name="cpr" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Sponge Bath</td>
+                    <td><input type="radio" name="sponge_bath" value="Yes"> Yes</td>
+                    <td><input type="radio" name="sponge_bath" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of Cold/Hot Pack</td>
+                    <td><input type="radio" name="cold_hot" value="Yes"> Yes</td>
+                    <td><input type="radio" name="cold_hot" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of Wood Splints</td>
+                    <td><input type="radio" name="wood_splints" value="Yes"> Yes</td>
+                    <td><input type="radio" name="wood_splints" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of Arm Sling</td>
+                    <td><input type="radio" name="arm_sling" value="Yes"> Yes</td>
+                    <td><input type="radio" name="arm_sling" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of KED</td>
+                    <td><input type="radio" name="ked" value="Yes"> Yes</td>
+                    <td><input type="radio" name="ked" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Application of Elastic/Triangular Bandage</td>
+                    <td><input type="radio" name="elastic_triangular" value="Yes"> Yes</td>
+                    <td><input type="radio" name="elastic_triangular" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Loaded on Spine Board</td>
+                    <td><input type="radio" name="spine_board" value="Yes"> Yes</td>
+                    <td><input type="radio" name="spine_board" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Endorcement to relative/PNP</td>
+                    <td><input type="radio" name="endorcement" value="Yes"> Yes</td>
+                    <td><input type="radio" name="endorcement" value="No"> No</td>
+                </tr>
+                <tr>
+                    <td>Conveyance and Endorcement to HOC</td>
+                    <td><input type="radio" name="hoc" value="Yes"> Yes</td>
+                    <td><input type="radio" name="hoc" value="No"> No</td>
+                </tr>
+                </table>
+            </div>
+
+            <!-- <div class="body-map">
+            <h3>Body Diagram</h3>
+            <div class="body-dummy-placeholder">
+                Human Dummy Placeholder
+            </div>
+            </div> -->
+
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="secondary" onclick="prevStep()">Back</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+        </section>
+
+        <!-- STEP 4 -->
+        <section class="form-step">
+        <h2>Step 4: Response & Transport</h2>
+
+        <div class="form-block">
+            <table>
+            <tr class="section-title"><td colspan="4">Transfer / Waiver</td></tr>
+            <tr>
+                <td>Hospital / Facility:</td>
+                <td colspan="3"><input type="text" name="hospital"></td>
+            </tr>
+            <tr>
+                <td>Reason for Transfer / Not Admitted:</td>
+                <td colspan="3"><textarea name="transfer_reason"></textarea></td>
+            </tr>
+            <tr>
+                <td>Patient Signature:</td>
+                <td><input type="text" name="patient_signature"></td>
+                <td>Date & Time:</td>
+                <td><input type="datetime-local" name="signature_datetime"></td>
+            </tr>
+            </table>
+            <table>
+            <tr>
+                <td>Arrival at Hospital</td>
+                <td>Departure from Hospital</td>
+                <td>Back to Base</td>
+            </tr>
+            <tr>
+                <td><input type="time" name="arrival_hospital"></td>
+                <td><input type="time" name="departure_hospital"></td>
+                <td><input type="time" name="back_to_base"></td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="secondary" onclick="prevStep()">Back</button>
+            <button type="button" onclick="nextStep()">Review</button>
+        </div>
+        </section>
+
+        <!-- STEP 5 -->
+        <section class="form-step">
+        <h2>Step 5: Review & Confirmation</h2>
+
+        <div class="review-block">
+            <!-- YOU WILL RENDER SUMMARY HERE -->
+            Review all information before submitting.
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="secondary" onclick="prevStep()">Back</button>
+            <button type="submit">Submit Report</button>
+        </div>
+        </section>
+
+    </form>
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="../jsFiles/carereport.js"></script>
+
+    <script>
+    function calculateGCS() {
+        const eye = parseInt(document.getElementById("gcs_eye").value) || 0;
+        const verbal = parseInt(document.getElementById("gcs_verbal").value) || 0;
+        const motor = parseInt(document.getElementById("gcs_motor").value) || 0;
+
+        document.getElementById("gcs_total").value = eye + verbal + motor;
+    }
+
+    document.getElementById("gcs_eye").addEventListener("input", calculateGCS);
+    document.getElementById("gcs_verbal").addEventListener("input", calculateGCS);
+    document.getElementById("gcs_motor").addEventListener("input", calculateGCS);
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("table.collapsible-table").forEach(table => {
+        const headerRow = table.querySelector(".section-title");
+        if (!headerRow) return;
+
+        // all rows except the title
+        const rows = Array.from(table.rows).slice(1);
+
+        // START COLLAPSED (remove this block if you want open by default)
+        // rows.forEach(row => row.classList.add("collapsed-row"));
+        // headerRow.classList.add("collapsed");
+
+        headerRow.addEventListener("click", () => {
+          const isCollapsed = headerRow.classList.toggle("collapsed");
+          rows.forEach(row => {
+            row.classList.toggle("collapsed-row", isCollapsed);
+          });
+        });
+      });
+    });
+    </script>   
+
+    </body>
+    </html>

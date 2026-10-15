@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R.O.A.D — Report Accident</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <!-- Unicons -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../cssFiles/style.css" />
+    <link rel="stylesheet" href="../cssFiles/report.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside
+      class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left"
+      id="show-side-navigation1"
+    >
+      <i
+        class="uil-bars close-aside d-md-none d-lg-none"
+        data-close="show-side-navigation1"
+      ></i>
+      <div
+        class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4"
+      >
+        <img class="rounded-pill img-fluid" width="65" src="" alt="avatar" />
+        <div class="ms-2">
+          <h5 class="fs-6 mb-0">
+            <a class="text-decoration-none" href="#">User Name</a>
+          </h5>
+          <p class="mt-1 mb-0">Role</p>
+        </div>
+      </div>
+
+      <div class="search position-relative text-center px-4 py-3 mt-2">
+        <input
+          type="text"
+          class="form-control w-100 border-0 bg-transparent"
+          placeholder="Search here"
+        />
+        <i class="fa fa-search position-absolute d-block fs-6"></i>
+      </div>
+
+      <ul class="categories list-unstyled">
+        <li class="has-dropdown">
+          <i class="uil-estate fa-fw"></i
+          ><a href="../htmlFiles/main.html"> Dashboard</a>
+        </li>
+        <li>
+          <i class="uil-map-marker"></i><a href="../htmlFiles/map.html"> Map</a>
+        </li>
+        <li>
+          <i class="uil-clipboard-alt"></i><a href="../htmlFiles/report.html"> Report Accident</a>
+        </li>
+        <li><i class="uil-list-ul"></i><a href="../htmlFiles/accidentlist.html"> List of Accidents</a></li>
+        <li><i class="uil-users-alt"></i><a href="#"> Users</a></li>
+        <li><i class="uil-cog"></i><a href="#"> Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main wrapper -->
+    <section id="wrapper">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-md">
+        <div class="container-fluid mx-2">
+          <div class="navbar-header d-flex align-items-center">
+            <button
+              class="navbar-toggler me-3"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#toggle-navbar"
+            >
+              <i
+                class="uil-bars text-white show-side-btn"
+                data-show="show-side-navigation1"
+              ></i>
+            </button>
+            <a class="navbar-brand" href="#"
+              >ROAD<span class="main-color">
+                Real-Time Observation & Accident Detection</span
+              ></a
+            >
+          </div>
+
+          <div class="collapse navbar-collapse" id="toggle-navbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  >Settings</a
+                >
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">My account</a></li>
+                  <li><a class="dropdown-item" href="#">My inbox</a></li>
+                  <li><a class="dropdown-item" href="#">Help</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Log out</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="uil-comments-alt"></i
+                  ><span id="nav-msg-count">0</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="uil-bell"></i
+                  ><span id="nav-notif-count">0</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="p-4">
+        <div class="welcome">
+          <div class="content rounded-3 p-3">
+            <h1 class="fs-3">Report a New Accident</h1>
+            <p class="mb-0">
+              Please fill out the form below to report an accident.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accident Reporting Form -->
+        <div class="mt-4">
+          <form id="accidentForm">
+            <!-- Section 1: Date, Time, Location -->
+            <div class="form-section">
+              <h3>Date, Time & Location</h3>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="accidentDate" class="form-label">Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="accidentDate"
+                    required
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="accidentTime" class="form-label">Time</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="accidentTime"
+                    required
+                  />
+                </div>
+                <div class="col-12">
+                  <div class="col-12">
+                    <label for="location" class="form-label"
+                      >Location / Address</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="location"
+                      placeholder="Enter accident location"
+                      required
+                    />
+
+                    <div class="mt-2">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        id="currentLocationBtn"
+                      >
+                        Use Current Location
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-primary"
+                        id="plotLocationBtn"
+                      >
+                        Plot on Map
+                      </button>
+                    </div>
+
+                    <input type="hidden" id="latitude" />
+                    <input type="hidden" id="longitude" />
+                  </div>
+
+                  <!-- Leaflet Map Popup -->
+                  <div
+                    id="mapModal"
+                    style="
+                      display: none;
+                      position: fixed;
+                      top: 50%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 450px;
+                      height: 450px;
+                      background: white;
+                      z-index: 9999;
+                      border-radius: 10px;
+                      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                      padding: 8px;
+                    "
+                  >
+                    <!-- Search input -->
+                    <div style="margin-bottom: 5px; display: flex; gap: 5px">
+                      <input
+                        type="text"
+                        id="mapSearch"
+                        placeholder="Search location..."
+                        class="form-control"
+                      />
+                      <button id="mapSearchBtn" class="btn btn-primary btn-sm">
+                        ⌕
+                      </button>
+                      <button id="mapCloseBtn" class="btn btn-sm btn-danger">
+                        X
+                      </button>
+                    </div>
+
+                    <!-- Map container -->
+                    <div
+                      id="map"
+                      style="width: 100%; height: 85%; border-radius: 10px"
+                    ></div>
+                  </div>
+
+                  <!-- Leaflet CSS/JS -->
+                  <link
+                    rel="stylesheet"
+                    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                  />
+                  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+                  <!-- Hidden fields for internal use -->
+                  <input type="hidden" id="latitude" />
+                  <input type="hidden" id="longitude" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2: Vehicle Type, Accident Type, Severity, Persons Involved -->
+            <div class="form-section mt-4">
+              <h3>Accident Details</h3>
+              <div class="row g-3">
+                <!-- Vehicle Type -->
+                <div class="col-12">
+                  <label class="form-label">Vehicle Type</label>
+                  <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Car"
+                        id="vehicleCar"
+                      />
+                      <label class="form-check-label" for="vehicleCar"
+                        >🚗 Car</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Motorcycle"
+                        id="vehicleMotorcycle"
+                      />
+                      <label class="form-check-label" for="vehicleMotorcycle"
+                        >🏍️ Motorcycle</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Bus"
+                        id="vehicleTruck"
+                      />
+                      <label class="form-check-label" for="vehicleTruck"
+                        >🚌 Bus</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Truck"
+                        id="vehicleTruck"
+                      />
+                      <label class="form-check-label" for="vehicleTruck"
+                        >🚚 Truck</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Bicycle"
+                        id="vehicleBicycle"
+                      />
+                      <label class="form-check-label" for="vehicleBicycle"
+                        >🚲 Bicycle</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Person"
+                        id="vehiclePerson"
+                      />
+                      <label class="form-check-label" for="vehiclePerson"
+                        >🚶 Person</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input vehicle-checkbox"
+                        type="checkbox"
+                        value="Other"
+                        id="vehicleOther"
+                      />
+                      <label class="form-check-label" for="vehicleOther"
+                        >Other</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control mt-1"
+                        id="vehicleOtherText"
+                        placeholder="Specify"
+                        style="display: none"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Accident Type -->
+                <div class="col-md-6">
+                  <label for="accidentType" class="form-label"
+                    >Accident Type</label
+                  >
+                  <select class="form-select" id="accidentType" required>
+                    <option value="" disabled selected>
+                      Select accident type
+                    </option>
+                    <option value="Hit Vehicle">Hit another vehicle</option>
+                    <option value="Hit Person">Hit person</option>
+                    <option value="Hit Object">Hit object</option>
+                    <option value="Fell Alone">Fell alone</option>
+                  </select>
+                </div>
+
+                <!-- Severity -->
+                <div class="col-md-6">
+                  <label for="severity" class="form-label">Severity</label>
+                  <select class="form-select" id="severity" required>
+                    <option value="" disabled selected>Select severity</option>
+                    <option value="No injuries">No injuries</option>
+                    <option value="Minor injuries">Minor injuries</option>
+                    <option value="Serious injuries">Serious injuries</option>
+                    <option value="Fatal">Fatal</option>
+                  </select>
+                </div>
+
+                <!-- Persons Involved -->
+                <div class="col-md-6">
+                  <label for="personsInvolved" class="form-label"
+                    >Number of Persons Involved</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="personsInvolved"
+                    min="1"
+                    value="1"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="WeatherCondition" class="form-label"
+                    >Weather Condition</label
+                  >
+                  <select class="form-select" id="WeatherCondition" required>
+                    <option value="" disabled selected>
+                      Select Weather Condition
+                    </option>
+                    <option value="Clear">Clear</option>
+                    <option value="Light Rain">Light Rain</option>
+                    <option value="Heavy Rain">Heavy Rain</option>
+                    <option value="Thunderstorm">Thunderstorm</option>
+                    <option value="Flooded">Flooded</option>
+                    <option value="Foggy">Foggy</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Vehicle Description -->
+            <div class="form-section mt-4">
+              <h3>Vehicle Description</h3>
+
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <label for="plateNumber" class="form-label"
+                    >Plate Number</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="plateNumber"
+                    placeholder="e.g., ABC-1234"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="vehicleType" class="form-label"
+                    >Vehicle Type</label
+                  >
+                  <select class="form-select" id="vehicleType" required>
+                    <option value="" disabled selected>
+                      Select vehicle type
+                    </option>
+                    <option value="Car">Car</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Bus">Bus</option>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="vehicleColor" class="form-label">Color</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="vehicleColor"
+                    placeholder="e.g., Red"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="vehicleBrand" class="form-label">Brand</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="vehicleBrand"
+                    placeholder="e.g., Toyota"
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label for="vehicleModel" class="form-label">Model</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="vehicleModel"
+                    placeholder="e.g., Vios"
+                  />
+                </div>
+
+                <div class="col-md-4">
+                  <label for="vehicleYear" class="form-label">Year</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="vehicleYear"
+                    placeholder="e.g., 2020"
+                    min="1980"
+                    max="2025"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="vehicleNotes" class="form-label"
+                    >Additional Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="vehicleNotes"
+                    rows="3"
+                    placeholder="Damage details, specific notes, or remarks"
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <label for="vehicleImage" class="form-label"
+                    >Upload Vehicle Image</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="vehicleImage"
+                    accept="image/*"
+                  />
+                  <div id="vehicleImagePreview" class="mt-2"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 4: Description & Image -->
+            <div class="form-section mt-4">
+              <h3>Description & Image</h3>
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Description / Notes</label
+                >
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="4"
+                  placeholder="How did the accident happen? Which part of the vehicle was damaged?"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imageUpload" class="form-label">Upload Image</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="imageUpload"
+                  accept="image/*"
+                />
+                <div id="imagePreview" class="mt-2"></div>
+              </div>
+            </div>
+
+            <!-- Blue -->
+            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">
+              Submit Report
+            </button>
+          </form>
+          <div id="formResponse" class="mt-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../jsFiles/api.js"></script>
+    <script src="../jsFiles/main.js"></script>
+    <script src="../jsFiles/report.js"></script>
+  </body>
+</html>

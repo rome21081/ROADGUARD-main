@@ -1,0 +1,104 @@
+/* dashboard.css - AdminKit-like dark overrides that integrate with your style.css */
+
+/* preserve font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --accent: #fb7a8e;
+  --accent-2: #faa7b7;
+}
+
+/* Navbar color */
+.navbar {
+  background: #6f6486 !important;
+  border: none !important;
+}
+
+/* wrapper spacing */
+#wrapper {
+  margin-left: var(--sidebar-width);
+  transition: all .3s ease-in-out;
+  padding-bottom: 40px;
+}
+
+/* welcome card */
+.welcome .content {
+  background-color: #2b2f3a;
+  border-radius: 6px;
+  padding: 18px;
+  color: #e6edf6;
+  box-shadow: 0 4px 8px rgba(8,11,20,0.3);
+}
+
+/* KPI boxes */
+.statistics .box {
+  background-color: #232532;
+  color: #c9d1dd;
+  border-radius: 8px;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+}
+
+.statistics .box i {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+.statistics .box h3 {
+  color: #e9eef8;
+  margin: 0;
+  font-size: 22px;
+}
+
+.statistics .box span,
+.statistics .box p { color: #9aa4b2; }
+
+/* Charts containers */
+.chart-container {
+  background-color: #232532;
+  padding: 18px;
+  border-radius: 8px;
+  color: #c9d1dd;
+}
+
+/* Recent reports list */
+.admins .box {
+  background-color: #fafafa;
+  border-radius: 8px;
+  color: #000000;
+}
+
+.list-scroll { max-height: 320px; overflow-y: auto; padding-right: 8px; }
+.list-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255,255,255,0.02);
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+/* Danger alerts */
+#danger-alerts .alert {
+  background: linear-gradient(90deg, rgba(251,122,142,0.08), rgba(250,167,183,0.04));
+  border-left: 4px solid var(--accent);
+  color: #ffd4d8;
+}
+
+/* badges colors helper (bootstrap classes will also be used) */
+.badge-severe { background:#d9534f; color:#fff; }
+.badge-moderate { background:#f0ad4e; color:#111; }
+.badge-minor { background:#5cb85c; color:#fff; }
+
+@media (max-width: 991px) {
+  #wrapper { margin-left: 0; padding: 12px; }
+  .sidebar { position: relative; width: 100%; height: auto; }
+}

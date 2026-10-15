@@ -1,0 +1,47 @@
+.users-container {
+    padding: 80px 50px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+}
+
+.user-info h4 {
+    font-size: 16px;
+}
+
+.user-info p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.user-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.user-actions .edit-btn {
+    background: #feca57;
+    color: #000;
+}
+
+.user-actions .delete-btn {
+    background: #ff6b6b;
+    color: #fff;
+}

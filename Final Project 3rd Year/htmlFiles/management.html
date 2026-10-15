@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EMS / Rescue Operations Analytics Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+
+<!-- Chart DataLabels Plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
+
+
+<style>
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+}
+
+/* SIDEBAR */
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:240px;
+height:100vh;
+background:#111827;
+padding:25px 20px;
+overflow-y:auto;
+}
+
+.sidebar-title{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+color:#38bdf8;
+}
+
+.sidebar a{
+display:block;
+padding:12px 0;
+color:#cbd5e1;
+text-decoration:none;
+font-size:15px;
+}
+
+.sidebar a:hover{
+color:#38bdf8;
+}
+
+.sidebar a.active{
+color:#38bdf8;
+font-weight:600;
+}
+
+/* MAIN CONTENT */
+.main-content{
+margin-left:260px;
+padding:25px;
+}
+
+/* YOUR EXISTING STYLES */
+.dashboard-title{
+font-size:26px;
+font-weight:600;
+margin-bottom:20px;
+}
+
+.card-box{
+background:#1e293b;
+border-radius:14px;
+padding:20px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.kpi{
+font-size:30px;
+font-weight:700;
+}
+
+.chart-container{
+background:#1e293b;
+border-radius:14px;
+padding:20px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,0.05);
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+select.form-control{
+background:#1e293b;
+color:white;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.btn-success{
+padding:8px 18px;
+font-weight:500;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<div class="sidebar-title">R.O.A.D</div>
+
+<a href="../htmlFiles/main.html">Dashboard</a>
+<a href="#" class="active">Management Analytics</a>
+<a href="../htmlFiles/spreedsheet.html">SpreedSheet</a>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+<div class="container-fluid">
+
+<div class="dashboard-title">
+EMS / Rescue Operations Dashboard
+</div>
+
+<!-- FILTER -->
+<select id="filterType" class="form-control mb-3" style="width:260px;">
+<option value="all">All Data</option>
+<option value="day">Today</option>
+<option value="month">This Month</option>
+<option value="year">This Year</option>
+</select>
+
+<!-- KPI CARDS -->
+<div class="row">
+<div class="col-md-3">
+<div class="card-box text-center">
+<div class="kpi" id="totalCases"></div>
+Total Responses
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-box text-center">
+<div class="kpi" id="medicalCases"></div>
+Medical
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-box text-center">
+<div class="kpi" id="traumaCases"></div>
+Trauma
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card-box text-center">
+<div class="kpi" id="conductionCases"></div>
+Conduction
+</div>
+</div>
+</div>
+
+<!-- CHART SECTION -->
+<div class="row">
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Incident Categories</h5>
+<canvas id="categoryChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Trauma Classification</h5>
+<canvas id="traumaChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Medical Classification</h5>
+<canvas id="medicalChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Conduction Classification</h5>
+<canvas id="conductionChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Motor Vehicle Crash Type</h5>
+<canvas id="mvcChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Vehicle Type</h5>
+<canvas id="vehicleChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Person Involved</h5>
+<canvas id="personChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="chart-container">
+<h5>Engine Size</h5>
+<canvas id="engineChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="chart-container">
+<h6>License</h6>
+<canvas id="licenseChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="chart-container">
+<h6>Helmet</h6>
+<canvas id="helmetChart"></canvas>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="chart-container">
+<h6>Alcohol</h6>
+<canvas id="alcoholChart"></canvas>
+</div>
+</div>
+
+</div>
+
+<!-- MONTHLY TREND -->
+<div class="chart-container mt-4">
+<h5>Monthly Incident Trend</h5>
+<canvas id="monthlyTrendChart"></canvas>
+</div>
+
+<!-- SUMMARY TABLE -->
+<div class="card-box mt-4">
+<h5>Incident Summary Table</h5>
+<table class="table table-hover mt-3 text-white">
+<thead>
+<tr>
+<th>Category</th>
+<th>Total Cases</th>
+<th>Percentage (%)</th>
+</tr>
+</thead>
+<tbody id="summaryTable"></tbody>
+</table>
+</div>
+
+<!-- MVC DETAILED SUMMARY -->
+<div class="card-box mt-4">
+<h5>Motor Vehicle Crash Detailed Summary</h5>
+<table class="table table-hover mt-3 text-white">
+<thead>
+<tr>
+<th>Type</th>
+<th>Total</th>
+<th>Percentage (%)</th>
+</tr>
+</thead>
+<tbody id="mvcSummaryTable"></tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+<!-- JS FILE -->
+<script src="../jsFiles/management-analytics.js"></script>
+
+</body>
+</html>

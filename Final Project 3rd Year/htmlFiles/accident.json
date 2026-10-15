@@ -1,0 +1,1506 @@
+[
+  {
+    "accident_id": 1,
+    "case_number": "CASE-001",
+    "type_id": null,
+    "accident_date": "2025-09-01 14:30:00",
+    "latitude": "16.405300",
+    "longitude": "120.596000",
+    "address": "San Isidro, Isabela",
+    "description": "Two cars collided at the intersection. Minor damages.",
+    "severity": "Minor",
+    "reported_by": 1,
+    "created_at": "2025-09-01 23:47:31",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 2,
+    "case_number": "2",
+    "type_id": null,
+    "accident_date": "2025-10-31 12:45:10",
+    "latitude": "16.679700",
+    "longitude": "121.650000",
+    "address": "Libertad",
+    "description": "binagga ",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "0000-00-00 00:00:00",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 30,
+    "case_number": "ACC-1756745415158",
+    "type_id": null,
+    "accident_date": "2025-09-28 00:00:00",
+    "latitude": "16.713200",
+    "longitude": "121.679000",
+    "address": "San Fabia, Echague",
+    "description": "naholdup",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-02 00:50:15",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 105,
+    "case_number": "ACC-1756746082124",
+    "type_id": null,
+    "accident_date": "2025-09-02 00:00:00",
+    "latitude": "16.678400",
+    "longitude": "121.646600",
+    "address": "Libertad, Echague",
+    "description": "naholdup",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-02 01:01:22",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 106,
+    "case_number": "ACC-1756746127944",
+    "type_id": null,
+    "accident_date": "2025-09-02 00:00:00",
+    "latitude": "16.679700",
+    "longitude": "121.650000",
+    "address": "Libertad, Echague",
+    "description": "binagga niya yung nabangga",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-02 01:02:07",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 107,
+    "case_number": "ACC-1756749725289",
+    "type_id": null,
+    "accident_date": "2025-09-02 00:00:00",
+    "latitude": "16.705090",
+    "longitude": "121.676330",
+    "address": "ISU ECHAGUE",
+    "description": "TALL 5`7 MORENO AGE APPROXIMATELY 34 WITH BLACK AEROX MOTOR",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-02 02:02:05",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 123,
+    "case_number": "AC1761897581",
+    "type_id": null,
+    "accident_date": "2025-10-31 16:00:00",
+    "latitude": "16.660000",
+    "longitude": "121.660000",
+    "address": "Santiago-San Agustin Road, Garit Norte, , Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-10-31 15:59:41",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 124,
+    "case_number": "AC1762022686",
+    "type_id": null,
+    "accident_date": "2025-11-02 00:00:00",
+    "latitude": "16.695959",
+    "longitude": "121.629912",
+    "address": "Maharlika Highway, Quezon, , Isabela",
+    "description": "Drunk",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-02 02:44:46",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 125,
+    "case_number": "AC1762022904",
+    "type_id": null,
+    "accident_date": "2025-11-02 03:00:00",
+    "latitude": "16.710869",
+    "longitude": "121.651960",
+    "address": ", Ipil, , Isabela",
+    "description": "Zero Visibility",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-02 02:48:24",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 126,
+    "case_number": null,
+    "type_id": null,
+    "accident_date": null,
+    "latitude": "16.660000",
+    "longitude": "121.660000",
+    "address": "Santiago-San Agustin Road, Garit Norte, Isabela",
+    "description": "",
+    "severity": "Moderate",
+    "reported_by": 2,
+    "created_at": "2025-11-16 22:45:00",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 127,
+    "case_number": "CASE-6919e7e575540",
+    "type_id": null,
+    "accident_date": null,
+    "latitude": "16.544723",
+    "longitude": "121.643715",
+    "address": "Linamanan, Isabela",
+    "description": "",
+    "severity": "Moderate",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:04:05",
+    "vehicle_type_name": null,
+    "vehicles": [],
+    "images": []
+  },
+  {
+    "accident_id": 129,
+    "case_number": "CASE-6919ea379df6b",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:13:59",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 1,
+        "accident_id": 129,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 1,
+        "accident_id": 129,
+        "file_path": "uploads/accidents/6919ea379e874.png",
+        "uploaded_at": "2025-11-16 23:13:59"
+      }
+    ]
+  },
+  {
+    "accident_id": 130,
+    "case_number": "CASE-6919ea4170e48",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:14:09",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 2,
+        "accident_id": 130,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 2,
+        "accident_id": 130,
+        "file_path": "uploads/accidents/6919ea41719a7.png",
+        "uploaded_at": "2025-11-16 23:14:09"
+      }
+    ]
+  },
+  {
+    "accident_id": 131,
+    "case_number": "CASE-6919ea48e6d6b",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:14:16",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 3,
+        "accident_id": 131,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 3,
+        "accident_id": 131,
+        "file_path": "uploads/accidents/6919ea48e781a.png",
+        "uploaded_at": "2025-11-16 23:14:16"
+      }
+    ]
+  },
+  {
+    "accident_id": 132,
+    "case_number": "CASE-6919ea495fa75",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:14:17",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 4,
+        "accident_id": 132,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 4,
+        "accident_id": 132,
+        "file_path": "uploads/accidents/6919ea496043a.png",
+        "uploaded_at": "2025-11-16 23:14:17"
+      }
+    ]
+  },
+  {
+    "accident_id": 133,
+    "case_number": "CASE-6919ea4988f0e",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:14:17",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 5,
+        "accident_id": 133,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 5,
+        "accident_id": 133,
+        "file_path": "uploads/accidents/6919ea498a5ab.png",
+        "uploaded_at": "2025-11-16 23:14:17"
+      }
+    ]
+  },
+  {
+    "accident_id": 134,
+    "case_number": "CASE-6919ea49b0d8d",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:14:17",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 6,
+        "accident_id": 134,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 6,
+        "accident_id": 134,
+        "file_path": "uploads/accidents/6919ea49b1802.png",
+        "uploaded_at": "2025-11-16 23:14:17"
+      }
+    ]
+  },
+  {
+    "accident_id": 135,
+    "case_number": "CASE-6919eae831eda",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:16:56",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 7,
+        "accident_id": 135,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 7,
+        "accident_id": 135,
+        "file_path": "uploads/accidents/6919eae83295a.png",
+        "uploaded_at": "2025-11-16 23:16:56"
+      }
+    ]
+  },
+  {
+    "accident_id": 136,
+    "case_number": "CASE-6919eaf50838a",
+    "type_id": 1,
+    "accident_date": "2025-07-21 00:00:00",
+    "latitude": "16.883389",
+    "longitude": "121.610413",
+    "address": "San Mateo, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:17:09",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 8,
+        "accident_id": 136,
+        "plate_number": "NA",
+        "vehicle_type_id": 2,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 8,
+        "accident_id": 136,
+        "file_path": "uploads/accidents/img_6919eaf5092749.40215200.jpg",
+        "uploaded_at": "2025-11-16 23:17:09"
+      }
+    ]
+  },
+  {
+    "accident_id": 137,
+    "case_number": "CASE-6919eb388e675",
+    "type_id": 1,
+    "accident_date": "2024-11-20 17:37:00",
+    "latitude": "16.897196",
+    "longitude": "121.604576",
+    "address": "Daramuangan Norte, Isabela",
+    "description": "",
+    "severity": "Severe",
+    "reported_by": 2,
+    "created_at": "2025-11-16 23:18:16",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 9,
+        "accident_id": 137,
+        "plate_number": "NA",
+        "vehicle_type_id": 1,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Red",
+        "notes": null,
+        "type_name": "Car"
+      }
+    ],
+    "images": []
+  },
+  {
+    "accident_id": 139,
+    "case_number": "CASE-6929bb34a8e9f",
+    "type_id": 2,
+    "accident_date": "2025-11-03 16:45:00",
+    "latitude": "13.7565",
+    "longitude": "121.0583",
+    "address": "Batangas City, Batangas",
+    "description": "Truck overturned due to brake failure",
+    "severity": "Severe",
+    "reported_by": 6,
+    "created_at": "2025-11-03 17:10:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 14,
+        "accident_id": 139,
+        "plate_number": "BTG-9999",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "Forward",
+        "year": "2017",
+        "color": "White",
+        "notes": "Carrying construction materials",
+        "type_name": "Truck"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 11,
+        "accident_id": 139,
+        "file_path": "uploads/accidents/6929bb34a8e9f.png",
+        "uploaded_at": "2025-11-03 17:10:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 140,
+    "case_number": "CASE-6930cc56b9d0a",
+    "type_id": 3,
+    "accident_date": "2025-11-05 12:30:00",
+    "latitude": "8.2280",
+    "longitude": "124.2431",
+    "address": "Iligan City, Lanao del Norte",
+    "description": "Motorcycle hit pedestrian crossing",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2025-11-05 12:45:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 15,
+        "accident_id": 140,
+        "plate_number": "ILG-2025",
+        "vehicle_type_id": 2,
+        "brand": "Suzuki",
+        "model": "Raider",
+        "year": "2020",
+        "color": "Blue",
+        "notes": "Driver wearing helmet",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 12,
+        "accident_id": 140,
+        "file_path": "uploads/accidents/6930cc56b9d0a.jpg",
+        "uploaded_at": "2025-11-05 12:45:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 141,
+    "case_number": "CASE-6931dd78c1e2b",
+    "type_id": 4,
+    "accident_date": "2025-11-07 21:15:00",
+    "latitude": "7.1907",
+    "longitude": "125.4553",
+    "address": "Davao City, Davao del Sur",
+    "description": "Bus collided with SUV during heavy rain",
+    "severity": "Critical",
+    "reported_by": 8,
+    "created_at": "2025-11-07 21:30:00",
+    "vehicle_type_name": "Bus",
+    "vehicles": [
+      {
+        "vehicle_id": 16,
+        "accident_id": 141,
+        "plate_number": "BUS-2025",
+        "vehicle_type_id": 4,
+        "brand": "Hyundai",
+        "model": "Universe",
+        "year": "2018",
+        "color": "Yellow",
+        "notes": "Passenger bus with 30 onboard",
+        "type_name": "Bus"
+      },
+      {
+        "vehicle_id": 17,
+        "accident_id": 141,
+        "plate_number": "SUV-2025",
+        "vehicle_type_id": 1,
+        "brand": "Mitsubishi",
+        "model": "Montero",
+        "year": "2022",
+        "color": "Gray",
+        "notes": "Severe front damage",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 13,
+        "accident_id": 141,
+        "file_path": "uploads/accidents/6931dd78c1e2b.png",
+        "uploaded_at": "2025-11-07 21:30:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 142,
+    "case_number": "CASE-6932ee90d2f4c",
+    "type_id": 1,
+    "accident_date": "2025-11-10 07:45:00",
+    "latitude": "16.7071",
+    "longitude": "121.7302",
+    "address": "Echague, Isabela",
+    "description": "Car collided with motorcycle at town center",
+    "severity": "Moderate",
+    "reported_by": 3,
+    "created_at": "2025-11-10 08:00:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 18,
+        "accident_id": 142,
+        "plate_number": "ECH-1234",
+        "vehicle_type_id": 1,
+        "brand": "Toyota",
+        "model": "Fortuner",
+        "year": "2021",
+        "color": "Black",
+        "notes": "SUV sustained front damage",
+        "type_name": "Car"
+      },
+      {
+        "vehicle_id": 19,
+        "accident_id": 142,
+        "plate_number": "MOTO-5678",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Click",
+        "year": "2020",
+        "color": "Red",
+        "notes": "Driver injured",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 14,
+        "accident_id": 142,
+        "file_path": "uploads/accidents/6932ee90d2f4c.jpg",
+        "uploaded_at": "2025-11-10 08:00:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 143,
+    "case_number": "CASE-6933ff12e3a5d",
+    "type_id": 2,
+    "accident_date": "2025-11-12 15:20:00",
+    "latitude": "16.6926",
+    "longitude": "121.5520",
+    "address": "Santiago City, Isabela",
+    "description": "Truck rear-ended a car along Maharlika Highway",
+    "severity": "Severe",
+    "reported_by": 5,
+    "created_at": "2025-11-12 15:45:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 20,
+        "accident_id": 143,
+        "plate_number": "STG-2025",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "F-Series",
+        "year": "2019",
+        "color": "White",
+        "notes": "Cargo truck carrying rice sacks",
+        "type_name": "Truck"
+      },
+      {
+        "vehicle_id": 21,
+        "accident_id": 143,
+        "plate_number": "CAR-2025",
+        "vehicle_type_id": 1,
+        "brand": "Nissan",
+        "model": "Almera",
+        "year": "2022",
+        "color": "Blue",
+        "notes": "Rear damage",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 15,
+        "accident_id": 143,
+        "file_path": "uploads/accidents/6933ff12e3a5d.png",
+        "uploaded_at": "2025-11-12 15:45:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 144,
+    "case_number": "CASE-6934gg34f4b6e",
+    "type_id": 3,
+    "accident_date": "2025-11-14 09:10:00",
+    "latitude": "16.8000",
+    "longitude": "121.6500",
+    "address": "San Isidro, Isabela",
+    "description": "Motorcycle skidded on wet provincial road",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2025-11-14 09:20:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 22,
+        "accident_id": 144,
+        "plate_number": "SID-2025",
+        "vehicle_type_id": 2,
+        "brand": "Suzuki",
+        "model": "Smash",
+        "year": "2018",
+        "color": "Green",
+        "notes": "Driver sustained minor injuries",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 16,
+        "accident_id": 144,
+        "file_path": "uploads/accidents/6934gg34f4b6e.jpg",
+        "uploaded_at": "2025-11-14 09:20:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 145,
+    "case_number": "CASE-6934gg34f4bwe",
+    "type_id": 1,
+    "accident_date": "2025-11-14 09:10:00",
+    "latitude": "16.8000",
+    "longitude": "121.6530",
+    "address": "San Isidro, Isabela",
+    "description": "Motorcycle skidded on wet provincial road",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2025-11-18 09:20:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 23,
+        "accident_id": 145,
+        "plate_number": "SID-2025",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Sporty",
+        "year": "2018",
+        "color": "Black",
+        "notes": "Driver sustained minor injuries",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 17,
+        "accident_id": 145,
+        "file_path": "uploads/accidents/6934gg34f4b6e.jpg",
+        "uploaded_at": "2025-11-14 09:20:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 146,
+    "case_number": "CASE-6935hh45g7qwe",
+    "type_id": 1,
+    "accident_date": "2025-11-15 10:25:00",
+    "latitude": "16.8050",
+    "longitude": "121.6550",
+    "address": "Quezon, San Isidro, Isabela",
+    "description": "Car collided with tricycle near barangay hall",
+    "severity": "Moderate",
+    "reported_by": 3,
+    "created_at": "2025-11-15 10:40:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 24,
+        "accident_id": 146,
+        "plate_number": "QZN-2025",
+        "vehicle_type_id": 1,
+        "brand": "Toyota",
+        "model": "Vios",
+        "year": "2020",
+        "color": "Silver",
+        "notes": "Front bumper damaged",
+        "type_name": "Car"
+      },
+      {
+        "vehicle_id": 25,
+        "accident_id": 146,
+        "plate_number": "TRI-5678",
+        "vehicle_type_id": 5,
+        "brand": "Local",
+        "model": "Tricycle",
+        "year": "2015",
+        "color": "Green",
+        "notes": "Passenger slightly injured",
+        "type_name": "Tricycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 18,
+        "accident_id": 146,
+        "file_path": "uploads/accidents/6935hh45g7qwe.jpg",
+        "uploaded_at": "2025-11-15 10:40:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 147,
+    "case_number": "CASE-6936ii56h8rty",
+    "type_id": 2,
+    "accident_date": "2025-11-16 14:50:00",
+    "latitude": "16.8100",
+    "longitude": "121.6600",
+    "address": "Ramos West, San Isidro, Isabela",
+    "description": "Truck overturned due to slippery road",
+    "severity": "Severe",
+    "reported_by": 4,
+    "created_at": "2025-11-16 15:05:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 26,
+        "accident_id": 147,
+        "plate_number": "RMW-2025",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "Elf",
+        "year": "2019",
+        "color": "White",
+        "notes": "Carrying construction materials",
+        "type_name": "Truck"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 19,
+        "accident_id": 147,
+        "file_path": "uploads/accidents/6936ii56h8rty.png",
+        "uploaded_at": "2025-11-16 15:05:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 148,
+    "case_number": "CASE-6937jj67i9uop",
+    "type_id": 3,
+    "accident_date": "2025-11-17 18:30:00",
+    "latitude": "16.8150",
+    "longitude": "121.6650",
+    "address": "Ramos East, San Isidro, Isabela",
+    "description": "Motorcycle sideswiped by SUV along barangay road",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2025-11-17 18:45:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 27,
+        "accident_id": 148,
+        "plate_number": "RME-2025",
+        "vehicle_type_id": 2,
+        "brand": "Yamaha",
+        "model": "Mio",
+        "year": "2021",
+        "color": "Black",
+        "notes": "Driver sustained scratches",
+        "type_name": "Motorcycle"
+      },
+      {
+        "vehicle_id": 28,
+        "accident_id": 148,
+        "plate_number": "SUV-2025",
+        "vehicle_type_id": 1,
+        "brand": "Ford",
+        "model": "Everest",
+        "year": "2022",
+        "color": "Gray",
+        "notes": "Minor side dent",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 20,
+        "accident_id": 148,
+        "file_path": "uploads/accidents/6937jj67i9uop.jpg",
+        "uploaded_at": "2025-11-17 18:45:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 149,
+    "case_number": "CASE-6938kk78j0abc",
+    "type_id": 1,
+    "accident_date": "2025-11-18 07:30:00",
+    "latitude": "16.7005",
+    "longitude": "121.7308",
+    "address": "Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "Car sideswiped motorcycle along campus road",
+    "severity": "Minor",
+    "reported_by": 2,
+    "created_at": "2025-11-18 07:45:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 29,
+        "accident_id": 149,
+        "plate_number": "ECH-149",
+        "vehicle_type_id": 1,
+        "brand": "Honda",
+        "model": "City",
+        "year": "2021",
+        "color": "Gray",
+        "notes": "Minor scratches",
+        "type_name": "Car"
+      },
+      {
+        "vehicle_id": 30,
+        "accident_id": 149,
+        "plate_number": "MOTO-149",
+        "vehicle_type_id": 2,
+        "brand": "Yamaha",
+        "model": "Mio",
+        "year": "2020",
+        "color": "Red",
+        "notes": "Driver sustained minor injuries",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 21,
+        "accident_id": 149,
+        "file_path": "uploads/accidents/6938kk78j0abc.jpg",
+        "uploaded_at": "2025-11-18 07:45:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 150,
+    "case_number": "CASE-6939ll89k1def",
+    "type_id": 2,
+    "accident_date": "2025-11-19 16:10:00",
+    "latitude": "16.7010",
+    "longitude": "121.7320",
+    "address": "Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "Delivery truck rear-ended SUV near ISU gate",
+    "severity": "Moderate",
+    "reported_by": 4,
+    "created_at": "2025-11-19 16:25:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 31,
+        "accident_id": 150,
+        "plate_number": "TRK-150",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "Elf",
+        "year": "2018",
+        "color": "White",
+        "notes": "Cargo truck carrying school supplies",
+        "type_name": "Truck"
+      },
+      {
+        "vehicle_id": 32,
+        "accident_id": 150,
+        "plate_number": "SUV-150",
+        "vehicle_type_id": 1,
+        "brand": "Toyota",
+        "model": "Fortuner",
+        "year": "2022",
+        "color": "Black",
+        "notes": "Rear bumper damaged",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 22,
+        "accident_id": 150,
+        "file_path": "uploads/accidents/6939ll89k1def.png",
+        "uploaded_at": "2025-11-19 16:25:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 151,
+    "case_number": "CASE-6940mm90l2ghi",
+    "type_id": 3,
+    "accident_date": "2025-11-20 20:40:00",
+    "latitude": "16.7020",
+    "longitude": "121.7335",
+    "address": "Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "Motorcycle skidded on wet road near ISU dormitory",
+    "severity": "Minor",
+    "reported_by": 3,
+    "created_at": "2025-11-20 20:55:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 33,
+        "accident_id": 151,
+        "plate_number": "MOTO-151",
+        "vehicle_type_id": 2,
+        "brand": "Suzuki",
+        "model": "Raider",
+        "year": "2019",
+        "color": "Blue",
+        "notes": "Driver sustained minor injuries",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 23,
+        "accident_id": 151,
+        "file_path": "uploads/accidents/6940mm90l2ghi.jpg",
+        "uploaded_at": "2025-11-20 20:55:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 152,
+    "case_number": "CASE-6941nn01m3jkl",
+    "type_id": 2,
+    "accident_date": "2025-11-21 06:45:00",
+    "latitude": "16.7030",
+    "longitude": "121.7340",
+    "address": "Echague-Poblacion Road, San Fabian, Echague, Isabela",
+    "description": "Truck collided head-on with SUV along Echague-Poblacion Road",
+    "severity": "Severe",
+    "reported_by": 5,
+    "created_at": "2025-11-21 07:00:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 34,
+        "accident_id": 152,
+        "plate_number": "TRK-152",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "Forward",
+        "year": "2019",
+        "color": "White",
+        "notes": "Truck sustained heavy front damage",
+        "type_name": "Truck"
+      },
+      {
+        "vehicle_id": 35,
+        "accident_id": 152,
+        "plate_number": "SUV-152",
+        "vehicle_type_id": 1,
+        "brand": "Mitsubishi",
+        "model": "Montero",
+        "year": "2021",
+        "color": "Black",
+        "notes": "SUV severely damaged, passengers injured",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 24,
+        "accident_id": 152,
+        "file_path": "uploads/accidents/6941nn01m3jkl.jpg",
+        "uploaded_at": "2025-11-21 07:00:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 153,
+    "case_number": "CASE-6942oo12n4mno",
+    "type_id": 4,
+    "accident_date": "2025-11-22 18:20:00",
+    "latitude": "16.7045",
+    "longitude": "121.7355",
+    "address": "Echague-Poblacion Road, San Fabian, Echague, Isabela",
+    "description": "Passenger bus sideswiped multiple motorcycles during heavy rain",
+    "severity": "Severe",
+    "reported_by": 6,
+    "created_at": "2025-11-22 18:35:00",
+    "vehicle_type_name": "Bus",
+    "vehicles": [
+      {
+        "vehicle_id": 36,
+        "accident_id": 153,
+        "plate_number": "BUS-153",
+        "vehicle_type_id": 4,
+        "brand": "Hyundai",
+        "model": "County",
+        "year": "2017",
+        "color": "Yellow",
+        "notes": "Passenger bus with 25 onboard",
+        "type_name": "Bus"
+      },
+      {
+        "vehicle_id": 37,
+        "accident_id": 153,
+        "plate_number": "MOTO-153",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Click",
+        "year": "2020",
+        "color": "Red",
+        "notes": "Motorcycle driver injured",
+        "type_name": "Motorcycle"
+      },
+      {
+        "vehicle_id": 38,
+        "accident_id": 153,
+        "plate_number": "MOTO-154",
+        "vehicle_type_id": 2,
+        "brand": "Yamaha",
+        "model": "Mio",
+        "year": "2019",
+        "color": "Blue",
+        "notes": "Second motorcycle damaged",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 25,
+        "accident_id": 153,
+        "file_path": "uploads/accidents/6942oo12n4mno.png",
+        "uploaded_at": "2025-11-22 18:35:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 154,
+    "case_number": "CASE-6943pp23o5pqr",
+    "type_id": 1,
+    "accident_date": "2025-11-23 22:10:00",
+    "latitude": "16.7060",
+    "longitude": "121.7365",
+    "address": "Echague-Poblacion Road, San Fabian, Echague, Isabela",
+    "description": "Car lost control and hit roadside barrier near ISU Echague",
+    "severity": "Severe",
+    "reported_by": 3,
+    "created_at": "2025-11-23 22:25:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 39,
+        "accident_id": 154,
+        "plate_number": "CAR-154",
+        "vehicle_type_id": 1,
+        "brand": "Toyota",
+        "model": "Corolla",
+        "year": "2020",
+        "color": "Silver",
+        "notes": "Car totaled, driver hospitalized",
+        "type_name": "Car"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 26,
+        "accident_id": 154,
+        "file_path": "uploads/accidents/6943pp23o5pqr.jpg",
+        "uploaded_at": "2025-11-23 22:25:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 155,
+    "case_number": "CASE-6944qq34p6stu",
+    "type_id": 2,
+    "accident_date": "2025-11-24 08:15:00",
+    "latitude": "16.7212",
+    "longitude": "121.6887",
+    "address": "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "Cargo truck overturned after losing brakes near ISU Echague entrance",
+    "severity": "Severe",
+    "reported_by": 6,
+    "created_at": "2025-11-24 08:30:00",
+    "vehicle_type_name": "Truck",
+    "vehicles": [
+      {
+        "vehicle_id": 40,
+        "accident_id": 155,
+        "plate_number": "TRK-155",
+        "vehicle_type_id": 3,
+        "brand": "Isuzu",
+        "model": "Forward",
+        "year": "2018",
+        "color": "White",
+        "notes": "Truck overturned, blocking road",
+        "type_name": "Truck"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 27,
+        "accident_id": 155,
+        "file_path": "uploads/accidents/6944qq34p6stu.jpg",
+        "uploaded_at": "2025-11-24 08:30:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 156,
+    "case_number": "CASE-6945rr45q7vwx",
+    "type_id": 1,
+    "accident_date": "2025-11-25 19:40:00",
+    "latitude": "16.7212",
+    "longitude": "121.6887",
+    "address": "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "SUV collided with motorcycle near ISU Echague dormitory",
+    "severity": "Severe",
+    "reported_by": 4,
+    "created_at": "2025-11-25 19:55:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 41,
+        "accident_id": 156,
+        "plate_number": "SUV-156",
+        "vehicle_type_id": 1,
+        "brand": "Ford",
+        "model": "Everest",
+        "year": "2022",
+        "color": "Gray",
+        "notes": "SUV sustained heavy front damage",
+        "type_name": "Car"
+      },
+      {
+        "vehicle_id": 42,
+        "accident_id": 156,
+        "plate_number": "MOTO-156",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Click",
+        "year": "2020",
+        "color": "Black",
+        "notes": "Motorcycle driver critically injured",
+        "type_name": "Motorcycle"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 28,
+        "accident_id": 156,
+        "file_path": "uploads/accidents/6945rr45q7vwx.png",
+        "uploaded_at": "2025-11-25 19:55:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 157,
+    "case_number": "CASE-6946ss56r8yz",
+    "type_id": 4,
+    "accident_date": "2025-11-26 13:20:00",
+    "latitude": "16.7212",
+    "longitude": "121.6887",
+    "address": "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (near ISU Echague)",
+    "description": "Passenger bus collided with jeepney during heavy rain",
+    "severity": "Severe",
+    "reported_by": 7,
+    "created_at": "2025-11-26 13:35:00",
+    "vehicle_type_name": "Bus",
+    "vehicles": [
+      {
+        "vehicle_id": 43,
+        "accident_id": 157,
+        "plate_number": "BUS-157",
+        "vehicle_type_id": 4,
+        "brand": "Hyundai",
+        "model": "Universe",
+        "year": "2019",
+        "color": "Yellow",
+        "notes": "Passenger bus with 40 onboard",
+        "type_name": "Bus"
+      },
+      {
+        "vehicle_id": 44,
+        "accident_id": 157,
+        "plate_number": "JPN-157",
+        "vehicle_type_id": 6,
+        "brand": "Jeepney",
+        "model": "Local",
+        "year": "2015",
+        "color": "Green",
+        "notes": "Jeepney passengers injured",
+        "type_name": "Jeepney"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 29,
+        "accident_id": 157,
+        "file_path": "uploads/accidents/6946ss56r8yz.jpg",
+        "uploaded_at": "2025-11-26 13:35:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 158,
+    "case_number": "CASE-158xyz987abc",
+    "type_id": 4,
+    "accident_date": "2025-11-19 14:45:00",
+    "latitude": "16.7306549",
+    "longitude": "121.6690296",
+    "address": "National Highway, Purok 6, Brgy. Raniag, Ramon, Isabela",
+    "description": "Motorcycle crashed into a parked truck, rider died on site",
+    "severity": "Fatal",
+    "reported_by": 6,
+    "created_at": "2025-11-19 15:05:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 41,
+        "accident_id": 158,
+        "plate_number": "MOTO-158",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Wave",
+        "year": "2018",
+        "color": "Black",
+        "notes": "Motorcycle rider died",
+        "type_name": "Motorcycle"
+      },
+      {
+        "vehicle_id": 42,
+        "accident_id": 158,
+        "plate_number": "TRUCK-158",
+        "vehicle_type_id": 4,
+        "brand": "Isuzu",
+        "model": "NQR",
+        "year": "2015",
+        "color": "White",
+        "notes": "Parked truck involved in collision",
+        "type_name": "Truck"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 31,
+        "accident_id": 158,
+        "file_path": "uploads/accidents/158motorcycle-truck.png",
+        "uploaded_at": "2025-11-19 15:05:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 159,
+    "case_number": "CASE-159xyz123abc",
+    "type_id": 4,
+    "accident_date": "2025-06-13 13:19:11",
+    "latitude": "17.0508355",
+    "longitude": "121.7014402",
+    "address": "Malasin, Burgos, Isabela",
+    "description": "Motorcycle crashed into a passenger bus, father died and daughter injured",
+    "severity": "Fatal",
+    "reported_by": 6,
+    "created_at": "2025-06-13 13:30:00",
+    "vehicle_type_name": "Motorcycle",
+    "vehicles": [
+      {
+        "vehicle_id": 43,
+        "accident_id": 159,
+        "plate_number": "MOTO-159",
+        "vehicle_type_id": 2,
+        "brand": "Honda",
+        "model": "Wave",
+        "year": "2017",
+        "color": "Black",
+        "notes": "Motorcycle rider (father) died, daughter injured",
+        "type_name": "Motorcycle"
+      },
+      {
+        "vehicle_id": 44,
+        "accident_id": 159,
+        "plate_number": "BUS-159",
+        "vehicle_type_id": 4,
+        "brand": "Isuzu",
+        "model": "NQR",
+        "year": "2015",
+        "color": "White",
+        "notes": "Passenger bus involved in collision",
+        "type_name": "Bus"
+      }
+    ],
+    "images": [
+      {
+        "image_id": 32,
+        "accident_id": 159,
+        "file_path": "uploads/accidents/159motorcycle-bus.png",
+        "uploaded_at": "2025-06-13 13:30:00"
+      }
+    ]
+  },
+  {
+    "accident_id": 201,
+    "case_number": "CASE-2025cebu01",
+    "type_id": 4,
+    "accident_date": "2025-09-15 16:02:10",
+    "latitude": "17.121915",
+    "longitude": "121.6199232",
+    "address": "Roxas, Isabela, Cagayan Valley, 3320, Philippines",
+    "description": "Reported car accident during activities in BACOLOD CITY",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-15 16:05:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 101,
+        "accident_id": 201,
+        "plate_number": "N/A",
+        "vehicle_type_id": 1,
+        "brand": "Unknown",
+        "model": "Unknown",
+        "year": "Unknown",
+        "color": "Unknown",
+        "notes": "Car involved in accident reported in news snippet",
+        "type_name": "Car"
+      }
+    ],
+    "images": []
+  },
+  {
+    "accident_id": 202,
+    "case_number": "CASE-2025samal01",
+    "type_id": 4,
+    "accident_date": "2025-09-15 16:01:22",
+    "latitude": "17.1486341",
+    "longitude": "121.8886466",
+    "address": "Ilagan, Isabela, Cagayan Valley, 3300, Philippines",
+    "description": "Car accident reported near Samal Island during triathlon event preparations",
+    "severity": "Moderate",
+    "reported_by": 1,
+    "created_at": "2025-09-15 16:05:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 102,
+        "accident_id": 202,
+        "plate_number": "N/A",
+        "vehicle_type_id": 1,
+        "brand": "Unknown",
+        "model": "Unknown",
+        "year": "Unknown",
+        "color": "Unknown",
+        "notes": "Car involved in accident reported in news snippet",
+        "type_name": "Car"
+      }
+    ],
+    "images": []
+  },
+  {
+    "accident_id": 203,
+    "case_number": "CASE-2025isabela01",
+    "type_id": 4,
+    "accident_date": "2025-04-06 16:01:09",
+    "latitude": "17",
+    "longitude": "122",
+    "address": "Sitio Manpahong, Barangay Banogbanog, Isabela, Cagayan Valley, Philippines",
+    "description": "Car accident reported in Isabela; farmer fatally injured by vehicle",
+    "severity": "Severe",
+    "reported_by": 1,
+    "created_at": "2025-04-06 16:05:00",
+    "vehicle_type_name": "Car",
+    "vehicles": [
+      {
+        "vehicle_id": 103,
+        "accident_id": 203,
+        "plate_number": "N/A",
+        "vehicle_type_id": 1,
+        "brand": "Unknown",
+        "model": "Unknown",
+        "year": "Unknown",
+        "color": "Unknown",
+        "notes": "Car involved in fatal accident reported in news snippet",
+        "type_name": "Car"
+      }
+    ],
+    "images": []
+  }
+]

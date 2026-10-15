@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>R.O.A.D — Spreadsheet View</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+}
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+width:240px;
+height:100vh;
+background:#111827;
+padding:25px 20px;
+}
+
+.sidebar-title{
+font-size:22px;
+font-weight:600;
+margin-bottom:30px;
+color:#38bdf8;
+}
+
+.sidebar a{
+display:block;
+padding:12px 0;
+color:#cbd5e1;
+text-decoration:none;
+font-size:15px;
+}
+
+.sidebar a:hover{
+color:#38bdf8;
+}
+
+.sidebar a.active{
+color:#38bdf8;
+font-weight:600;
+}
+
+.main-content{
+margin-left:260px;
+padding:30px;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+margin-bottom:20px;
+}
+
+.sheet-wrapper{
+background:white;
+color:black;
+border-radius:10px;
+padding:15px;
+overflow:auto;
+box-shadow:0 15px 30px rgba(0,0,0,0.25);
+max-height:75vh;
+}
+
+table{
+border-collapse:collapse;
+min-width:1400px;
+width:100%;
+}
+
+th, td{
+border:1px solid #ccc;
+padding:6px;
+text-align:center;
+font-size:13px;
+}
+
+th{
+background:#1e3a8a;
+color:white;
+position:sticky;
+top:0;
+z-index:2;
+}
+
+.section-row{
+background:#1e3a8a;
+color:white;
+font-weight:bold;
+text-align:left;
+}
+
+.total-row{
+background:#f1f5f9;
+font-weight:bold;
+}
+
+.btn-download{
+background:#22c55e;
+border:none;
+padding:8px 18px;
+border-radius:6px;
+color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<div class="sidebar-title">R.O.A.D</div>
+<a href="main.html">Dashboard</a>
+<a href="management.html">Management Analytics</a>
+<a href="#" class="active">Spreadsheet</a>
+</div>
+
+<div class="main-content">
+
+<div class="topbar">
+
+<div>
+<h3>EMS Incident Spreadsheet</h3>
+
+
+<div class="d-flex gap-2 mt-3">
+
+<select id="monthFilter" class="form-select form-select-sm" style="width:160px;">
+<option value="">All Months</option>
+<option value="0">January</option>
+<option value="1">February</option>
+<option value="2">March</option>
+<option value="3">April</option>
+<option value="4">May</option>
+<option value="5">June</option>
+<option value="6">July</option>
+<option value="7">August</option>
+<option value="8">September</option>
+<option value="9">October</option>
+<option value="10">November</option>
+<option value="11">December</option>
+</select>
+
+<select id="categoryFilter" class="form-select form-select-sm" style="width:200px;">
+<option value="">All Categories</option>
+<option value="Medical">Medical</option>
+<option value="Trauma">Trauma</option>
+<option value="Conduction">Conduction</option>
+<option value="MotorVehicleCrashType">Motor Vehicle Crash</option>
+<option value="VehicleType">Vehicle Type</option>
+<option value="PersonInvolve">Person Involved</option>
+<option value="EngineSize">Engine Size</option>
+<option value="License">License</option>
+<option value="Helmet">Helmet</option>
+<option value="Alcohol">Alcohol</option>
+</select>
+
+<button onclick="generateFullSpreadsheet()" class="btn btn-primary btn-sm">
+Apply
+</button>
+
+</div>
+</div>
+
+<button onclick="downloadSpreadsheet()" class="btn-download">
+Download Spreadsheet
+</button>
+
+</div>
+
+<div class="sheet-wrapper">
+<table id="spreadsheetTable"></table>
+</div>
+
+</div>
+
+<script src="../jsFiles/spreedsheet.js"></script>
+
+</body>
+</html>

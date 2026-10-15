@@ -1,0 +1,29 @@
+.accident-list {
+    padding: 80px 50px;
+}
+
+.accident-item {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.accident-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+}
+
+.accident-info h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.accident-info p {
+    font-size: 13px;
+    opacity: 0.8;
+}

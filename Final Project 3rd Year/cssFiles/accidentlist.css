@@ -1,0 +1,133 @@
+/* ===============================
+      ACCIDENT LIST PAGE STYLE
+   =============================== */
+
+
+.accident-container {
+  margin-left: 0;
+  padding: 15px;
+  background: #2d2a33;
+  height: 100vh;
+  overflow-y: auto; /* scrolling */
+}
+
+.accident-header {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* Search Bar */
+.accident-search-box {
+  margin-bottom: 12px;
+}
+
+.accident-search-box input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* Vertical list */
+.accident-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Card Layout */
+.accident-card {
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: 0.2s ease;
+  min-height: 110px;
+  overflow: hidden;
+}
+
+.accident-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.accident-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.accident-location {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.accident-severity {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* Severity Backgrounds */
+.severity-NoInjury {
+  background: #e0f7fa; /* blue/green */
+  border-left: 6px solid #00796b;
+}
+
+.severity-Moderate {
+  background: #ffffff; /* blue/green */
+  border-left: 6px solid #00796b;
+}
+
+.severity-Minor {
+  background: #fff9c4; /* yellow */
+  border-left: 6px solid #fbc02d;
+}
+
+.severity-Serious {
+  background: #ffe0b2; /* orange */
+  border-left: 6px solid #f57c00;
+}
+
+.severity-Fatal {
+  background: #ffebee; /* red */
+  border-left: 6px solid #d32f2f;
+}
+
+.severity-Severe {
+  background: #ff0026; /* red */
+  border-left: 6px solid #d32f2f;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+  gap: 5px;
+}
+
+.pagination button {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:hover {
+  background: #e0e0e0;
+}
+
+.pagination .active {
+  background: #2d89ef;
+  color: white;
+  border-color: #2d89ef;
+}

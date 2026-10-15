@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>R.O.A.D — Accident Map</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"/>
+
+  <!-- Unicons -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- Your main project CSS -->
+  <link rel="stylesheet" href="../cssFiles/style.css" />
+
+  <!-- Map-specific CSS -->
+  <link rel="stylesheet" href="../cssFiles/map.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+   
+   <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+    <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+    <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+  <img class="rounded-pill img-fluid" width="65" src="" alt="avatar" />
+  <div class="ms-2">
+    <h5 class="fs-6 mb-0"><a class="text-decoration-none" href="#"></a></h5>
+    <p class="mt-1 mb-0"></p>
+  </div>
+</div>
+
+
+    <div class="search position-relative text-center px-4 py-3 mt-2">
+      <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here"/>
+      <i class="fa fa-search position-absolute d-block fs-6"></i>
+    </div>
+
+    <ul class="categories list-unstyled">
+      <li class="has-dropdown"><i class="uil-estate fa-fw"></i><a href="../htmlFiles/main.html"> Dashboard</a></li>
+      <li><i class="uil-map-marker"></i><a href="#"> Map</a></li>
+      <li><i class="uil-clipboard-alt"></i><a href="../htmlFiles/report.html"> Report Accident</a></li>
+      <li><i class="uil-list-ul"></i><a href="../htmlFiles/accidentlist.html"> Accidents & Incidents</a></li>
+      <li><i class="uil-users-alt"></i><a href="#"> Users</a></li>
+      <li><i class="uil-cog"></i><a href="#"> Settings</a></li>
+    </ul>
+  </aside>
+
+  <!-- Wrapper -->
+  <section id="wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md">
+      <div class="container-fluid mx-2">
+        <div class="navbar-header d-flex align-items-center">
+          <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar">
+            <i class="uil-bars text-white show-side-btn" data-show="show-side-navigation1"></i>
+          </button>
+          <a class="navbar-brand" href="#">ROAD<span class="main-color"> — Accident & Incident Map</span></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="toggle-navbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Settings</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">My account</a></li>
+                <li><a class="dropdown-item" href="#">My inbox</a></li>
+                <li><a class="dropdown-item" href="#">Help</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="p-4">
+      <div class="welcome mb-3">
+        <h1 class="fs-3">Accident & Incident Map</h1>
+        <p>View accidents and incidents in real-time on the map below</p>
+      </div>
+
+      <!-- MAP CONTAINER -->
+      <div id="accidentMap" style="height: 600px;" class="rounded-3 shadow-sm"></div>
+    </div>
+
+    
+  </section>
+
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+   <!-- Your global API wrapper (must be included first) -->
+  <script src="../jsFiles/api.js"></script>
+    <!-- Map logic -->
+  <script src="../jsFiles/map.js"></script>
+
+  <script src="../jsFiles/main.js"></script>
+
+
+</body>
+</html>
