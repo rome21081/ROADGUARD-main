@@ -1,0 +1,141 @@
+/* ROADGUARD's map-first sheet: functional controls, quiet surfaces, clear directions. */
+.map-page { --sheet-size: min(58dvh, 500px); --map-surface: #242629; --map-raised: #33363b; --map-line: #ffffff14; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.map-page .workspace { background: var(--map-surface); }
+.map-page .map-topbar { height: auto; min-height: 52px; background: #202225; border-bottom: 1px solid var(--map-line); padding-top: max(4px,env(safe-area-inset-top)); padding-bottom: 4px; box-shadow: none; }
+.map-title h1 { font-size: 13px; letter-spacing: 1.2px; }
+.map-title > span, .map-home span { display: none; }
+.public-badge { color: #c4d4ca; background: #ffffff08; border-color: #ffffff20; font-size: 9px; letter-spacing: .2px; }
+.map-home i { color: #80b8ff; font-size: 24px; }
+.map-page .journey-panel { background: var(--map-surface); border-color: var(--map-line); border-radius: 24px 24px 0 0; box-shadow: 0 -4px 20px #00000026; }
+.sheet-header { display: flex; align-items: center; padding-right: 10px; min-width: 0; }
+.sheet-toggle { flex: 1; min-width: 0; min-height: 60px; padding: 8px 18px 10px; }
+.sheet-grip { width: 38px; background: #707276; height: 4px; margin-bottom: 8px; }
+.sheet-heading strong { font-size: 20px; letter-spacing: -.5px; color: #f5f6f7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sheet-heading small { font-size: 11px; color: #a6adb8; }
+.sheet-heading i { display: grid; place-items: center; flex: 0 0 32px; height: 32px; background: #ffffff0a; border-radius: 50%; color: #aeb6c3; }
+.map-page .clear-button { display: grid; place-items: center; flex: 0 0 44px; min-width: 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #ffffff0a; color: #b8c0cb; font-size: 22px; }
+.journey-panel:not(.has-route).is-collapsed .clear-button, .journey-panel:not(.has-route).is-collapsed .sheet-heading small { display: none; }
+.sheet-content { flex: 1 1 auto; padding: 6px 16px 16px; scrollbar-color: #5c6169 transparent; }
+.place-finder { padding: 0 16px 12px; background: transparent; z-index: auto; }
+.place-search-bar { gap: 0; max-width: none; border: 1px solid #ffffff09; border-radius: 14px; background: #383b40; }
+.map-page .place-search-bar input { background: transparent; border: 0; height: 48px; color: #f5f6f7; }
+.map-page input::placeholder { color: #acb3bf; opacity: 1; }
+.place-search-bar .endpoint-search { order: -1; background: transparent; color: #b1bdcf; width: 40px; flex-basis: 40px; border-radius: 14px; }
+.map-page #clearPlacePin { color: #b1bdcf; font-size: 20px; width: 44px; padding: 0; }
+.place-search-popover { position: static; margin-top: 8px; max-height: min(32dvh,260px); padding: 8px; background: #303338; border: 1px solid var(--map-line); border-radius: 14px; box-shadow: none; }
+.place-results { background: #303338; border-color: var(--map-line); }
+.place-result { color: #e9edf4; }
+.place-result:hover, .place-result:focus-visible { background: #41464f; }
+.map-quick-actions { display: flex; gap: 8px; margin-top: 10px; }
+.map-quick-actions button { flex: 1; min-height: 44px; padding: 8px 12px; border: 0; border-radius: 12px; background: #34383e; color: #dae6f8; font-size: 12px; font-weight: 600; }
+.map-quick-actions i { margin-right: 6px; color: #7db7ff; font-size: 17px; }
+.journey-panel:not(.is-collapsed) .place-finder, .journey-panel.has-route .place-finder { display: none; }
+.map-tabs { gap: 4px; padding: 4px; margin: 0 0 14px; border: 0; border-radius: 12px; background: #191b1e; }
+.map-tabs button { border: 0; border-radius: 9px; font-size: 12px; color: #adb5c2; }
+.map-tabs button[aria-pressed="true"] { background: #3b4047; color: #f6f8fb; box-shadow: 0 1px 5px #0003; }
+.route-form { gap: 2px; border-radius: 16px; background: var(--map-raised); padding: 3px 10px 0; }
+.endpoint-row { border: 0; background: transparent; border-radius: 8px; padding: 7px 0; gap: 10px; }
+.endpoint-row:focus-within { box-shadow: inset 0 0 0 2px #7db7ff; padding-inline: 5px; }
+.endpoint-row:has(#originQuery) { border-bottom: 1px solid #ffffff12; }
+.endpoint-badge { flex-basis: 24px; height: 24px; border: 0; }
+.start-badge { color: white; background: #277fe5; }
+.destination-badge { color: white; background: #338667; }
+.endpoint-field > label { color: #aab4c4; }
+.endpoint-search { background: transparent; color: #b1bdcf; }
+.endpoint-actions { border-top: 1px solid #ffffff12; padding-top: 4px; margin-top: 4px; }
+.map-page .endpoint-actions .button { color: #9ac7ff; }
+.map-page #endpointStatus { padding: 3px 5px 10px; font-size: 11px; color: #b4bdcb; }
+.route-details { border: 0; margin: 0; padding-top: 14px; }
+.route-summary-note { margin: 0 0 8px; font-size: 12px; line-height: 1.6; color: #bcc8d9; }
+.route-risk-details { border-bottom: 1px solid var(--map-line); font-size: 11px; color: #aab7ca; }
+.route-risk-details summary { min-height: 44px; padding-block: 12px; cursor: pointer; }
+.route-risk-details p { font-size: 11px; line-height: 1.6; }
+.route-risk-details small { display: block; margin-bottom: 12px; }
+.route-option { background: #303338; border: 1px solid var(--map-line); border-radius: 16px; padding: 14px; min-height: 80px; }
+.route-option.selected { background: #2c3540; border-color: #6ba8f94d; box-shadow: inset 3px 0 #63a7ff; }
+.route-option > span:last-child { color: #f5f7fa; font-size: 21px; font-weight: 650; letter-spacing: -.5px; }
+.route-option small { color: #b2bdce; font-size: 10px; line-height: 1.6; }
+.route-option strong { font-size: 13px; color: #e2e8f1; }
+.sheet-footer { background: var(--map-surface); border-color: var(--map-line); }
+.has-route .sheet-footer { display: none; }
+.guide-dock { flex: 0 1 auto; min-height: 0; max-height: 40dvh; overflow-y: auto; overscroll-behavior: contain; margin: 0 16px 12px; padding: 0 12px 10px; border: 1px solid var(--map-line); border-radius: 18px; background: #303338; }
+.guide-dock-heading { display: flex; align-items: center; justify-content: space-between; color: #acb8cb; font-size: 10px; min-height: 28px; }
+.guide-dock .guide-collapse { margin-right: -7px; min-height: 32px; height: 32px; width: 44px; color: #c4cddb; }
+.guide-trip-summary { gap: 8px; padding-bottom: 10px; }
+.guide-trip-summary strong { color: #f5f7fa; font-size: 25px; letter-spacing: -.5px; }
+.guide-trip-summary span:not(.sr-only) { color: #acb8c9; font-size: 10px; }
+.guide-trip-summary > div + div { border-color: #ffffff19; }
+.guide-fit { border-radius: 12px; background: #434954; color: #a8ceff; }
+.guide-collapse:hover, .guide-fit:hover { background: #4b515c; }
+.map-page .guide-dock .guide-actions .button { flex: 1; min-height: 44px; padding: 7px; background: #414751; color: #e0e8f6; border: 0; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.map-page .guide-dock #startGuidance { flex: 1.4; background: #2780e3; color: #fff; }
+.map-page .guide-dock #startGuidance[aria-pressed="true"] { background: #4e5a6d; }
+.map-page .guide-dock #guideSaferRoute { background: #315b48; color: #c5efd9; }
+.map-page .guide-dock #toggleVoice[aria-pressed="true"], .map-page .guide-dock #voiceCommand[aria-pressed="true"] { background: #365c8d; color: #e5f1ff; }
+.guide-status, #voiceStatus { color: #b9c5d7; }
+.guide-tools { border-color: #ffffff14; margin-top: 8px; }
+.guide-tools summary { color: #bdcce1; }
+.guide-tools small { color: #a7b4c8; }
+.safer-preview-notice { color: #b0dfc6; margin-bottom: 8px; font-size: 10px; }
+.safer-route-key { border-color: #6fc895; }
+.road-guide { background: #24282fee; border: 1px solid #ffffff24; border-radius: 18px; color: #f4f7fc; padding: 0 12px; box-shadow: 0 4px 18px #0003; }
+.road-guide .guide-heading { min-height: 26px; padding-top: 4px; }
+.guide-mode { color: #b6c4d8; font-size: 10px; }
+.is-guiding .guide-mode { color: #b4e1c7; }
+.guide-maneuver { border: 0; padding: 4px 0 12px; gap: 10px; }
+.guide-turn-icon { background: #ffffff0c; color: #eff6ff; border-radius: 12px; flex-basis: 44px; height: 44px; }
+.guide-distance { color: #a7cfff; font-size: 11px; }
+.road-guide h2 { color: #fff; font-size: 15px; }
+.map-guidance-stack { max-width: 340px; }
+.map-controls { top: 116px; bottom: auto; right: max(12px,env(safe-area-inset-right)); gap: 0; border: 1px solid #ffffff28; border-radius: 14px; background: #262a31ef; box-shadow: 0 3px 14px #0003; overflow: hidden; }
+.map-page .map-control { min-width: 44px; width: 44px; min-height: 48px; padding: 4px; background: transparent; border: 0; border-radius: 0; box-shadow: none; color: #e3eafa; }
+.map-page .map-control + .map-control { border-top: 1px solid #ffffff18; }
+.map-control span { font-size: 8px; }
+.map-page .leaflet-top.leaflet-right { top: 2px; right: max(2px,env(safe-area-inset-right)); }
+.map-page .leaflet-bar { border-color: #ffffff28; background: #262a31ef; border-radius: 14px; }
+.map-page .leaflet-bar a { background: transparent; border-color: #ffffff18; }
+.map-page .browse-areas { border: 1px solid #ffffff28; border-radius: 24px; background: #262a31ed; min-height: 44px; font-size: 11px; padding: 8px 12px; }
+.map-page .journey-settings { border-color: var(--map-line); }
+.journey-panel:has(#eventsView:not([hidden])) #guideDock { display: none; }
+.map-page button:focus-visible, .map-page summary:focus-visible { outline: 3px solid #8abfff; outline-offset: 2px; }
+@media(min-width:761px) {
+  .map-page .journey-panel { border-radius: 0; }
+  .sheet-toggle { min-height: 68px; }
+  .map-page .journey-panel.is-collapsed { width: 340px; border-radius: 20px; border-color: #ffffff24; max-height: calc(100% - 24px); overflow-y: auto; }
+  .map-shell.panel-minimized .map-guidance-stack { --guidance-top: 12px; left: 368px; }
+  .map-shell:has(.is-collapsed) .map-hint { top: 12px; left: 368px; }
+}
+@media(max-width:760px) {
+  .map-page .journey-panel { height: min(var(--sheet-size),calc(var(--map-viewport-height) - 180px)); }
+  .map-page .journey-panel.is-collapsed { height: auto; max-height: min(58dvh,470px,max(140px,calc(var(--map-viewport-height) - 160px))); overflow-y: auto; }
+  .has-route .sheet-heading strong { font-size: 17px; }
+  .has-route .sheet-heading small { font-size: 10px; }
+  .has-route .guide-dock { margin-bottom: max(10px,env(safe-area-inset-bottom)); }
+}
+@media(max-width:380px) {
+  .guide-trip-summary strong { font-size: 22px; }
+  .place-finder { padding-inline: 12px; }
+  .guide-dock { margin-inline: 12px; }
+  .map-page .guide-dock .guide-actions .button { font-size: 11px; }
+}
+@media(max-height:520px) and (max-width:760px) {
+  .guide-dock { max-height: 32dvh; }
+  .sheet-heading small { display: none; }
+  .map-page .journey-panel.is-collapsed { max-height: 45dvh; }
+}
+
+.map-page #pinDestination[aria-pressed="true"] { background: #345c8e; color: #fff; }
+#pinDestination span { max-width: 40px; line-height: 1.2; text-align: center; white-space: normal; }
+/* Distance and entry cards disappear after three seconds without shifting the map. */
+.map-guidance-stack .danger-area-alert { display: block; padding: 12px; border: 1px solid #f19b9b; border-left: 4px solid #ffadad; border-radius: 16px; background: #92202aef; box-shadow: 0 4px 20px #0003; }
+.map-guidance-stack .danger-area-alert strong { font-size: 13px; line-height: 1.5; }
+.map-guidance-stack .danger-area-alert p { font-size: 12px; margin: 4px 0; }
+.map-guidance-stack .danger-area-alert small { font-size: 10px; line-height: 1.5; display: block; }
+.map-guidance-stack .danger-area-alert .button { min-height: 44px; margin-top: 8px; padding: 8px 12px; max-width: none; font-size: 11px; }
+.map-guidance-stack .danger-area-alert.is-approaching { background: #49331bed; border-color: #dbaf6a; color: #fff0d2; }
+.map-guidance-stack .is-approaching strong { color: #ffdfaa; }
+.map-guidance-stack .is-approaching small { color: #f5dfbd; }
+
+#scraperAccess { margin: 10px 0; padding: 12px; border: 1px solid #ffffff20; border-radius: 12px; }
+#scraperAccess label { display: block; margin-bottom: 6px; color: #ced8e7; font-size: 12px; }
+.map-page #scraperAccessKey { width: 100%; min-height: 44px; margin-bottom: 8px; padding: 8px 10px; border: 1px solid #8297b3; border-radius: 8px; background: #242629; color: #fff; font-size: 16px; }

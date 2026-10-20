@@ -1,0 +1,82 @@
+{
+  "success": true,
+  "fetched_at": "2026-10-20T16:39:56.792Z",
+  "count": 4,
+  "located": 4,
+  "attribution": "Geocoding © OpenStreetMap contributors, ODbL",
+  "data": [
+    {
+      "id": "f3d705246dd1866fe933",
+      "title": "PNP Luna, nagbabala sa motorista matapos ang aksidente na kinasangkutan ng nasawing rider - Bombo Radyo Cauayan",
+      "summary": "Nanawagan ang mga awtoridad sa mga motorista na maging mas maingat at responsable sa pagmamaneho kasunod ng naganap na aksidente sa bayan ng Luna, Isabela na ikinasawi ng isang motorcycle rider. Ayon kay PMaj. Jonathan Ramos, Chief of Police ng Luna Police Station, isa sa mga nakikitang sanhi ng mga aksidente sa kanilang nasasakupan ay ang mga malalaking sasakyang nakaparada sa gilid ng kalsada, lalo na kung hindi agad ito napapansin ng mga dumaraang motorista. Aniya, mahalagang sundin ng mga may-ari at drayber ng truck, trailer truck, at iba pang malalaking sasakyan ang mga patakaran sa ligta",
+      "source_url": "https://cauayan.bomboradyo.com/pnp-luna-nagbabala-sa-motorista-matapos-ang-aksidente-na-kinasangkutan-ng-nasawing-rider/",
+      "source_site": "cauayan.bomboradyo.com",
+      "incident_date": "",
+      "published_at": "2026-06-07T16:05:42+08:00",
+      "municipality": "Luna",
+      "location_query": "Luna, Isabela, Philippines",
+      "latitude": 16.9683863,
+      "longitude": 121.7293475,
+      "location_accuracy": "municipality",
+      "verified": false,
+      "location_label": "Luna, Isabela (approximate town/city location)"
+    },
+    {
+      "id": "a6ffcdb53795b10cfd13",
+      "title": "Father Dies, Daughter Injured in Motorcycle-Bus Collision in Isabela | Bombo Radyo Philippines",
+      "summary": "A tragic accident in Malasin, San Mateo, Isabela claimed the life of a 55-year-old man, while his 23-year-old daughter sustained injuries after their motorcycle crashed into a passenger bus.",
+      "source_url": "https://news.bomboradyo.com/father-dies-daughter-injured-in-motorcycle-bus-collision-in-isabela/",
+      "source_site": "news.bomboradyo.com",
+      "incident_date": "",
+      "published_at": null,
+      "municipality": "San Mateo",
+      "location_query": "San Mateo, Isabela, Philippines",
+      "latitude": 16.88122,
+      "longitude": 121.5878223,
+      "location_accuracy": "municipality",
+      "verified": false,
+      "location_label": "San Mateo, Isabela (approximate town/city location)"
+    },
+    {
+      "id": "140f04ad8fb1fcfe77ef",
+      "title": "4 Injured as Van Crashes Into Parked Truck in Isabela | Bombo Radyo Philippines",
+      "summary": "Van crashes into parked truck in Isabela, leaving four individuals injured in a collision that occurred along the National Highway in Purok Villanueva, Barangay Antonino, Alicia, Isabela.",
+      "source_url": "https://news.bomboradyo.com/4-injured-as-van-crashes-into-parked-truck-in-isabela/",
+      "source_site": "news.bomboradyo.com",
+      "incident_date": "",
+      "published_at": null,
+      "municipality": "Alicia",
+      "location_query": "Alicia, Isabela, Philippines",
+      "latitude": 16.7789338,
+      "longitude": 121.6992173,
+      "location_accuracy": "municipality",
+      "verified": false,
+      "location_label": "Alicia, Isabela (approximate town/city location)"
+    },
+    {
+      "id": "74971916dedc83bc0dcd",
+      "title": "Three Killed, Three Hurt in Multiple Motorcycle Crash",
+      "summary": "Three people died, while three others sustained injuries in a collision involving three motorcycles in Victoria, Mallig, Isabela.",
+      "source_url": "https://news.bomboradyo.com/three-dead-three-injured-in-motorcycle-collision-in-isabela/",
+      "source_site": "news.bomboradyo.com",
+      "incident_date": "",
+      "published_at": null,
+      "municipality": "Mallig",
+      "location_query": "Mallig, Isabela, Philippines",
+      "latitude": 17.2112124,
+      "longitude": 121.6108848,
+      "location_accuracy": "municipality",
+      "verified": false,
+      "location_label": "Mallig, Isabela (approximate town/city location)"
+    }
+  ],
+  "source_results": [
+    {
+      "source": "BomboCauayan",
+      "url": "https://cauayan.bomboradyo.com/cauayan/aksidente-2/",
+      "read": 12,
+      "accepted": 1,
+      "status": "ok"
+    }
+  ]
+}

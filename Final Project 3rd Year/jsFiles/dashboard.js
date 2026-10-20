@@ -7,9 +7,9 @@ let vehicleChart = null;
 let lightChart = null;
 
 let userWatchId = null;
-const DANGER_RADIUS_METERS = 200;
+const alertedZoneIDs = new Set();
 
-let computedDangerZones = []; // [{ name, lat, lng, severeCount, totalCount, probability }]
+let computedDangerZones = []; // Shared evidence-based accident-prone areas.
 
 document.addEventListener("DOMContentLoaded", async () => {
   if (!window.workspaceUser) return;
@@ -33,10 +33,10 @@ async function refreshAll() {
     }
 
     const accidents = normalizeAccidentResponse(accidentsResult);
+    computedDangerZones = buildDangerZonesFromAccidents(accidents);
     buildSummaryFromAccidents(accidents);
     renderRecentReports(accidents);
 
-    computedDangerZones = buildDangerZonesFromAccidents(accidents);
     renderDangerZoneList(computedDangerZones);
     if (typeof Chart !== 'undefined') {
       buildChartsFromAccidents(accidents);
@@ -56,18 +56,6 @@ async function refreshAll() {
   }
 }
 
-// Force fake danger zone for testing
-computedDangerZones.unshift({
-  name: "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (Near ISU Echague)",
-  lat: 16.7065,
-  lng: 121.6760,
-  severeCount: 5,
-  totalCount: 5,
-  probability: 100,
-});
-
-
-
 function normalizeAccidentResponse(res) {
   if (!res) return [];
   if (Array.isArray(res)) return res;
@@ -83,13 +71,10 @@ function buildSummaryFromAccidents(accidents) {
   const totalAccidents = accidents.length;
   const totalCasualties = 57; // sample fixed value
   const severeCases = accidents.filter(a =>
-    ['severe','critical'].includes((a.severity || '').toLowerCase())
+    ['high','severe','critical','fatal'].includes((a.severity || '').toLowerCase())
   ).length;
 
-  const activeZones = [...new Set(accidents.filter(a => {
-    const s = (a.severity || '').toLowerCase();
-    return ['severe','critical','moderate'].includes(s);
-  }).map(a => a.address || a.location || a.type_name || 'Unknown'))].length;
+  const activeZones = computedDangerZones.length;
 
   document.getElementById('totalAccidents').innerText = totalAccidents;
   document.getElementById('totalCasualties').innerText = totalCasualties;
@@ -113,9 +98,9 @@ function buildChartsFromAccidents(accidents) {
   const severityCounts = { severe:0, moderate:0, minor:0, unknown:0 };
   accidents.forEach(a => {
     const s = (a.severity || 'unknown').toLowerCase();
-    if (s.includes('sev') || s.includes('crit')) severityCounts.severe++;
-    else if (s.includes('mod')) severityCounts.moderate++;
-    else if (s.includes('min')) severityCounts.minor++;
+    if (s === 'high' || s.includes('sev') || s.includes('crit') || s.includes('fatal')) severityCounts.severe++;
+    else if (s === 'medium' || s.includes('mod')) severityCounts.moderate++;
+    else if (s === 'low' || s.includes('min')) severityCounts.minor++;
     else severityCounts.unknown++;
   });
 
@@ -243,61 +228,9 @@ function renderRecentReports(accidents) {
 }
 
 function buildDangerZonesFromAccidents(accidents) {
-  if (!Array.isArray(accidents) || accidents.length === 0) {
-    return [{
-      name: "Barangay San Fabian, Municipality of Echague, Province of Isabela",
-      lat: 16.7060,
-      lng: 121.6750,
-      severeCount: 5,
-      totalCount: 5,
-      probability: 100
-    }];
-  }
-
-  const groups = {};
-
-  accidents.forEach(a => {
-    const key = (a.address || a.location || a.type_name || 'Unknown location').trim();
-    if (!groups[key]) groups[key] = { latSum:0, lngSum:0, count:0, severeCount:0, samples:[] };
-
-    const lat = parseFloat(a.latitude || a.lat || a.lng_lat || a.latlng?.lat || 0) || 0;
-    const lng = parseFloat(a.longitude || a.lng || a.lng_lat || a.latlng?.lng || 0) || 0;
-    groups[key].latSum += lat;
-    groups[key].lngSum += lng;
-    groups[key].count += 1;
-    groups[key].samples.push(a);
-
-    const s = (a.severity || '').toLowerCase();
-    if (s.includes('sev') || s.includes('crit') || s.includes('fatal')) {
-      groups[key].severeCount += 1;
-    }
-  });
-
-  const zones = Object.entries(groups).map(([name, v]) => {
-    let lat = v.latSum / Math.max(1, v.count);
-    let lng = v.lngSum / Math.max(1, v.count);
-    if ((!lat || !lng) && name.toLowerCase().includes('san fabian')) {
-      lat = 16.7060; lng = 121.6750;
-    }
-    const prob = Math.round((v.severeCount / Math.max(1, v.count)) * 100);
-    return { name, lat, lng, severeCount: v.severeCount, totalCount: v.count, probability: prob };
-  });
-
-  zones.sort((a,b) => b.severeCount - a.severeCount);
-  const top = zones.slice(0, 5);
-
-  if (top.length === 0 || !top.some(z => z.name.toLowerCase().includes('san fabian'))) {
-    top.unshift({
-      name: "Barangay San Fabian, Municipality of Echague, Province of Isabela",
-      lat: 16.7060,
-      lng: 121.6750,
-      severeCount: 5,
-      totalCount: 5,
-      probability: 100
-    });
-  }
-
-  return top;
+  return window.MapSafety.buildRiskModel(accidents).zones.map(zone => ({
+    ...zone, lat: zone.center[0], lng: zone.center[1], severeCount: zone.seriousCount
+  }));
 }
 
 function renderDangerZoneList(zones) {
@@ -307,7 +240,10 @@ function renderDangerZoneList(zones) {
     box.innerHTML = '<div class="empty"><p>No priority locations recorded.</p></div>';
     return;
   }
-  const renderZone = zone => '<div class="zone-item"><span class="zone-icon"><i class="uil uil-map-marker-exclamation" aria-hidden="true"></i></span><div><strong>' + dashboardEscape(zone.name) + '</strong><p>' + zone.totalCount + ' reported &middot; ' + zone.severeCount + ' severe</p></div><span class="zone-percentage" aria-label="' + zone.probability + ' percent of reports are severe">' + zone.probability + '%</span></div>';
+  const renderZone = zone => {
+    const info = window.MapAreaUI.describe(zone);
+    return '<div class="zone-item"><span class="zone-icon"><i class="uil uil-map-marker-exclamation" aria-hidden="true"></i></span><div><strong>' + dashboardEscape(zone.name) + '</strong><p>' + dashboardEscape(info.history) + ' &middot; ' + dashboardEscape(info.serious) + '<br>Latest crash: ' + dashboardEscape(info.latest) + ' (' + dashboardEscape(info.age) + ')</p></div><span class="zone-percentage">' + dashboardEscape(info.caution) + '</span></div>';
+  };
   box.innerHTML = '<div class="zone-list">' + zones.slice(0, 2).map(renderZone).join('') + (zones.length > 2 ? '<details><summary>Show ' + (zones.length - 2) + ' more locations</summary>' + zones.slice(2).map(renderZone).join('') + '</details>' : '') + '</div>';
 }
 
@@ -338,12 +274,18 @@ function onLocationSuccess(position) {
 
   if (!Array.isArray(computedDangerZones) || computedDangerZones.length === 0) return;
 
+  const accuracy = position.coords.accuracy;
+  if (!Number.isFinite(accuracy) || accuracy > 200) return;
   for (const zone of computedDangerZones) {
-    if (!zone.lat || !zone.lng) continue;
-    const distance = haversineDistanceMeters(userLat, userLng, zone.lat, zone.lng);
-    if (distance <= DANGER_RADIUS_METERS) {
-      triggerDangerAlert(zone, Math.round(distance));
-      break;
+    const metres = window.MapSafety.distance([userLat, userLng], zone.center);
+    if (metres > zone.radius + accuracy + window.MapSafety.DEFAULTS.exitBuffer) alertedZoneIDs.delete(zone.id);
+    if (metres + accuracy <= zone.radius && !alertedZoneIDs.has(zone.id)) {
+      const modal = document.getElementById('dangerZoneModal');
+      if (modal && modal.style.display !== 'flex') {
+        alertedZoneIDs.add(zone.id);
+        triggerDangerAlert(zone, Math.round(metres));
+        break;
+      }
     }
   }
 }
@@ -387,9 +329,8 @@ function triggerDangerAlert(zone, distanceMeters) {
   if (modal.style.display === 'flex') return;
 
   nameEl.innerText = zone.name;
-  detailsEl.innerText = distanceMeters !== null
-    ? `Distance: ${distanceMeters} m — Severity probability: ${zone.probability}% ( ${zone.severeCount}/${zone.totalCount} severe )`
-    : `Severity probability: ${zone.probability}% ( ${zone.severeCount}/${zone.totalCount} severe ) — You are in ALERT ZONE`;
+  const info = window.MapAreaUI.describe(zone);
+  detailsEl.innerText = info.caution + '. ' + info.history + '; ' + info.serious + '. Latest recorded crash: ' + info.latest + '. ' + info.note;
 
   modal.style.display = 'flex';
   const playPromise = sound.play();
@@ -403,18 +344,6 @@ function closeDangerModal() {
   if (modal) modal.style.display = 'none';
 }
 
-
-function triggerDefaultDangerAlert() {
-  const defaultZone = {
-    name: "Echague-Poblacion Road, Barangay San Fabian, Echague, Isabela (Near ISU Echague)",
-    lat: 16.7065,
-    lng: 121.6760,
-    severeCount: 5,
-    totalCount: 5,
-    probability: 100
-  };
-  triggerDangerAlert(defaultZone, null);
-}
 
 function renderAIPrediction() {
   const box = document.getElementById('ai-monthly-prediction');

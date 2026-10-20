@@ -9,6 +9,11 @@ window.addEventListener('pageshow', event => {
 document.addEventListener('DOMContentLoaded', () => {
   const user = window.workspaceUser;
   if (!user) return;
+  if (user.guest) {
+    const signOut = document.getElementById('signOut');
+    signOut.textContent = 'Sign in';
+    signOut.addEventListener('click', () => window.location.assign('login.html'));
+  }
   const name = String(user.full_name || user.username || 'User');
   document.getElementById('profileName').textContent = name;
   document.getElementById('profileRole').textContent = user.role || 'Team member';
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const closeMenu = () => { setMenu(false); toggle.focus(); };
   window.closeWorkspaceMenu = () => setMenu(false);
-  document.getElementById('signOut')?.addEventListener('click', window.ROADGUARD.logout);
+  if (!user.guest) document.getElementById('signOut')?.addEventListener('click', window.ROADGUARD.logout);
   sidebar.inert = window.innerWidth <= 980;
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   close.addEventListener('click', closeMenu);

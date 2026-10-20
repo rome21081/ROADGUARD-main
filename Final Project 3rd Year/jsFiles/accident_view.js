@@ -1,5 +1,7 @@
 'use strict';
 
+const cameFromMap = () => window.workspaceUser?.guest || new URLSearchParams(window.location.search).get('from') === 'map';
+
 const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[character]));
@@ -112,7 +114,7 @@ const renderAccidentDetails = (record) => {
 const showReportState = (title, message, retry = false) => {
   document.getElementById('sectionNav').hidden = true;
   document.getElementById('printReport').hidden = true;
-  document.getElementById('accidentDetail').innerHTML = `<div class="panel state"><span class="section-icon" style="margin:auto"><i class="uil uil-file-search-alt" aria-hidden="true"></i></span><h2>${title}</h2><p>${message}</p>${retry ? '<button class="button button-primary" id="retryReport">Try again</button>' : '<a class="button" href="accidentlist.html">Browse reports</a>'}</div>`;
+  document.getElementById('accidentDetail').innerHTML = `<div class="panel state"><span class="section-icon" style="margin:auto"><i class="uil uil-file-search-alt" aria-hidden="true"></i></span><h2>${title}</h2><p>${message}</p>${retry ? '<button class="button button-primary" id="retryReport">Try again</button>' : (cameFromMap() ? '<a class="button" href="map.html">Back to live map</a>' : '<a class="button" href="accidentlist.html">Browse reports</a>')}</div>`;
   if (retry) document.getElementById('retryReport').addEventListener('click', loadAccident);
 };
 
@@ -156,6 +158,11 @@ const loadAccident = async () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!window.workspaceUser) return;
+  if (cameFromMap()) {
+    const back = document.getElementById('detailBackLink');
+    back.href = 'map.html';
+    back.innerHTML = '<i class="uil uil-arrow-left" aria-hidden="true"></i>Back to live map';
+  }
   document.getElementById('printReport').addEventListener('click', () => window.print());
   loadAccident();
 });

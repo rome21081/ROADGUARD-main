@@ -1,7 +1,7 @@
 'use strict';
 
 window.ROADGUARD = (() => {
-  const protectedPages = ['main.html', 'map.html', 'report.html', 'accidentlist.html', 'accident_view.html', 'management.html', 'spreedsheet.html', 'users.html', 'settings.html'];
+  const protectedPages = ['main.html', 'map.html', 'accidentlist.html', 'accident_view.html', 'settings.html'];
   const session = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -21,6 +21,7 @@ window.ROADGUARD = (() => {
   const loginURL = target => 'login.html?next=' + encodeURIComponent(destination(target));
   const requireSession = () => {
     const user = session();
+    if (['map.html', 'accident_view.html'].includes(currentPage())) return user || { full_name: 'Public visitor', role: 'Public road safety', guest: true };
     if (!user) window.location.replace(loginURL(currentPage() + window.location.search + window.location.hash));
     return user;
   };

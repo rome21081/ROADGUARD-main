@@ -6,7 +6,9 @@ const cheerio = require('../testscraper/node_modules/cheerio');
 
 const root = path.resolve(__dirname, '..', 'Final Project 3rd Year');
 const htmlRoot = path.join(root, 'htmlFiles');
-const protectedPages = ['main.html', 'map.html', 'report.html', 'accidentlist.html', 'accident_view.html', 'management.html', 'spreedsheet.html', 'users.html', 'settings.html'];
+const protectedPages = ['main.html', 'accidentlist.html', 'settings.html'];
+const workspacePages = [...protectedPages, 'map.html', 'accident_view.html'];
+const disabledPages = ['report.html', 'management.html', 'spreedsheet.html', 'users.html'];
 const publicPages = ['index.html', 'login.html', 'signup.html'];
 const routeSource = fs.readFileSync(path.join(root, 'jsFiles', 'routes.js'), 'utf8');
 
@@ -21,14 +23,29 @@ function routing(page, user = null, origin = 'http://localhost:8080') {
   return { context, window, storage, routes: window.ROADGUARD };
 }
 
+for (const file of disabledPages) {
+  const $ = cheerio.load(fs.readFileSync(path.join(htmlRoot,file),'utf8'));
+  assert.equal($('script, form, input, button').length,0,'Disabled pages must not run feature code');
+  assert.equal($('meta[http-equiv="refresh"]').attr('content'),'0;url=map.html');
+}
+const guest = routing('map.html');
+assert.equal(guest.routes.requireSession().guest,true);
+assert.equal(guest.window.location.redirect,undefined);
+for (const page of disabledPages) assert.equal(guest.routes.destination(page),'main.html');
+for (const origin of ['http://localhost:8080', 'file://']) {
+  const details = routing('accident_view.html?id=301&type=incident&from=map', null, origin);
+  assert.equal(details.routes.requireSession().guest, true);
+  assert.equal(details.window.location.redirect, undefined);
+}
 let referenceNavigation;
-for (const file of [...protectedPages, ...publicPages]) {
+for (const file of [...workspacePages, ...publicPages, ...disabledPages]) {
   const full = path.join(htmlRoot, file);
   const $ = cheerio.load(fs.readFileSync(full, 'utf8'));
   assert.equal($('h1').length, 1, `Expected one page heading in ${file}`);
   const ids = $('[id]').map((_, element) => $(element).attr('id')).get();
   assert.equal(ids.length, new Set(ids).size, `Duplicate IDs in ${file}`);
   assert.equal($('a[href="#"]').length, 0, `Placeholder link in ${file}`);
+  assert.equal($('a[href="report.html"],a[href="management.html"],a[href="spreedsheet.html"],a[href="users.html"]').length,0);
   for (const element of $('a[href], link[href], script[src]').toArray()) {
     const ref = $(element).attr('href') || $(element).attr('src');
     if (/^https?:/.test(ref)) continue;
@@ -41,7 +58,7 @@ for (const file of [...protectedPages, ...publicPages]) {
     assert(fs.existsSync(target), `Missing target ${ref} in ${file}`);
   }
   for (const label of $('label[for]').toArray()) assert.equal($('#' + $(label).attr('for')).length, 1);
-  if (protectedPages.includes(file)) {
+  if (workspacePages.includes(file)) {
     const links = $('.sidebar nav a').map((_, element) => $(element).attr('href')).get();
     referenceNavigation ??= links;
     assert.deepEqual(links, referenceNavigation, `Inconsistent sidebar in ${file}`);
@@ -80,4 +97,4 @@ for (const invalid of ['null', '{}', '[]', 'false', 'invalid-json']) {
 for (const file of fs.readdirSync(path.join(root, 'jsFiles')).filter(file => file.endsWith('.js'))) new vm.Script(fs.readFileSync(path.join(root, 'jsFiles', file), 'utf8'), { filename: file });
 const entry = cheerio.load(fs.readFileSync(path.resolve(root, '..', 'index.html'), 'utf8'));
 assert(fs.existsSync(path.resolve(root, '..', decodeURIComponent(entry('a').attr('href')))));
-console.log('Passed: 12 pages, all local links and anchors, consistent menus, sign-out, protected-page returns over HTTP and file URLs, unsafe redirect rejection, and JavaScript syntax.');
+console.log('Passed: page links, disabled features, public map access, consistent menus, protected returns, redirect validation, and JavaScript syntax.');

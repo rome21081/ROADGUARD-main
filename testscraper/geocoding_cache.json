@@ -1,0 +1,86 @@
+{
+  "san mateo, isabela, philippines": {
+    "place_id": 237550291,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198523227,
+    "lat": "16.8812200",
+    "lon": "121.5878223",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39589062692589233,
+    "addresstype": "town",
+    "name": "San Mateo",
+    "display_name": "San Mateo, Isabela, Cagayan Valley, Philippines",
+    "boundingbox": [
+      "16.8412200",
+      "16.9212200",
+      "121.5478223",
+      "121.6278223"
+    ]
+  },
+  "alicia, isabela, philippines": {
+    "place_id": 236731307,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198513614,
+    "lat": "16.7789338",
+    "lon": "121.6992173",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39742443319360427,
+    "addresstype": "town",
+    "name": "Alicia",
+    "display_name": "Alicia, Isabela, Cagayan Valley, 3306, Philippines",
+    "boundingbox": [
+      "16.7389338",
+      "16.8189338",
+      "121.6592173",
+      "121.7392173"
+    ]
+  },
+  "mallig, isabela, philippines": {
+    "place_id": 236899332,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198520332,
+    "lat": "17.2112124",
+    "lon": "121.6108848",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.3807705141182751,
+    "addresstype": "town",
+    "name": "Mallig",
+    "display_name": "Mallig, Isabela, Cagayan Valley, 3323, Philippines",
+    "boundingbox": [
+      "17.1712124",
+      "17.2512124",
+      "121.5708848",
+      "121.6508848"
+    ]
+  },
+  "luna, isabela, philippines": {
+    "place_id": 236477484,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198500848,
+    "lat": "16.9683863",
+    "lon": "121.7293475",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39542339164457335,
+    "addresstype": "town",
+    "name": "Luna",
+    "display_name": "Luna, Isabela, Cagayan Valley, Philippines",
+    "boundingbox": [
+      "16.9283863",
+      "17.0083863",
+      "121.6893475",
+      "121.7693475"
+    ]
+  }
+}

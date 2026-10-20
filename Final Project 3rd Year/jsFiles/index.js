@@ -4,6 +4,6 @@ if (window.ROADGUARD.session()) {
   login.href = 'main.html';
   login.textContent = 'Dashboard';
   const start = document.getElementById('startLink');
-  start.href = 'report.html';
-  start.textContent = 'New report';
+  start.href = 'map.html';
+  start.textContent = 'Public safety map';
 }

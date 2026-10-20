@@ -19,11 +19,7 @@
     <nav>
       <a href="main.html" class="active" aria-current="page"><i class="uil uil-estate" aria-hidden="true"></i>Dashboard</a>
       <a href="map.html"><i class="uil uil-map" aria-hidden="true"></i>Live map</a>
-      <a href="report.html"><i class="uil uil-file-plus-alt" aria-hidden="true"></i>Report accident</a>
       <a href="accidentlist.html"><i class="uil uil-clipboard-notes" aria-hidden="true"></i>Accidents & incidents</a>
-      <a href="management.html"><i class="uil uil-chart" aria-hidden="true"></i>Management analytics</a>
-      <a href="spreedsheet.html"><i class="uil uil-table" aria-hidden="true"></i>Spreadsheet</a>
-      <a href="users.html"><i class="uil uil-users-alt" aria-hidden="true"></i>Users</a>
       <a href="settings.html"><i class="uil uil-setting" aria-hidden="true"></i>Settings</a>
     </nav>
     <div class="sidebar-profile"><span id="profileInitial" class="profile-initial">U</span><div><strong id="profileName">Workspace user</strong><small id="profileRole">Road safety team</small></div></div><button class="sign-out" id="signOut" type="button"><i class="uil uil-signout" aria-hidden="true"></i>Sign out</button><div class="sidebar-note"><i class="uil uil-shield-check" aria-hidden="true"></i><span>Road safety starts<br>with better information.</span></div>
@@ -32,18 +28,18 @@
 <div class="workspace">
     <header class="topbar"><button class="menu-button" id="menuToggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation"><i class="uil uil-bars" aria-hidden="true"></i></button><nav class="breadcrumb" aria-label="Breadcrumb"><a href="main.html">Workspace</a><span aria-hidden="true">/</span><span aria-current="page">Dashboard</span></nav><span class="workspace-label">ROAD SAFETY WORKSPACE</span></header>
     <main id="main" class="dashboard-main">
-      <div class="page-heading"><div><div class="eyebrow">OVERVIEW</div><h1>Road safety dashboard</h1><p>A clear view of accident reports, trends, and priority locations.</p></div><div class="page-actions"><button class="button" id="refreshDashboard"><i class="uil uil-sync" aria-hidden="true"></i>Refresh</button><a class="button button-primary" href="report.html"><i class="uil uil-plus" aria-hidden="true"></i>New report</a></div></div>
+      <div class="page-heading"><div><div class="eyebrow">OVERVIEW</div><h1>Road safety dashboard</h1><p>A clear view of accident reports, trends, and priority locations.</p></div><div class="page-actions"><button class="button" id="refreshDashboard"><i class="uil uil-sync" aria-hidden="true"></i>Refresh</button></div></div>
       <div class="dashboard-context"><span><span class="context-dot" aria-hidden="true"></span>All recorded accidents</span><span id="refreshStatus" role="status" aria-live="polite">Loading records...</span></div>
       <section class="metric-grid" aria-label="Accident summary">
         <article class="panel metric-card"><div class="metric-top"><span>Total accidents</span><i class="uil uil-file-alt metric-icon metric-blue" aria-hidden="true"></i></div><div class="metric-value" id="totalAccidents">&mdash;</div><p>Across all recorded dates</p></article>
         <article class="panel metric-card"><div class="metric-top"><span>Total casualties</span><i class="uil uil-users-alt metric-icon metric-purple" aria-hidden="true"></i></div><div class="metric-value" id="totalCasualties">&mdash;</div><p>Sample value in current dataset</p></article>
         <article class="panel metric-card"><div class="metric-top"><span>Severe cases</span><i class="uil uil-ambulance metric-icon metric-red" aria-hidden="true"></i></div><div class="metric-value" id="severeCases">&mdash;</div><p>Severe and critical reports</p></article>
-        <article class="panel metric-card"><div class="metric-top"><span>Priority locations</span><i class="uil uil-map-marker-exclamation metric-icon metric-amber" aria-hidden="true"></i></div><div class="metric-value" id="activeZones">&mdash;</div><p>Locations with moderate or severe reports</p></article>
+        <article class="panel metric-card"><div class="metric-top"><span>Priority locations</span><i class="uil uil-map-marker-exclamation metric-icon metric-amber" aria-hidden="true"></i></div><div class="metric-value" id="activeZones">&mdash;</div><p>Areas qualifying on frequency, severity, and recency</p></article>
       </section>
       <div class="dashboard-grid">
         <section class="panel dashboard-chart trend-chart"><div class="panel-header"><div><h2>Monthly accident trend</h2><p>Recorded accidents by month ? all years combined</p></div></div><div class="chart-plot"><canvas id="monthlyTrend" role="img" aria-label="Monthly accident trend"></canvas></div></section>
         <section class="panel dashboard-chart severity-chart"><div class="panel-header"><div><h2>Severity breakdown</h2><p>Distribution across the available records</p></div></div><div class="chart-plot"><canvas id="severityPie" role="img" aria-label="Severity breakdown"></canvas></div></section>
-        <section class="panel priority-panel"><div class="panel-header"><span class="section-icon"><i class="uil uil-map-marker-exclamation" aria-hidden="true"></i></span><div><h2>Locations to watch</h2><p>Reported severity by location</p></div><a class="text-link" href="map.html">View map<i class="uil uil-arrow-up-right" aria-hidden="true"></i></a></div><div class="data-note"><i class="uil uil-info-circle" aria-hidden="true"></i>Includes a configured San Fabian demonstration zone.</div><div id="danger-alerts"></div><div class="location-opt-in"><p><strong>Alerts near you</strong><span id="locationStatus" role="status">Enable location access to check nearby zones.</span></p><button class="button" id="enableLocation">Enable alerts</button></div></section>
+        <section class="panel priority-panel"><div class="panel-header"><span class="section-icon"><i class="uil uil-map-marker-exclamation" aria-hidden="true"></i></span><div><h2>Locations to watch</h2><p>Repeat crashes by geographic area</p></div><a class="text-link" href="map.html">View map<i class="uil uil-arrow-up-right" aria-hidden="true"></i></a></div><div class="data-note"><i class="uil uil-info-circle" aria-hidden="true"></i>Caution levels consider crash frequency, severity, and recency. Rule-based analysis of eligible road and vehicular incidents within 36 months. High and critical areas are tagged accident-prone.</div><div id="danger-alerts"></div><div class="location-opt-in"><p><strong>Alerts near you</strong><span id="locationStatus" role="status">Enable location access to check nearby zones.</span></p><button class="button" id="enableLocation">Enable alerts</button></div></section>
         <section class="panel prediction-panel"><div class="panel-header"><span class="section-icon"><i class="uil uil-chart-growth" aria-hidden="true"></i></span><div><h2>Trend preview</h2><p>Illustrative forecast</p></div><span class="demo-tag">DEMO</span></div><div id="ai-monthly-prediction"></div></section>
         <section class="panel dashboard-chart vehicle-chart"><div class="panel-header"><div><h2>Vehicle type overview</h2><p>Existing vehicle-type aggregation</p></div></div><div class="chart-plot"><canvas id="vehicleChart" role="img" aria-label="Vehicle type overview"></canvas></div></section>
         <section class="panel dashboard-chart light-chart"><div class="panel-header"><div><h2>Day & night distribution</h2><p>Day: 6 AM?6 PM ? night: 6 PM?6 AM</p></div></div><div class="chart-plot"><canvas id="lightChart" role="img" aria-label="Day & night distribution"></canvas></div></section>
@@ -57,7 +53,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
   <script src="../jsFiles/routes.js"></script><script src="../jsFiles/workspace-preferences.js"></script><script src="../jsFiles/workspace.js"></script>
   <script src="../jsFiles/api.js"></script>
-  <script src="../jsFiles/dashboard.js"></script>
+  <script src="../jsFiles/map-safety.js"></script><script src="../jsFiles/map-area-ui.js"></script><script src="../jsFiles/dashboard.js"></script>
   <script src="../jsFiles/dashboard-ui.js"></script>
 </body>
 </html>

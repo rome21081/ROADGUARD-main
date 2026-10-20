@@ -19,11 +19,7 @@
     <nav>
       <a href="main.html"><i class="uil uil-estate" aria-hidden="true"></i>Dashboard</a>
       <a href="map.html"><i class="uil uil-map" aria-hidden="true"></i>Live map</a>
-      <a href="report.html"><i class="uil uil-file-plus-alt" aria-hidden="true"></i>Report accident</a>
       <a href="accidentlist.html" class="active" aria-current="page"><i class="uil uil-clipboard-notes" aria-hidden="true"></i>Accidents & incidents</a>
-      <a href="management.html"><i class="uil uil-chart" aria-hidden="true"></i>Management analytics</a>
-      <a href="spreedsheet.html"><i class="uil uil-table" aria-hidden="true"></i>Spreadsheet</a>
-      <a href="users.html"><i class="uil uil-users-alt" aria-hidden="true"></i>Users</a>
       <a href="settings.html"><i class="uil uil-setting" aria-hidden="true"></i>Settings</a>
     </nav>
     <div class="sidebar-profile"><span id="profileInitial" class="profile-initial">U</span><div><strong id="profileName">Workspace user</strong><small id="profileRole">Road safety team</small></div></div><button class="sign-out" id="signOut" type="button"><i class="uil uil-signout" aria-hidden="true"></i>Sign out</button><div class="sidebar-note"><i class="uil uil-shield-check" aria-hidden="true"></i><span>Road safety starts<br>with better information.</span></div>
@@ -37,8 +33,8 @@
     </header>
     <main id="main">
       <div class="page-heading">
-        <div><a class="back-link" href="accidentlist.html"><i class="uil uil-arrow-left" aria-hidden="true"></i>All reports</a><h1>Report details</h1><p>Review the event, supporting evidence, and location.</p></div>
-        <div class="page-actions"><button class="button" id="printReport" hidden><i class="uil uil-print" aria-hidden="true"></i>Print report</button><a class="button button-primary" href="report.html"><i class="uil uil-plus" aria-hidden="true"></i>New report</a></div>
+        <div><a class="back-link" id="detailBackLink" href="accidentlist.html"><i class="uil uil-arrow-left" aria-hidden="true"></i>All reports</a><h1>Report details</h1><p>Review the event, supporting evidence, and location.</p></div>
+        <div class="page-actions"><button class="button" id="printReport" hidden><i class="uil uil-print" aria-hidden="true"></i>Print report</button></div>
       </div>
       <nav class="section-nav" id="sectionNav" aria-label="Report sections" hidden>
         <a href="#overview">Overview</a><a href="#location">Location</a><a href="#vehicles">Vehicles</a><a href="#photos">Photos</a>
