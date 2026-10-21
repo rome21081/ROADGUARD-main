@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm ci --omit=dev --prefix testscraper && npm run build",
+  "outputDirectory": "public",
+  "functions": {
+    "api/news.js": {
+      "maxDuration": 300,
+      "includeFiles": ["testscraper/*.json", "Final Project 3rd Year/htmlFiles/news-accidents.json"]
+    }
+  },
+  "rewrites": [
+    { "source": "/scraper/:action", "destination": "/api/news?action=:action" },
+    { "source": "/htmlFiles/:path*", "destination": "/Final%20Project%203rd%20Year/htmlFiles/:path*" },
+    { "source": "/jsFiles/:path*", "destination": "/Final%20Project%203rd%20Year/jsFiles/:path*" },
+    { "source": "/cssFiles/:path*", "destination": "/Final%20Project%203rd%20Year/cssFiles/:path*" }
+  ]
+}

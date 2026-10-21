@@ -1,0 +1,16 @@
+{
+  "name": "roadguard-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "node scripts/build-vercel.cjs",
+    "test": "npm --prefix testscraper test"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  }
+}

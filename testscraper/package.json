@@ -4,11 +4,12 @@
   "description": "Local ROADGUARD accident-news scraper and map server",
   "main": "scraper.js",
   "scripts": {
-    "test": "node ../tests/navigation.test.cjs && node ../tests/map-safety.test.cjs && node ../tests/map-places.test.cjs && node ../tests/risk-model.test.cjs && node ../tests/news-scraper.test.cjs",
+    "test": "node ../tests/navigation.test.cjs && node ../tests/map-safety.test.cjs && node ../tests/map-places.test.cjs && node ../tests/risk-model.test.cjs && node ../tests/news-scraper.test.cjs && node ../tests/vercel-scraper.test.cjs",
     "start": "node scraper.js",
     "scrape": "node scraper.js --once --force",
     "import-cache": "node scraper.js --import-cache",
-    "scrape:cauayan": "node scraper.js --once --force --source=BomboCauayan"
+    "scrape:cauayan": "node scraper.js --once --force --source=BomboCauayan",
+    "scrape:deep": "node scraper.js --once --force --deep --source=BomboCauayan"
   },
   "keywords": [],
   "author": "",

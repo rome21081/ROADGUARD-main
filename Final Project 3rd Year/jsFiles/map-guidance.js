@@ -71,7 +71,7 @@ window.MapGuidance = (() => {
   };
   const fitPadding = (size, requestedTop = 36) => {
     const height=Math.max(1,size.y),width=Math.max(1,size.x);
-    const bottom=Math.min(92,height*.2),left=Math.min(30,width*.12),right=Math.min(78,width*.25);
+    const bottom=Math.min(104,height*.55),left=Math.min(30,width*.12),right=Math.min(78,width*.25);
     const top=Math.min(requestedTop,Math.max(0,height-bottom-Math.min(64,height*.4)));
     return {paddingTopLeft:[left,top],paddingBottomRight:[right,bottom]};
   };
@@ -160,11 +160,12 @@ window.MapGuidance = (() => {
     const expandPreview = expanded => {
       $('guideContent').hidden=!expanded;
       $('toggleGuidePreview').setAttribute('aria-expanded',String(expanded));
-      $('toggleGuidePreview').setAttribute('aria-label',expanded?'Minimize route preview':'Expand route preview');
+      $('toggleGuidePreview').setAttribute('aria-label',expanded?'Hide direction tools':'Show direction tools');
       $('roadGuide').classList.toggle('is-compact',!expanded);
       $('guideDock').classList.toggle('is-compact',!expanded);
     };
     $('toggleGuidePreview').addEventListener('click',()=>expandPreview($('guideContent').hidden));
+    expandPreview(false);
     $('guideFitRoute').addEventListener('click',()=>callbacks.onFit());
     $('previousGuide').addEventListener('click',()=>review(-1));
     $('nextGuide').addEventListener('click',()=>review(1));
@@ -190,7 +191,7 @@ window.MapGuidance = (() => {
     return {
       isActive:()=>active,
       setRoute(value){if(route?.geometry===value.geometry){route=value;render();return;}route=value;steps=stepsFor(value);index=0;along=null;lastPosition=null;reviewing=false;spokenKey='';$('guideStatus').textContent=steps.length?'':'The routing service did not return road instructions.';render();},
-      clear(){expandPreview(true);route=null;steps=[];active=false;along=null;spokenKey='';synthesis?.cancel();recognition?.abort();$('roadGuide').hidden=true;$('guideDock').hidden=true;},
+      clear(){expandPreview(false);route=null;steps=[];active=false;along=null;spokenKey='';synthesis?.cancel();recognition?.abort();$('roadGuide').hidden=true;$('guideDock').hidden=true;},
       setBusy(value){$('guideSaferRoute').textContent=value?'Checking...':'Safer route';$('guideSaferRoute').disabled=value||!route;$('dangerReroute').disabled=value;},
       updatePosition(point,accuracy){
         if(!active||!route||!steps.length)return;

@@ -602,6 +602,8 @@ window.initializeMapJourney = (map, getRecords, getRiskModel = null) => {
     setExpanded(true);
   };
   $('showJourney').addEventListener('click', () => showView('journey'));
+  $('editRoute').addEventListener('click',()=>{showView('journey');$('journeyContent').scrollTop=0;inputs.destination.focus({preventScroll:true});});
+  $('returnToRoute').addEventListener('click',()=>{viewMode='route';setExpanded(false);$('toggleJourney').focus({preventScroll:true});});
   $('showEvents').addEventListener('click', () => showView('events'));
   $('openRoutePlanner').addEventListener('click', () => { showView('journey'); inputs[useCurrentOrigin || endpoints.origin ? 'destination' : 'origin'].focus({preventScroll:true}); });
   $('openRoadEvents').addEventListener('click', () => showView('events'));

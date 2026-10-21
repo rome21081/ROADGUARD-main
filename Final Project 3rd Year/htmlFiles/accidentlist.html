@@ -36,5 +36,10 @@
     <div class="reports-table-wrap"><table class="reports-table"><caption class="sr-only">Accident and incident reports</caption><thead><tr><th scope="col">Case reference</th><th scope="col">Report type</th><th scope="col">Location</th><th scope="col">Date &amp; time</th><th scope="col">Severity</th><th scope="col"><span class="sr-only">View report</span></th></tr></thead><tbody id="accidentList" aria-busy="true"><tr><td colspan="6"><div class="list-loading"><span class="loader" aria-hidden="true"></span><span>Loading reports...</span></div></td></tr></tbody></table></div>
     <nav class="reports-pagination" id="pagination" aria-label="Report pages" hidden></nav>
   </section>
+  <section class="panel reports-directory" id="scraped-news" aria-labelledby="scrapedNewsHeading" tabindex="-1">
+    <header class="directory-heading"><div><h2 id="scrapedNewsHeading">Scraped accident news</h2><p>Publisher reports, separate from recorded accidents and incidents. Locations are approximate; news does not affect risk scoring.</p></div><button class="button" id="reloadScrapedNews" type="button">Reload news</button></header>
+    <label class="report-search"><span class="sr-only">Search scraped news</span><input id="scrapedNewsSearch" type="search" placeholder="Search news, place or publisher..."></label>
+    <p id="scrapedNewsStatus" role="status">Loading scraped news...</p><div id="scrapedNewsResults" class="scraped-news-results"></div>
+  </section>
   <footer>ROADGUARD <span aria-hidden="true">&middot;</span> Real-time observation &amp; accident detection</footer>
-</main></div><script src="../jsFiles/routes.js"></script><script src="../jsFiles/workspace-preferences.js"></script><script src="../jsFiles/workspace.js"></script><script src="../jsFiles/accidentlist.js?v=20261015-3"></script></body></html>
+</main></div><script src="../jsFiles/routes.js"></script><script src="../jsFiles/workspace-preferences.js"></script><script src="../jsFiles/workspace.js"></script><script src="../jsFiles/accidentlist.js?v=20261015-3"></script><script src="../jsFiles/scraped-news.js"></script></body></html>

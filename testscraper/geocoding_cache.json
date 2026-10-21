@@ -82,5 +82,299 @@
       "121.6893475",
       "121.7693475"
     ]
+  },
+  "cauayan, isabela, philippines": {
+    "place_id": 430216611,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "relation",
+    "osm_id": 19646111,
+    "lat": "16.9345978",
+    "lon": "121.7744400",
+    "class": "boundary",
+    "type": "administrative",
+    "place_rank": 12,
+    "importance": 0.4629541200904914,
+    "addresstype": "city",
+    "name": "Cauayan",
+    "display_name": "Cauayan, Isabela, Cagayan Valley, 3305, Philippines",
+    "boundingbox": [
+      "16.7327729",
+      "16.9782750",
+      "121.6570430",
+      "121.9780950"
+    ]
+  },
+  "angadanan, isabela, philippines": {
+    "place_id": 233690648,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198502532,
+    "lat": "16.7568394",
+    "lon": "121.7480912",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.38037835405938786,
+    "addresstype": "town",
+    "name": "Angadanan",
+    "display_name": "Angadanan, Isabela, Cagayan Valley, 3306, Philippines",
+    "boundingbox": [
+      "16.7168394",
+      "16.7968394",
+      "121.7080912",
+      "121.7880912"
+    ]
+  },
+  "benito soliven, isabela, philippines": {
+    "place_id": 234962890,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198510180,
+    "lat": "16.9865052",
+    "lon": "121.9578429",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.3771535532601069,
+    "addresstype": "town",
+    "name": "Benito Soliven",
+    "display_name": "Benito Soliven, Isabela, Cagayan Valley, 3331, Philippines",
+    "boundingbox": [
+      "16.9465052",
+      "17.0265052",
+      "121.9178429",
+      "121.9978429"
+    ]
+  },
+  "reina mercedes, isabela, philippines": {
+    "place_id": 234970025,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198501990,
+    "lat": "16.9850846",
+    "lon": "121.8279423",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.38885241757642924,
+    "addresstype": "town",
+    "name": "Reina Mercedes",
+    "display_name": "Reina Mercedes, Isabela, Cagayan Valley, 3302, Philippines",
+    "boundingbox": [
+      "16.9450846",
+      "17.0250846",
+      "121.7879423",
+      "121.8679423"
+    ]
+  },
+  "echague, isabela, philippines": {
+    "place_id": 237102384,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198525617,
+    "lat": "16.7053600",
+    "lon": "121.6749455",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.37958691803318917,
+    "addresstype": "town",
+    "name": "Echague",
+    "display_name": "Echague, Isabela, Cagayan Valley, 3309, Philippines",
+    "boundingbox": [
+      "16.6653600",
+      "16.7453600",
+      "121.6349455",
+      "121.7149455"
+    ]
+  },
+  "cabatuan, isabela, philippines": {
+    "place_id": 237061644,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198524712,
+    "lat": "16.9533365",
+    "lon": "121.6688820",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39319777097137304,
+    "addresstype": "town",
+    "name": "Cabatuan",
+    "display_name": "Cabatuan, Isabela, Cagayan Valley, 3316, Philippines",
+    "boundingbox": [
+      "16.9133365",
+      "16.9933365",
+      "121.6288820",
+      "121.7088820"
+    ]
+  },
+  "ramon, isabela, philippines": {
+    "place_id": 237419960,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198494061,
+    "lat": "16.7815027",
+    "lon": "121.5351148",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39542339164457335,
+    "addresstype": "town",
+    "name": "Ramon",
+    "display_name": "Ramon, Isabela, Cagayan Valley, 3319, Philippines",
+    "boundingbox": [
+      "16.7415027",
+      "16.8215027",
+      "121.4951148",
+      "121.5751148"
+    ]
+  },
+  "roxas, isabela, philippines": {
+    "place_id": 236919476,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198504856,
+    "lat": "17.1219150",
+    "lon": "121.6199232",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39727265900251174,
+    "addresstype": "town",
+    "name": "Roxas",
+    "display_name": "Roxas, Isabela, Cagayan Valley, 3320, Philippines",
+    "boundingbox": [
+      "17.0819150",
+      "17.1619150",
+      "121.5799232",
+      "121.6599232"
+    ]
+  },
+  "cordon, isabela, philippines": {
+    "place_id": 236533292,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198504010,
+    "lat": "16.6737316",
+    "lon": "121.4663518",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.3965084667359966,
+    "addresstype": "town",
+    "name": "Cordon",
+    "display_name": "Cordon, Isabela, Cagayan Valley, 3312, Philippines",
+    "boundingbox": [
+      "16.6337316",
+      "16.7137316",
+      "121.4263518",
+      "121.5063518"
+    ]
+  },
+  "san agustin, isabela, philippines": {
+    "place_id": 236603289,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198508807,
+    "lat": "16.5066966",
+    "lon": "121.7474086",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.3949527989551982,
+    "addresstype": "town",
+    "name": "San Agustin",
+    "display_name": "San Agustin, Isabela, Cagayan Valley, Philippines",
+    "boundingbox": [
+      "16.4666966",
+      "16.5466966",
+      "121.7074086",
+      "121.7874086"
+    ]
+  },
+  "san mariano, isabela, philippines": {
+    "place_id": 236788521,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 955417594,
+    "lat": "16.9835964",
+    "lon": "122.0127684",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39038942373343144,
+    "addresstype": "town",
+    "name": "San Mariano",
+    "display_name": "San Mariano, Isabela, Cagayan Valley, Philippines",
+    "boundingbox": [
+      "16.9435964",
+      "17.0235964",
+      "121.9727684",
+      "122.0527684"
+    ]
+  },
+  "cabagan, isabela, philippines": {
+    "place_id": 236597721,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198523856,
+    "lat": "17.4264795",
+    "lon": "121.7649140",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.38307540422660474,
+    "addresstype": "town",
+    "name": "Cabagan",
+    "display_name": "Cabagan, Isabela, Cagayan Valley, 3328, Philippines",
+    "boundingbox": [
+      "17.3864795",
+      "17.4664795",
+      "121.7249140",
+      "121.8049140"
+    ]
+  },
+  "aurora, isabela, philippines": {
+    "place_id": 236444226,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198531900,
+    "lat": "16.9908811",
+    "lon": "121.6358000",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.39542339164457335,
+    "addresstype": "town",
+    "name": "Aurora",
+    "display_name": "Aurora, Isabela, Cagayan Valley, 3316, Philippines",
+    "boundingbox": [
+      "16.9508811",
+      "17.0308811",
+      "121.5958000",
+      "121.6758000"
+    ]
+  },
+  "gamu, isabela, philippines": {
+    "place_id": 235070259,
+    "licence": "Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright",
+    "osm_type": "node",
+    "osm_id": 198492696,
+    "lat": "17.0473401",
+    "lon": "121.8333707",
+    "class": "place",
+    "type": "town",
+    "place_rank": 18,
+    "importance": 0.38438338989703197,
+    "addresstype": "town",
+    "name": "Gamu",
+    "display_name": "Gamu, Isabela, Cagayan Valley, 3302, Philippines",
+    "boundingbox": [
+      "17.0073401",
+      "17.0873401",
+      "121.7933707",
+      "121.8733707"
+    ]
   }
 }
